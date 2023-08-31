@@ -20,7 +20,8 @@ pool = pooling.MySQLConnectionPool(
     user=DB_USER,
     password=DB_PASSWORD,
     host='localhost',
-    database='taipeitrip'
+    database='taipeitrip',
+    charset='utf8mb4'
 )
 
 
