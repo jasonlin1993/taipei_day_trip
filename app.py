@@ -3,9 +3,10 @@ import math
 from flask import *
 from dotenv import load_dotenv
 from mysql.connector import pooling
+from flask import Response, request
 
 app=Flask(__name__)
-app.config["JSON_AS_ASCII"]=False
+app.json.ensure_ascii = False
 app.config["TEMPLATES_AUTO_RELOAD"]=True
 
 load_dotenv()
@@ -21,7 +22,7 @@ pool = pooling.MySQLConnectionPool(
     password=DB_PASSWORD,
     host='localhost',
     database='taipeitrip',
-    charset='utf8mb4'
+    charset='utf8'
 )
 
 
@@ -39,11 +40,11 @@ def booking():
 def thankyou():
 	return render_template("thankyou.html")
 
-from flask import Response, request
 
-def json_response(data, status=200):
-    json_data = json.dumps(data, ensure_ascii=False, indent=2)
-    return Response(json_data, status=status, content_type='application/json; charset=utf-8')
+
+# def json_response(data, status=200):
+#     json_data = json.dumps(data, ensure_ascii=False, indent=2)
+#     return Response(json_data, status=status, content_type='application/json; charset=utf-8')
 
 @app.route("/api/attractions", methods=["GET"])
 def api_attractions():
@@ -52,7 +53,7 @@ def api_attractions():
         keyword = request.args.get('keyword')
         
         if page is None:
-            return json_response({"error": True, "message": "Internal Server Error 500"}, 500)
+            return jsonify({"error": True, "message": "Internal Server Error 500"}, 500)
 
         offset = page * 12
         
@@ -100,13 +101,13 @@ def api_attractions():
                 "nextPage": nextPage,
                 "data": data_list
             }
-            return json_response(data)
+            return jsonify(data)
 
         else:
-            return json_response({"error": True, "message": "無法取得資料"}, 500)
+            return jsonify({"error": True, "message": "無法取得資料"}, 500)
 
     except Exception as e:
-        return json_response({"error": True, "message": "伺服器內部錯誤"}, 500)
+        return jsonify({"error": True, "message": "伺服器內部錯誤"}, 500)
 
 
         
@@ -137,13 +138,13 @@ def getAttraction(id:int):
                     response_data = {
                         "data": data
                     }
-                    return json_response(response_data)
+                    return jsonify(response_data)
                 
                 else:
-                    return json_response({"error": True, "message": "景點編號不正確"}), 400
+                    return jsonify({"error": True, "message": "景點編號不正確"}), 400
 
     except Exception as e:
-        return json_response({"error": True, "message": "伺服器內部錯誤"}), 500
+        return jsonify({"error": True, "message": "伺服器內部錯誤"}), 500
 
 @app.route("/api/mrts", methods=["GET"])
 def getMrt():
@@ -153,10 +154,10 @@ def getMrt():
                 cursor.execute("SELECT mrt, COUNT(mrt) AS count FROM attraction GROUP BY mrt ORDER BY count DESC")
                 results = cursor.fetchall()
                 mrts = [item['mrt'] for item in results]
-                return json_response({"data": mrts})
+                return jsonify({"data": mrts})
     except Exception as e:
         print(e)
-        return json_response({"error": True, "message": "伺服器內部錯誤"}, status=500)
+        return jsonify({"error": True, "message": "伺服器內部錯誤"}, status=500)
 
 
 app.run(host="0.0.0.0", port=3000)
