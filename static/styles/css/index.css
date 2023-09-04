@@ -1,0 +1,13 @@
+* {
+  border: 1px solid black;
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+.header__item {
+  display: flex;
+}
+.header__item .header__item__text {
+  display: flex;
+}/*# sourceMappingURL=index.css.map */

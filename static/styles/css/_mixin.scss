@@ -1,0 +1,81 @@
+// RWD 手機
+@mixin mobile {
+  @media (max-width: 360px) {
+    @content;
+  }
+}
+
+// font-size
+@mixin H1 {
+  font-family: "Noto Sans TC";
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 24px;
+}
+
+@mixin H2 {
+  font-family: "Noto Sans TC";
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 34px;
+}
+
+@mixin Bold_H3 {
+  font-family: "Noto Sans TC";
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 24px;
+}
+
+@mixin Regular_H3 {
+  font-family: "Noto Sans TC";
+  font-size: 24px;
+  line-height: 24px;
+}
+
+@mixin Bold_Btn {
+  font-family: "Noto Sans TC";
+  font-weight: bold;
+  font-size: 19px;
+  line-height: 16px;
+}
+
+@mixin Regular_Btn {
+  font-family: "Noto Sans TC";
+  font-size: 19px;
+  line-height: 16px;
+}
+
+@mixin Bold_Content {
+  font-family: "Noto Sans TC";
+  font-weight: bold;
+  font-size: 16px;
+  line-height: Auto;
+}
+
+@mixin Regular_Content {
+  font-family: "Noto Sans TC";
+  font-size: 16px;
+  line-height: Auto;
+}
+
+@mixin Bold_Body {
+  font-family: "Noto Sans TC";
+  font-weight: Bold;
+  font-size: 16px;
+  line-height: 13.3px;
+}
+
+@mixin Medium_Body {
+  font-family: "Noto Sans TC";
+  font-weight: medium;
+  font-size: 16px;
+  line-height: 13.3px;
+}
+
+@mixin List {
+  font-family: "Noto Sans TC";
+  font-weight: medium;
+  font-size: 14px;
+  line-height: Auto;
+}
