@@ -8,10 +8,29 @@
   box-sizing: border-box;
 }
 
-.header__item {
+header {
   display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
 
-  .header__item__text {
+  .header__item {
     display: flex;
+    width: 1200px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0px;
+
+    .header__item__logo {
+      color: $Cyan70;
+      @include H2;
+    }
+
+    .header__item__text {
+      display: flex;
+      margin: 0px 10px;
+      color: $Gray70;
+      @include Medium_Body;
+    }
   }
 }
