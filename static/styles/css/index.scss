@@ -2,12 +2,13 @@
 @import "mixin";
 
 * {
-  border: 1px solid black;
+  // border: 1px solid black;
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
 }
 
+// 第一區
 header {
   display: flex;
   width: 100%;
@@ -19,7 +20,7 @@ header {
     width: 1200px;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 0px;
+    padding: 10px 10px;
 
     .header__item__logo {
       color: $Cyan70;
@@ -28,9 +29,75 @@ header {
 
     .header__item__text {
       display: flex;
-      margin: 0px 10px;
       color: $Gray70;
+      padding: 0px 5px;
       @include Medium_Body;
+      cursor: pointer;
     }
   }
+}
+
+// 第二區
+.header__banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 320px;
+  background-image: url("../../picture/welcome.png");
+  background-repeat: space;
+  background-size: cover;
+  .header__banner__slogan {
+    display: flex;
+    justify-content: start;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 1200px;
+    height: 169px;
+    padding: 10px;
+    .header__banner__text--H1 {
+      width: 100%;
+      @include H1;
+      color: $Gray10;
+      padding: 0px 0px 30px 0px;
+    }
+    .header__banner__text--Body {
+      width: 100%;
+      @include Bold_Body;
+      color: $Gray10;
+      padding: 0px 0px 25px 0px;
+    }
+  }
+  .header__banner__searchBox {
+    display: flex;
+    flex-direction: row;
+    height: 46px;
+
+    input[type="search"] {
+      width: 400px;
+      padding: 0px 15px;
+      @include Bold_Body;
+      @media (max-width: 460px) {
+        width: 285px; // 當螢幕視窗小於或等於400px時，將寬度設為100%
+      }
+    }
+  }
+  .header__banner__searchBox__searchLogo {
+    width: 60px;
+    background-color: $Cyan70;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+}
+
+// footer
+.footer__text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include Bold_Body;
+  background-color: #757575;
+  color: $white;
+  height: 104px;
 }

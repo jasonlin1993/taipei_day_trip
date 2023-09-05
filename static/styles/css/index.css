@@ -1,5 +1,4 @@
 * {
-  border: 1px solid black;
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
@@ -16,21 +15,98 @@ header .header__item {
   width: 1200px;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 0px;
+  padding: 10px 10px;
 }
 header .header__item .header__item__logo {
   color: #448899;
-  font-family: "Noto Sans TC";
+  font-family: "Noto Sans TC", sans-serif;
   font-weight: bold;
   font-size: 30px;
   line-height: 34px;
 }
 header .header__item .header__item__text {
   display: flex;
-  margin: 0px 10px;
   color: #666666;
-  font-family: "Noto Sans TC";
+  padding: 0px 5px;
+  font-family: "Noto Sans TC", sans-serif;
   font-weight: medium;
   font-size: 16px;
   line-height: 13.3px;
+  cursor: pointer;
+}
+
+.header__banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 320px;
+  background-image: url("../../picture/welcome.png");
+  background-repeat: space;
+  background-size: cover;
+}
+.header__banner .header__banner__slogan {
+  display: flex;
+  justify-content: start;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 1200px;
+  height: 169px;
+  padding: 10px;
+}
+.header__banner .header__banner__slogan .header__banner__text--H1 {
+  width: 100%;
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 24px;
+  color: #f8f8f8;
+  padding: 0px 0px 30px 0px;
+}
+.header__banner .header__banner__slogan .header__banner__text--Body {
+  width: 100%;
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: Bold;
+  font-size: 16px;
+  line-height: 13.3px;
+  color: #f8f8f8;
+  padding: 0px 0px 25px 0px;
+}
+.header__banner .header__banner__searchBox {
+  display: flex;
+  flex-direction: row;
+  height: 46px;
+}
+.header__banner .header__banner__searchBox input[type=search] {
+  width: 400px;
+  padding: 0px 15px;
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: Bold;
+  font-size: 16px;
+  line-height: 13.3px;
+}
+@media (max-width: 460px) {
+  .header__banner .header__banner__searchBox input[type=search] {
+    width: 285px;
+  }
+}
+.header__banner .header__banner__searchBox__searchLogo {
+  width: 60px;
+  background-color: #448899;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.footer__text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: Bold;
+  font-size: 16px;
+  line-height: 13.3px;
+  background-color: #757575;
+  color: #ffffff;
+  height: 104px;
 }/*# sourceMappingURL=index.css.map */
