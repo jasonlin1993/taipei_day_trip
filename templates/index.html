@@ -37,8 +37,16 @@
     <section class="listbar">
       <div class="section__listBar">
         <div class="section__listBar__btn" onclick="scrollToLeft()">
-          <img src="styles/icon/States=Default-1.svg" alt="icon_Default_left" class="section__listBar__btn--default" />
-          <img src="styles/icon/States=Hovered-1.svg" alt="icon_Hovered_left" class="section__listBar__btn--hovered" />
+          <img
+            src="{{ url_for('static', filename='styles/icon/States=Default-1.svg') }}"
+            alt="icon_Default_left"
+            class="section__listBar__btn--default"
+          />
+          <img
+            src="{{ url_for('static', filename='styles/icon/States=Hovered-1.svg') }}"
+            alt="icon_Hovered_left"
+            class="section__listBar__btn--hovered"
+          />
         </div>
         <div class="section__listBar__container" id="metroStations">
           <div class="section__listBar__container__text">劍潭</div>
@@ -67,14 +75,23 @@
           <div class="section__listBar__container__text">台電大樓</div>
         </div>
         <div class="section__listBar__btn" onclick="scrollToRight()">
-          <img src="styles/icon/States=Default.svg" alt="icon_Default_right" class="section__listBar__btn--default" />
-          <img src="styles/icon/States=Hovered.svg" alt="icon_Hovered_right" class="section__listBar__btn--hovered" />
+          <img
+            src="{{ url_for('static', filename='styles/icon/States=Default.svg') }}"
+            alt="icon_Default_right"
+            class="section__listBar__btn--default"
+          />
+          <img
+            src="{{ url_for('static', filename='styles/icon/States=Hovered.svg') }}"
+            alt="icon_Hovered_right"
+            class="section__listBar__btn--hovered"
+          />
         </div>
       </div>
     </section>
+    <section class="attraction"></section>
     <!-- <footer>
       <div class="footer__text">COPYRIGHT © 2021 台北一日遊</div>
     </footer> -->
   </body>
-  <script src="javascript/index.js"></script>
+  <script src="{{ url_for('static', filename='javascript/index.js') }}"></script>
 </html>

@@ -81,6 +81,7 @@ header .header__item .header__item__text .header__item__text--booking {
   height: 46px;
   border-radius: 5px 0px 0px 5px;
   overflow: hidden;
+  box-shadow: 0px 0px 20px 0px #abc;
 }
 .header__banner .header__banner__searchBox input[type=search] {
   width: 400px;
