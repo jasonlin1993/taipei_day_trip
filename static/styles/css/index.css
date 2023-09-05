@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   padding: 0px;
   margin: 0px;
@@ -15,7 +16,7 @@ header .header__item {
   width: 1200px;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 10px;
+  padding: 10px 0px 10px 10px;
 }
 header .header__item .header__item__logo {
   color: #448899;
@@ -27,12 +28,15 @@ header .header__item .header__item__logo {
 header .header__item .header__item__text {
   display: flex;
   color: #666666;
-  padding: 0px 5px;
+  padding: 0px 0px 0px 5px;
   font-family: "Noto Sans TC", sans-serif;
   font-weight: medium;
   font-size: 16px;
   line-height: 13.3px;
   cursor: pointer;
+}
+header .header__item .header__item__text .header__item__text--booking {
+  padding: 0px 20px 0px 0px;
 }
 
 .header__banner {
@@ -75,6 +79,8 @@ header .header__item .header__item__text {
   display: flex;
   flex-direction: row;
   height: 46px;
+  border-radius: 5px 0px 0px 5px;
+  overflow: hidden;
 }
 .header__banner .header__banner__searchBox input[type=search] {
   width: 400px;
@@ -92,10 +98,61 @@ header .header__item .header__item__text {
 .header__banner .header__banner__searchBox__searchLogo {
   width: 60px;
   background-color: #448899;
+  border-radius: 0px 5px 5px 0px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+}
+
+.listbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section__listBar {
+  display: flex;
+  align-items: center;
+  white-space: nowrap; /* 防止文字換行 */
+  overflow: hidden; /* 隱藏超出的內容 */
+  justify-content: space-between;
+  flex-direction: row;
+  width: 1200px;
+  height: 50px;
+  padding: 40px 0px 20px 0px;
+}
+.section__listBar .section__listBar__btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 9px 9px 9px 15px;
+  cursor: pointer;
+}
+.section__listBar .section__listBar__btn .section__listBar__btn--hovered {
+  display: none;
+}
+.section__listBar .section__listBar__btn:hover .section__listBar__btn--default {
+  display: none;
+}
+.section__listBar .section__listBar__btn:hover .section__listBar__btn--hovered {
+  display: block;
+}
+
+.section__listBar__container {
+  scroll-behavior: smooth;
+  display: flex;
+  overflow: hidden; /* 隱藏超出的內容 */
+  color: #666;
+  padding: 13px 10px 13px 10px;
+  cursor: pointer;
+}
+.section__listBar__container :hover {
+  color: #000000;
+}
+.section__listBar__container .section__listBar__container__text {
+  display: flex;
+  padding: 5px 15px 5px 15px;
 }
 
 .footer__text {

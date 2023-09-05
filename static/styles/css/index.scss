@@ -20,7 +20,7 @@ header {
     width: 1200px;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 10px;
+    padding: 10px 0px 10px 10px;
 
     .header__item__logo {
       color: $Cyan70;
@@ -30,9 +30,12 @@ header {
     .header__item__text {
       display: flex;
       color: $Gray70;
-      padding: 0px 5px;
+      padding: 0px 0px 0px 5px;
       @include Medium_Body;
       cursor: pointer;
+      .header__item__text--booking {
+        padding: 0px 20px 0px 0px;
+      }
     }
   }
 }
@@ -71,6 +74,8 @@ header {
     display: flex;
     flex-direction: row;
     height: 46px;
+    border-radius: 5px 0px 0px 5px;
+    overflow: hidden;
 
     input[type="search"] {
       width: 400px;
@@ -84,10 +89,67 @@ header {
   .header__banner__searchBox__searchLogo {
     width: 60px;
     background-color: $Cyan70;
+    border-radius: 0px 5px 5px 0px;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
+  }
+}
+
+// 第三區 捷運搜尋列表
+.listbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.section__listBar {
+  display: flex;
+  align-items: center;
+  white-space: nowrap; /* 防止文字換行 */
+  overflow: hidden; /* 隱藏超出的內容 */
+  justify-content: space-between;
+  flex-direction: row;
+  width: 1200px;
+  height: 50px;
+  padding: 40px 0px 20px 0px;
+
+  .section__listBar__btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 9px 9px 9px 15px;
+    cursor: pointer;
+
+    .section__listBar__btn--hovered {
+      display: none;
+    }
+
+    &:hover {
+      .section__listBar__btn--default {
+        display: none;
+      }
+
+      .section__listBar__btn--hovered {
+        display: block;
+      }
+    }
+  }
+}
+.section__listBar__container {
+  scroll-behavior: smooth; // 新增這行來添加平滑滾動效果
+  display: flex;
+  overflow: hidden; /* 隱藏超出的內容 */
+  // text-overflow: ellipsis; /* 添加省略號於超出的文字 */
+  color: #666;
+  padding: 13px 10px 13px 10px;
+  cursor: pointer;
+  :hover {
+    color: $Black;
+  }
+  .section__listBar__container__text {
+    display: flex;
+    padding: 5px 15px 5px 15px;
   }
 }
 
