@@ -38,7 +38,6 @@ function createElement(data, divClass, imgClass, textClass, mrtClass, categoryCl
 
 fetch(url, {
   method: 'GET',  // 明確指定GET方法
-  mode: 'cors',   // 啟用CORS
   headers: {
       'Content-Type': 'application/json'
   }
