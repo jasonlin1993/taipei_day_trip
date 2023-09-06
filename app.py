@@ -130,8 +130,7 @@ def getAttraction(id:int):
     try:
         with pool.get_connection() as database:
             with database.cursor(dictionary=True) as cursor:
-                
-                # 使用 JOIN 和 GROUP_CONCAT 來合併查詢
+
                 query = """
                         SELECT 
                             attraction.*, 
@@ -144,7 +143,6 @@ def getAttraction(id:int):
                             attraction.id = %s
                         """
 
-                
                 cursor.execute(query, (id,))
                 attraction = cursor.fetchone()
 
