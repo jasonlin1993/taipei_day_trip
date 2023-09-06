@@ -1,6 +1,5 @@
 import os
 from flask import *
-from flask_cors import CORS
 from dotenv import load_dotenv
 from mysql.connector import pooling
 
@@ -10,8 +9,8 @@ app = Flask(
     static_folder='static',
     static_url_path='/'
 )
-CORS(app)
- 
+
+
 app.json.ensure_ascii = False
 app.config["TEMPLATES_AUTO_RELOAD"]=True
 
