@@ -1,4 +1,4 @@
-let url = 'http://54.214.247.228:3000/api/attractions?page=0'
+let url = '/api/attractions?page=0'
 let results = [];
 
 function createElement(data, divClass, imgClass, textClass, mrtClass, categoryClass) {
@@ -38,6 +38,7 @@ function createElement(data, divClass, imgClass, textClass, mrtClass, categoryCl
 
 fetch(url, {
   method: 'GET',  // 明確指定GET方法
+  mode: 'cors',
   headers: {
       'Content-Type': 'application/json'
   }
