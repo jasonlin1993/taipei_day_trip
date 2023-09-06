@@ -184,6 +184,8 @@ header .header__item .header__item__text .header__item__text--booking {
   border-radius: 5px;
 }
 .container .container__section__title .container__section__title__image {
+  height: 197px;
+  width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }

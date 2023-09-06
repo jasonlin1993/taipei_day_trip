@@ -1,28 +1,28 @@
 let url = '/api/attractions?page=0'
 let results = [];
 
-function createElement(data, divClass, imgClass, textClass, mrtClass, categoryClass) {
+function createElement(data) {
   let newDiv = document.createElement("div");
-  newDiv.className = divClass;
+  newDiv.className = "container__section__title";
 
   let img = document.createElement('img');
   img.src = data.images[0];
-  img.className = imgClass;
+  img.className = "container__section__title__image";
 
   let titleName = document.createElement("p");
   titleName.textContent = data.name;
-  titleName.className = textClass;
+  titleName.className = "container__section__title__text";
 
   let mrtDiv = document.createElement("p");
   mrtDiv.className = "container__section__titles__mrts";
 
   let titleMrt = document.createElement("p");
   titleMrt.textContent = data.mrt;
-  titleMrt.className = mrtClass;
+  titleMrt.className = "container__section__titles__mrts--mrt";
 
   let titleCategory = document.createElement("p");
   titleCategory.textContent = data.category;
-  titleCategory.className = categoryClass;
+  titleCategory.className = "container__section__titles__mrts--category";
 
   mrtDiv.appendChild(titleMrt);
   mrtDiv.appendChild(titleCategory);
@@ -37,8 +37,7 @@ function createElement(data, divClass, imgClass, textClass, mrtClass, categoryCl
 
 
 fetch(url, {
-  method: 'GET',  // 明確指定GET方法
-  mode: 'cors',
+  method: 'GET',
   headers: {
       'Content-Type': 'application/json'
   }

@@ -142,7 +142,6 @@ header {
   scroll-behavior: smooth; // 新增這行來添加平滑滾動效果
   display: flex;
   overflow: hidden; /* 隱藏超出的內容 */
-  // text-overflow: ellipsis; /* 添加省略號於超出的文字 */
   color: #666;
   padding: 13px 10px 13px 10px;
   cursor: pointer;
@@ -183,6 +182,8 @@ header {
     border-radius: 5px;
 
     .container__section__title__image {
+      height: 197px;
+      width: 100%;
       object-fit: cover;
     }
 
