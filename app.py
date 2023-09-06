@@ -4,12 +4,17 @@ from flask import *
 from dotenv import load_dotenv
 from mysql.connector import pooling
 from flask import Response, request
+from flask_cors import CORS
 
 app = Flask(
     __name__,
     static_folder='static',
     static_url_path='/'
 )
+
+# 允許所有域名訪問
+CORS(app)
+
 app.json.ensure_ascii = False
 app.config["TEMPLATES_AUTO_RELOAD"]=True
 

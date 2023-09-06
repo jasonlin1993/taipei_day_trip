@@ -103,6 +103,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 13px 0px 0px 0px;
 }
 .section__listBar {
   display: flex;
@@ -113,7 +114,7 @@ header {
   flex-direction: row;
   width: 1200px;
   height: 50px;
-  padding: 40px 0px 20px 0px;
+  padding: 40px 0px 33px 0px;
 
   .section__listBar__btn {
     display: flex;
@@ -151,6 +152,57 @@ header {
   .section__listBar__container__text {
     display: flex;
     padding: 5px 15px 5px 15px;
+  }
+}
+
+// 第四區 景點列表
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0px 0px 0px;
+
+  .container__section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 1200px;
+  }
+
+  .container__section__title {
+    position: relative;
+    display: flex;
+    margin: 15px;
+    flex-direction: column;
+    width: calc(25% - 30px);
+    height: auto;
+    border: 1px #e8e8e8 solid;
+    border-radius: 5px;
+
+    .container__section__title__image {
+      object-fit: cover;
+    }
+
+    .container__section__title__text {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      background-color: $BlackTransparent;
+      @include Bold_Body;
+      color: $white;
+      width: 100%;
+      padding: 10px;
+      bottom: 34px;
+    }
+    .container__section__titles__mrts {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      @include Medium_Body;
+      color: $Gray50;
+      padding: 10px 10px 10px 10px;
+    }
   }
 }
 

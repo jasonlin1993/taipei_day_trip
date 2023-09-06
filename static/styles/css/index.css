@@ -110,6 +110,7 @@ header .header__item .header__item__text .header__item__text--booking {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 13px 0px 0px 0px;
 }
 
 .section__listBar {
@@ -121,7 +122,7 @@ header .header__item .header__item__text .header__item__text--booking {
   flex-direction: row;
   width: 1200px;
   height: 50px;
-  padding: 40px 0px 20px 0px;
+  padding: 40px 0px 33px 0px;
 }
 .section__listBar .section__listBar__btn {
   display: flex;
@@ -154,6 +155,59 @@ header .header__item .header__item__text .header__item__text--booking {
 .section__listBar__container .section__listBar__container__text {
   display: flex;
   padding: 5px 15px 5px 15px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0px 0px 0px;
+}
+.container .container__section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 1200px;
+}
+.container .container__section__title {
+  position: relative;
+  display: flex;
+  margin: 15px;
+  flex-direction: column;
+  width: calc(25% - 30px);
+  height: auto;
+  border: 1px #e8e8e8 solid;
+  border-radius: 5px;
+}
+.container .container__section__title .container__section__title__image {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.container .container__section__title .container__section__title__text {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: rgba(0, 0, 0, 0.6);
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: Bold;
+  font-size: 16px;
+  line-height: 13.3px;
+  color: #ffffff;
+  width: 100%;
+  padding: 10px;
+  bottom: 34px;
+}
+.container .container__section__title .container__section__titles__mrts {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: medium;
+  font-size: 16px;
+  line-height: 13.3px;
+  color: #757575;
+  padding: 10px 10px 10px 10px;
 }
 
 .footer__text {
