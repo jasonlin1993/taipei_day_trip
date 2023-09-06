@@ -36,24 +36,31 @@ function createElement(data, divClass, imgClass, textClass, mrtClass, categoryCl
 }
 
 
-fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      results = data.data;
+fetch(url, {
+  method: 'GET',  // 明確指定GET方法
+  mode: 'cors',   // 啟用CORS
+  headers: {
+      'Content-Type': 'application/json'
+  }
+})
+.then(response => response.json())
+.then(data => {
+  results = data.data;
 
-      for(let i=0; i<13; i++) {
-        createElement(
+  for(let i=0; i<13; i++) {
+      createElement(
           results[i],
           "container__section__title",
           "container__section__image",
           "container__section__text",
           "container__section__titles__mrts--mrt",
           "container__section__titles__mrts--category"
-        )
-      }
-    })
-
-
+      )
+  }
+})
+.catch(error => {
+  console.error('Error:', error);
+});
 
 
 

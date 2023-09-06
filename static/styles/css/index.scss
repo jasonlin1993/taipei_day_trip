@@ -2,7 +2,7 @@
 @import "mixin";
 
 * {
-  // border: 1px solid black;
+  border: 1px solid black;
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
@@ -161,11 +161,14 @@ header {
   justify-content: center;
   align-items: center;
   margin: 20px 0px 0px 0px;
+  width: 100%;
 
   .container__section {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
+    max-width: 100%;
     width: 1200px;
   }
 

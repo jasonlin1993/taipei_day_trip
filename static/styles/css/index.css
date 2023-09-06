@@ -1,5 +1,6 @@
 @charset "UTF-8";
 * {
+  border: 1px solid black;
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
@@ -162,11 +163,14 @@ header .header__item .header__item__text .header__item__text--booking {
   justify-content: center;
   align-items: center;
   margin: 20px 0px 0px 0px;
+  width: 100%;
 }
 .container .container__section {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
+  max-width: 100%;
   width: 1200px;
 }
 .container .container__section__title {

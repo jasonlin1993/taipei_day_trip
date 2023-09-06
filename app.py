@@ -1,10 +1,8 @@
 import os
-import math
 from flask import *
 from dotenv import load_dotenv
 from mysql.connector import pooling
-from flask import Response, request
-from flask_cors import CORS
+
 
 app = Flask(
     __name__,
@@ -12,8 +10,12 @@ app = Flask(
     static_url_path='/'
 )
 
-# 允許所有域名訪問
-CORS(app)
+def add_cors_headers(response):
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type,Authorization'
+    return response
+
+app.after_request(add_cors_headers)
 
 app.json.ensure_ascii = False
 app.config["TEMPLATES_AUTO_RELOAD"]=True
