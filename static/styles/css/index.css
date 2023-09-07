@@ -1,8 +1,19 @@
 @charset "UTF-8";
 * {
-  padding: 0px;
-  margin: 0px;
+  padding: 0;
+  margin: 0;
   box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
 }
 
 header {
@@ -173,7 +184,7 @@ header .header__item .header__item__text .header__item__text--booking {
   max-width: 100%;
   width: 1200px;
 }
-.container .container__section__title {
+.container .container__section .container__section__title {
   position: relative;
   display: flex;
   margin: 15px;
@@ -183,13 +194,13 @@ header .header__item .header__item__text .header__item__text--booking {
   border: 1px #e8e8e8 solid;
   border-radius: 5px;
 }
-.container .container__section__title .container__section__title__image {
+.container .container__section .container__section__title .container__section__title__image {
   height: 197px;
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
-.container .container__section__title .container__section__title__text {
+.container .container__section .container__section__title .container__section__title__text {
   position: absolute;
   display: flex;
   align-items: center;
@@ -204,7 +215,7 @@ header .header__item .header__item__text .header__item__text--booking {
   padding: 10px;
   bottom: 34px;
 }
-.container .container__section__title .container__section__titles__mrts {
+.container .container__section .container__section__title .container__section__titles__mrts {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -216,7 +227,10 @@ header .header__item .header__item__text .header__item__text--booking {
   padding: 10px 10px 10px 10px;
 }
 
-.footer__text {
+footer {
+  margin-top: auto;
+}
+footer .footer__text {
   display: flex;
   justify-content: center;
   align-items: center;

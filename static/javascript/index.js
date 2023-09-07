@@ -70,8 +70,6 @@ async function initializeData() {
   try {
     const response = await fetch(url);
     const data = await response.json();
-
-    // 如果資料不存在或為空，則顯示 "抱歉，查無資料" 的消息
     if (!data.data || data.data.length === 0) {
       const noDataDiv = document.createElement('div');
       noDataDiv.textContent = "抱歉，查無資料";
@@ -84,8 +82,6 @@ async function initializeData() {
 
     data.data.forEach((item, index) => {
       createElement(item);
-      
-      // 如果是最後一個元素，則附加觀察者
       if (index === data.data.length - 1) {
         observer.observe(document.querySelector('.load-more-trigger'));
       }

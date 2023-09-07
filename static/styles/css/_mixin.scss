@@ -1,6 +1,13 @@
+// RWD 平板
+@mixin pad {
+  @media (max-width: 1200px) {
+    @content;
+  }
+}
+
 // RWD 手機
 @mixin mobile {
-  @media (max-width: 360px) {
+  @media (max-width: 600px) {
     @content;
   }
 }
