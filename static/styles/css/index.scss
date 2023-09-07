@@ -207,6 +207,7 @@ header {
         width: 100%;
         padding: 10px;
         bottom: 34px;
+        line-height: 1.5;
       }
       .container__section__titles__mrts {
         display: flex;
@@ -215,6 +216,38 @@ header {
         @include Medium_Body;
         color: $Gray50;
         padding: 10px 10px 10px 10px;
+      }
+    }
+
+    @include pad {
+      .container__section {
+        display: flex;
+        flex-wrap: wrap;
+        width: 90%;
+      }
+
+      .container__section__title {
+        width: calc(50% - 30px);
+      }
+    }
+
+    @include mobile {
+      .container__section {
+        display: flex;
+        flex-wrap: wrap;
+        width: 90%;
+      }
+
+      .container__section__title {
+        width: 96%;
+        height: 50%;
+
+        .container__section__title__text {
+          display: flex;
+          align-items: center;
+          text-align: center;
+          padding: 10px 10px;
+        }
       }
     }
   }

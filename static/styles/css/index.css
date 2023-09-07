@@ -214,6 +214,7 @@ header .header__item .header__item__text .header__item__text--booking {
   width: 100%;
   padding: 10px;
   bottom: 34px;
+  line-height: 1.5;
 }
 .container .container__section .container__section__title .container__section__titles__mrts {
   display: flex;
@@ -225,6 +226,33 @@ header .header__item .header__item__text .header__item__text--booking {
   line-height: 13.3px;
   color: #757575;
   padding: 10px 10px 10px 10px;
+}
+@media (max-width: 1200px) {
+  .container .container__section .container__section {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+  }
+  .container .container__section .container__section__title {
+    width: calc(50% - 30px);
+  }
+}
+@media (max-width: 600px) {
+  .container .container__section .container__section {
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+  }
+  .container .container__section .container__section__title {
+    width: 96%;
+    height: 50%;
+  }
+  .container .container__section .container__section__title .container__section__title__text {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 10px 10px;
+  }
 }
 
 footer {
