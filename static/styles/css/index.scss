@@ -1,0 +1,268 @@
+@import "variable";
+@import "mixin";
+
+* {
+  // border: 1px solid black;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+// 第一區
+header {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+
+  .header__item {
+    display: flex;
+    width: 1200px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0px 10px 10px;
+
+    .header__item__logo {
+      color: $Cyan70;
+      @include H2;
+    }
+
+    .header__item__text {
+      display: flex;
+      color: $Gray70;
+      padding: 0px 10px 0px 5px;
+      @include Medium_Body;
+      cursor: pointer;
+      .header__item__text--booking {
+        padding: 0px 20px 0px 0px;
+      }
+    }
+  }
+}
+
+// 第二區
+.header__banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 320px;
+  background-image: url("../../picture/welcome.png");
+  background-repeat: space;
+  background-size: cover;
+  .header__banner__slogan {
+    display: flex;
+    justify-content: start;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 1200px;
+    height: 169px;
+    padding: 10px;
+    .header__banner__text--H1 {
+      width: 100%;
+      @include H1;
+      color: $Gray10;
+      padding: 0px 0px 30px 0px;
+    }
+    .header__banner__text--Body {
+      width: 100%;
+      @include Bold_Body;
+      color: $Gray10;
+      padding: 0px 0px 25px 0px;
+    }
+  }
+  .header__banner__searchBox {
+    display: flex;
+    flex-direction: row;
+    height: 46px;
+    border-radius: 5px 0px 0px 5px;
+    overflow: hidden;
+    box-shadow: 0px 0px 20px 0px #abc;
+
+    input[type="search"] {
+      max-width: 100%;
+      width: 400px;
+      padding: 0px 15px;
+      @include Bold_Body;
+      @media (max-width: 460px) {
+        width: 230px; // 當螢幕視窗小於或等於400px時，將寬度設為100%
+      }
+    }
+  }
+  .header__banner__searchBox__searchLogo {
+    width: 60px;
+    background-color: $Cyan70;
+    border-radius: 0px 5px 5px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+}
+
+// 第三區 捷運搜尋列表
+.listbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 13px 0px 0px 0px;
+}
+.section__listBar {
+  display: flex;
+  align-items: center;
+  white-space: nowrap; /* 防止文字換行 */
+  overflow: hidden; /* 隱藏超出的內容 */
+  justify-content: space-between;
+  flex-direction: row;
+  width: 1200px;
+  height: 50px;
+  padding: 40px 0px 33px 0px;
+
+  .section__listBar__btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 9px 9px 9px 15px;
+    cursor: pointer;
+
+    .section__listBar__btn--hovered {
+      display: none;
+    }
+
+    &:hover {
+      .section__listBar__btn--default {
+        display: none;
+      }
+
+      .section__listBar__btn--hovered {
+        display: block;
+      }
+    }
+  }
+}
+.section__listBar__container {
+  scroll-behavior: smooth; // 新增這行來添加平滑滾動效果
+  display: flex;
+  overflow: hidden; /* 隱藏超出的內容 */
+  color: #666;
+  padding: 13px 10px 13px 10px;
+  cursor: pointer;
+  :hover {
+    color: $Black;
+  }
+  .section__listBar__container__text {
+    display: flex;
+    padding: 5px 15px 5px 15px;
+  }
+}
+
+// 第四區 景點列表
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0px 0px 0px;
+  width: 100%;
+
+  .container__section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+    width: 1200px;
+    .container__section__title {
+      position: relative;
+      display: flex;
+      margin: 15px;
+      flex-direction: column;
+      width: calc(25% - 30px);
+      height: auto;
+      border: 1px #e8e8e8 solid;
+      border-radius: 5px;
+
+      .container__section__title__image {
+        height: 197px;
+        width: 100%;
+        object-fit: cover;
+      }
+      .container__section__title__text {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        background-color: $BlackTransparent;
+        @include Bold_Body;
+        color: $white;
+        width: 100%;
+        padding: 10px;
+        bottom: 34px;
+        line-height: 1.5;
+      }
+      .container__section__titles__mrts {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        @include Medium_Body;
+        color: $Gray50;
+        padding: 10px 10px 10px 10px;
+      }
+    }
+
+    @include pad {
+      .container__section {
+        display: flex;
+        flex-wrap: wrap;
+        width: 90%;
+      }
+
+      .container__section__title {
+        width: calc(50% - 30px);
+      }
+    }
+
+    @include mobile {
+      .container__section {
+        display: flex;
+        flex-wrap: wrap;
+        width: 90%;
+      }
+
+      .container__section__title {
+        width: 96%;
+        height: 50%;
+
+        .container__section__title__text {
+          display: flex;
+          align-items: center;
+          text-align: center;
+          padding: 10px 10px;
+        }
+      }
+    }
+  }
+}
+
+// footer
+footer {
+  margin-top: auto;
+  .footer__text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include Bold_Body;
+    background-color: #757575;
+    color: $white;
+    height: 104px;
+  }
+}

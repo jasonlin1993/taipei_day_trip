@@ -1,11 +1,16 @@
 import os
-import math
 from flask import *
 from dotenv import load_dotenv
 from mysql.connector import pooling
-from flask import Response, request
 
-app=Flask(__name__)
+
+app = Flask(
+    __name__,
+    static_folder='static',
+    static_url_path='/'
+)
+
+
 app.json.ensure_ascii = False
 app.config["TEMPLATES_AUTO_RELOAD"]=True
 
@@ -41,7 +46,6 @@ def thankyou():
 	return render_template("thankyou.html")
 
 
-
 # def json_response(data, status=200):
 #     json_data = json.dumps(data, ensure_ascii=False, indent=2)
 #     return Response(json_data, status=status, content_type='application/json; charset=utf-8')
@@ -53,10 +57,10 @@ def api_attractions():
         keyword = request.args.get('keyword')
         
         if page is None:
-            return jsonify({"error": True, "message": "Internal Server Error 500"}, 500)
+            return jsonify({"error": True, "message": "Internal Server Error 500"}), 500
 
         offset = page * 12
-        
+
         with pool.get_connection() as database:
             with database.cursor(dictionary=True) as cursor:
                 
@@ -70,20 +74,30 @@ def api_attractions():
                 nextPage = page + 1 if page < total_pages else None
                 
                 if keyword:
-                    cursor.execute("SELECT * FROM attraction WHERE mrt = %s OR name LIKE %s LIMIT %s, %s", (keyword, f"%{keyword}%", offset, 12))
+                    cursor.execute("""
+                        SELECT attraction.*, GROUP_CONCAT(images.images_link) AS images_links 
+                        FROM attraction 
+                        LEFT JOIN images ON attraction.id = images.attraction_id 
+                        WHERE mrt = %s OR name LIKE %s 
+                        GROUP BY attraction.id 
+                        LIMIT %s, %s
+                    """, (keyword, f"%{keyword}%", offset, 12))
                 else:
-                    cursor.execute("SELECT * FROM attraction LIMIT %s, %s", (offset, 12))
+                    cursor.execute("""
+                        SELECT attraction.*, GROUP_CONCAT(images.images_link) AS images_links 
+                        FROM attraction 
+                        LEFT JOIN images ON attraction.id = images.attraction_id 
+                        GROUP BY attraction.id 
+                        LIMIT %s, %s
+                    """, (offset, 12))
+                
                 attractions = cursor.fetchall()
 
         if attractions:
             data_list = []
             for attraction in attractions:
-                with pool.get_connection() as database:
-                    with database.cursor(dictionary=True) as cursor:
-                        cursor.execute("SELECT images_link FROM images WHERE attraction_id = %s", (attraction["id"],))
-                        images = cursor.fetchall()
-                        images_links = [img["images_link"] for img in images]
-                
+                images_links = attraction["images_links"].split(",") if attraction["images_links"] else []
+
                 data_list.append({
                     "id": attraction["id"],
                     "name": attraction["name"],
@@ -104,10 +118,10 @@ def api_attractions():
             return jsonify(data)
 
         else:
-            return jsonify({"error": True, "message": "無法取得資料"}, 500)
+            return jsonify({"error": True, "message": "無法取得資料"}), 500
 
     except Exception as e:
-        return jsonify({"error": True, "message": "伺服器內部錯誤"}, 500)
+        return jsonify({"error": True, "message": "伺服器內部錯誤"}), 500
 
 
         
@@ -116,13 +130,25 @@ def getAttraction(id:int):
     try:
         with pool.get_connection() as database:
             with database.cursor(dictionary=True) as cursor:
-                cursor.execute("SELECT * FROM attraction WHERE id = %s", (id,))
+
+                query = """
+                        SELECT 
+                            attraction.*, 
+                            GROUP_CONCAT(images.images_link) AS images_links
+                        FROM 
+                            attraction 
+                        LEFT JOIN 
+                            images ON attraction.id = images.attraction_id 
+                        WHERE 
+                            attraction.id = %s
+                        """
+
+                cursor.execute(query, (id,))
                 attraction = cursor.fetchone()
 
-                if attraction:
-                    cursor.execute("SELECT images_link FROM images WHERE attraction_id = %s", (attraction["id"],))
-                    images = cursor.fetchall()
-                    images_links = [img["images_link"] for img in images]
+                if attraction and attraction["id"]:
+                    images_links = attraction["images_links"].split(",") if attraction["images_links"] else []
+                    
                     data = {
                         "address": attraction["address"],
                         "category": attraction["category"],
@@ -135,6 +161,7 @@ def getAttraction(id:int):
                         "name": attraction["name"],
                         "transport": attraction["transport"]
                     }
+                    
                     response_data = {
                         "data": data
                     }
@@ -145,6 +172,7 @@ def getAttraction(id:int):
 
     except Exception as e:
         return jsonify({"error": True, "message": "伺服器內部錯誤"}), 500
+
 
 @app.route("/api/mrts", methods=["GET"])
 def getMrt():
@@ -157,7 +185,7 @@ def getMrt():
                 return jsonify({"data": mrts})
     except Exception as e:
         print(e)
-        return jsonify({"error": True, "message": "伺服器內部錯誤"}, status=500)
+        return jsonify({"error": True, "message": "伺服器內部錯誤"}), 500
 
 
-app.run(host="0.0.0.0", port=3000)
+app.run(host="0.0.0.0", port=3000, debug=1)
