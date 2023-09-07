@@ -23,10 +23,10 @@
         <div class="header__banner__slogan">
           <div class="header__banner__text--H1">輕鬆享受台北一日悠閒</div>
           <div class="header__banner__text--Body">探索每個角落，體驗城市的深度旅遊行程</div>
-          <form id="searchBox" method="GET">
+          <form id="searchBox" method="GET" onsubmit="event.preventDefault();">
             <div class="header__banner__searchBox">
-              <input type="search" placeholder="輸入景點名稱查詢" />
-              <div class="header__banner__searchBox__searchLogo">
+              <input type="search" placeholder="輸入景點名稱查詢" id="search"/>
+              <div class="header__banner__searchBox__searchLogo" type="button" onclick="search()"/>
                 <img src="{{ url_for('static', filename='styles/icon/icon_search.svg') }}" alt="icon_search" />
               </div>
             </div>

@@ -2,6 +2,7 @@ let url = '/api/attractions?page=0';
 let results = [];
 let nextPage = null;
 let isLoading = false;
+let currentKeyword = ''; // 新增一個變量來存儲當前的搜尋關鍵字
 
 function createElement(data) {
   let newDiv = document.createElement("div");
@@ -40,7 +41,7 @@ async function loadNextPage() {
   isLoading = true;
 
   try {
-    const response = await fetch(`/api/attractions?page=${nextPage}`);
+    const response = await fetch(`/api/attractions?page=${nextPage}&keyword=${currentKeyword}`); // 修改這裡來包含當前的搜尋關鍵字
     const data = await response.json();
     
     results = results.concat(data.data);
@@ -70,6 +71,14 @@ async function initializeData() {
     const response = await fetch(url);
     const data = await response.json();
 
+    // 如果資料不存在或為空，則顯示 "抱歉，查無資料" 的消息
+    if (!data.data || data.data.length === 0) {
+      const noDataDiv = document.createElement('div');
+      noDataDiv.textContent = "抱歉，查無資料";
+      document.querySelector('.container__section').appendChild(noDataDiv);
+      return;
+    }
+
     results = data.data;
     nextPage = data.nextPage;
 
@@ -88,8 +97,6 @@ async function initializeData() {
 
 initializeData();
 
-
-
 async function getMrtData() {
   try {
     const response = await fetch('/api/mrts');
@@ -99,6 +106,13 @@ async function getMrtData() {
     console.error('Error fetching MRT data:', error);
   }
 }
+
+function searchMRT(stationName) {
+  const searchInput = document.getElementById('search');
+  searchInput.value = stationName; // 設置搜索框的值為站名
+  search(); // 調用現有的搜索功能進行搜索
+}
+
 
 async function populateMrtList() {
   const metroStationsContainer = document.querySelector('.section__listBar__container');
@@ -115,6 +129,9 @@ async function populateMrtList() {
           const stationDiv = document.createElement('div');
           stationDiv.className = 'section__listBar__container__text';
           stationDiv.textContent = station;
+          stationDiv.onclick = function() {
+            searchMRT(station);
+          }; // 為每個站添加一個點擊事件來調用新的 searchMRT 函數
           metroStationsContainer.appendChild(stationDiv);
         }
       });
@@ -124,22 +141,35 @@ async function populateMrtList() {
   }
 }
 
+
 document.addEventListener('DOMContentLoaded', populateMrtList);
 
+async function search() {
+  const searchValue = document.getElementById('search').value;
+  if (searchValue) {
+    url = `/api/attractions?page=0&keyword=${encodeURIComponent(searchValue)}`;
+    currentKeyword = encodeURIComponent(searchValue);  // 修改這裡來儲存當前的搜尋關鍵字
+  } else {
+    url = '/api/attractions?page=0';
+    currentKeyword = '';  // 如果沒有搜尋條件，則清空currentKeyword
+  }
+  
+  // 清空之前的結果
+  document.querySelector('.container__section').innerHTML = '';
+  results = [];
+  nextPage = null;
+  isLoading = false;
 
-function getStationWidth() {
-  const stationElement = document.querySelector('.section__listBar__container__text');
-  return stationElement ? stationElement.offsetWidth : 0;
+  // 重新加載數據
+  initializeData();
 }
 
 function scrollToLeft() {
   const container = document.getElementById('metroStations');
-  const stationWidth = getStationWidth();
-  container.scrollLeft -= stationWidth * 12;
+  container.scrollLeft -= 300; 
 }
-  
+
 function scrollToRight() {
   const container = document.getElementById('metroStations');
-  const stationWidth = getStationWidth();
-  container.scrollLeft += stationWidth * 12;
+  container.scrollLeft += 300;
 }
