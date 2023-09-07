@@ -34,14 +34,15 @@ function createElement(data) {
   document.querySelector('.container__section').appendChild(newDiv);
 }
 
-function loadNextPage() {
+async function loadNextPage() {
   if (isLoading || nextPage === null) return;
 
   isLoading = true;
 
-  fetch(`/api/attractions?page=${nextPage}`)
-  .then(response => response.json())
-  .then(data => {
+  try {
+    const response = await fetch(`/api/attractions?page=${nextPage}`);
+    const data = await response.json();
+    
     results = results.concat(data.data);
     nextPage = data.nextPage;
 
@@ -50,11 +51,10 @@ function loadNextPage() {
     });
 
     isLoading = false;
-  })
-  .catch(error => {
+  } catch (error) {
     console.error('Error:', error);
     isLoading = false;
-  });
+  }
 }
 
 let observer = new IntersectionObserver((entries, observer) => {
@@ -65,36 +65,81 @@ let observer = new IntersectionObserver((entries, observer) => {
   });
 });
 
-fetch(url)
-.then(response => response.json())
-.then(data => {
-  results = data.data;
-  nextPage = data.nextPage;
+async function initializeData() {
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
 
-  data.data.forEach((item, index) => {
-    createElement(item);
-    
-    // 如果是最後一個元素，則附加觀察者
-    if (index === data.data.length - 1) {
-      observer.observe(document.querySelector('.load-more-trigger'));
+    results = data.data;
+    nextPage = data.nextPage;
+
+    data.data.forEach((item, index) => {
+      createElement(item);
+      
+      // 如果是最後一個元素，則附加觀察者
+      if (index === data.data.length - 1) {
+        observer.observe(document.querySelector('.load-more-trigger'));
+      }
+    });
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
+initializeData();
+
+
+
+async function getMrtData() {
+  try {
+    const response = await fetch('/api/mrts');
+    const data = await response.json();
+    return data.data;
+  } catch (error) {
+    console.error('Error fetching MRT data:', error);
+  }
+}
+
+async function populateMrtList() {
+  const metroStationsContainer = document.querySelector('.section__listBar__container');
+  
+  // 清除現有的資料
+  metroStationsContainer.innerHTML = '';
+
+  try {
+    const mrtData = await getMrtData();
+
+    if (mrtData) {
+      mrtData.forEach(station => {
+        if (station) {
+          const stationDiv = document.createElement('div');
+          stationDiv.className = 'section__listBar__container__text';
+          stationDiv.textContent = station;
+          metroStationsContainer.appendChild(stationDiv);
+        }
+      });
     }
-  });
-})
-.catch(error => {
-  console.error('Error:', error);
-});
+  } catch (error) {
+    console.error('Error populating MRT list:', error);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', populateMrtList);
 
 
-
+function getStationWidth() {
+  const stationElement = document.querySelector('.section__listBar__container__text');
+  return stationElement ? stationElement.offsetWidth : 0;
+}
 
 function scrollToLeft() {
-    const container = document.getElementById('metroStations');
-    container.scrollLeft -= 300; 
-  }
+  const container = document.getElementById('metroStations');
+  const stationWidth = getStationWidth();
+  container.scrollLeft -= stationWidth * 12;
+}
   
-  function scrollToRight() {
-    const container = document.getElementById('metroStations');
-    container.scrollLeft += 300; // 可根據需要調整這個數值
-  }
-  
-  
+function scrollToRight() {
+  const container = document.getElementById('metroStations');
+  const stationWidth = getStationWidth();
+  container.scrollLeft += stationWidth * 12;
+}

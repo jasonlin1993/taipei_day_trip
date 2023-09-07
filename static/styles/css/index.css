@@ -28,7 +28,7 @@ header .header__item .header__item__logo {
 header .header__item .header__item__text {
   display: flex;
   color: #666666;
-  padding: 0px 0px 0px 5px;
+  padding: 0px 10px 0px 5px;
   font-family: "Noto Sans TC", sans-serif;
   font-weight: medium;
   font-size: 16px;
@@ -84,6 +84,7 @@ header .header__item .header__item__text .header__item__text--booking {
   box-shadow: 0px 0px 20px 0px #abc;
 }
 .header__banner .header__banner__searchBox input[type=search] {
+  max-width: 100%;
   width: 400px;
   padding: 0px 15px;
   font-family: "Noto Sans TC", sans-serif;
@@ -93,7 +94,7 @@ header .header__item .header__item__text .header__item__text--booking {
 }
 @media (max-width: 460px) {
   .header__banner .header__banner__searchBox input[type=search] {
-    width: 285px;
+    width: 230px;
   }
 }
 .header__banner .header__banner__searchBox__searchLogo {

@@ -30,7 +30,7 @@ header {
     .header__item__text {
       display: flex;
       color: $Gray70;
-      padding: 0px 0px 0px 5px;
+      padding: 0px 10px 0px 5px;
       @include Medium_Body;
       cursor: pointer;
       .header__item__text--booking {
@@ -79,11 +79,12 @@ header {
     box-shadow: 0px 0px 20px 0px #abc;
 
     input[type="search"] {
+      max-width: 100%;
       width: 400px;
       padding: 0px 15px;
       @include Bold_Body;
       @media (max-width: 460px) {
-        width: 285px; // 當螢幕視窗小於或等於400px時，將寬度設為100%
+        width: 230px; // 當螢幕視窗小於或等於400px時，將寬度設為100%
       }
     }
   }
