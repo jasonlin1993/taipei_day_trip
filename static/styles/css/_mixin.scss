@@ -5,6 +5,13 @@
   }
 }
 
+// RWD 800px pad
+@mixin pad_850px {
+  @media (max-width: 850px) {
+    @content;
+  }
+}
+
 // RWD 手機
 @mixin mobile {
   @media (max-width: 600px) {

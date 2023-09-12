@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href={{ url_for("static", filename="styles/css/attraction.css" ) }} />
+    <title>台北一日遊</title>
+  </head>
+  <body>
+    <header>
+      <div class="header__item">
+        <div class="header__item__logo">
+          <div class="header__item__logo">台北一日遊</div>
+        </div>
+        <div class="header__item__text">
+          <div class="header__item__text--booking">預定行程</div>
+          <div class="header__item__text--singin">登入/註冊</div>
+        </div>
+      </div>
+    </header>
+    <section>
+      <div class="section__attraction">
+        <div class="section__attraction__img">
+          <img src="{{ url_for('static', filename='picture/travel.jpg') }}" class="section__attraction__img" />
+        </div>
+        <div class="section__attraction__profile">
+          <p class="section__attraction__profile__name">平安鐘</p>
+          <div class="section__attraction__profile__infomation">
+            <p class="section__attraction__profile__infomation__category">公共藝術</p>
+            <p class="section__attraction__profile__infomation__text">at</p>
+            <p class="section__attraction__profile__infomation__mrt">忠孝復興</p>
+          </div>
+          <div class="section__attraction__profile__bookingform">
+            <p class="section__attraction__profile__bookingform__text--bold">訂購導覽行程</p>
+            <p class="section__attraction__profile__bookingform__text--medium">
+              以此景點為中心的一日行程，帶您探索城市角落故事
+            </p>
+            <form>
+              <p class="section__attraction__profile__bookingform__text--bold">
+                選擇日期 :
+                <input type="date" name="bday" data-date-format="YYYY/MM/DD" />
+              </p>
+            </form>
+            <div class="section__attraction__profile__bookingform__text--time">
+              <p class="section__attraction__profile__bookingform__text--bold">選擇時間 :</p>
+              <p class="section__attraction__profile__bookingform__text--medium">
+                <img
+                  src="{{ url_for('static', filename='styles/icon/radio_btn_click.svg') }}"
+                  class="section__attraction__profile__bookingform__btn btn-click"
+                />
+                上半天
+              </p>
+              <p class="section__attraction__profile__bookingform__text--medium">
+                <img
+                  src="{{ url_for('static', filename='styles/icon/radio_btn.svg') }}"
+                  class="section__attraction__profile__bookingform__btn"
+                />
+                下半天
+              </p>
+            </div>
+            <div class="section__attraction__profile__bookingform__text--count">
+              <p class="section__attraction__profile__bookingform__text--bold">
+                導覽費用 :
+                <p class="section__attraction__profile__bookingform__text--medium">
+                  新台幣 2000 元
+                </p>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- <footer>
+      <div class="footer__text">COPYRIGHT © 2021 台北一日遊</div>
+    </footer> -->
+  </body>
+</html>

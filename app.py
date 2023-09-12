@@ -1,6 +1,4 @@
-import os
 from flask import *
-from dotenv import load_dotenv
 from api.attractions_api import attractions_api
 from api.attraction_id_api import attraction_id_api
 from api.mrt_api import mrt_api
