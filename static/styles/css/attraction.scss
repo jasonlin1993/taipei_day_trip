@@ -8,16 +8,16 @@
   box-sizing: border-box;
 }
 
-html,
-body {
-  height: 100%;
-  margin: 0;
-}
+// html,
+// body {
+//   height: 100%;
+//   margin: 0;
+// }
 
-body {
-  display: flex;
-  flex-direction: column;
-}
+// body {
+//   display: flex;
+//   flex-direction: column;
+// }
 
 .cutLine {
   border: 1px solid #e8e8e8;
@@ -25,7 +25,8 @@ body {
 
 .cutLine2 {
   border: 1px solid #e8e8e8;
-  width: 1200px;
+  max-width: 1200px;
+  width: 100%;
   align-items: center;
   justify-content: center;
   display: block;
@@ -63,6 +64,10 @@ header {
       .header__item__text--booking {
         padding: 0px 20px 0px 0px;
       }
+    }
+
+    @include pad_850px {
+      width: 600px;
     }
   }
 }
@@ -202,9 +207,9 @@ section {
   display: flex;
   flex-direction: column;
   max-width: 1200px;
-  max-height: 362px;
+  // max-height: 362px;
   width: 100%;
-  min-height: 362px;
+  height: 100%;
   padding: 10px;
   .section__attraction__profile__bookingform__text__description {
     @include Regular_Content;
@@ -212,8 +217,8 @@ section {
   }
   .section__attraction__profile__bookingform__text__address {
     margin: 20px 0px;
+
     .section__attraction__profile__bookingform__text__address--BoldBody {
-      display: flex;
       @include Bold_Body;
       color: $Gray70;
       align-items: center;
@@ -239,18 +244,19 @@ section {
     align-items: center;
     padding: 5px 0px;
   }
+
+  @include pad_850px {
+    width: 600px;
+  }
 }
 
 // footer
-footer {
-  margin-top: auto;
-  .footer__text {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    @include Bold_Body;
-    background-color: #757575;
-    color: $white;
-    height: 104px;
-  }
+.footer__text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include Bold_Body;
+  background-color: #757575;
+  color: $white;
+  height: 104px;
 }

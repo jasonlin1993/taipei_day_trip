@@ -4,24 +4,14 @@
   box-sizing: border-box;
 }
 
-html,
-body {
-  height: 100%;
-  margin: 0;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-}
-
 .cutLine {
   border: 1px solid #e8e8e8;
 }
 
 .cutLine2 {
   border: 1px solid #e8e8e8;
-  width: 1200px;
+  max-width: 1200px;
+  width: 100%;
   align-items: center;
   justify-content: center;
   display: block;
@@ -65,6 +55,11 @@ header .header__item .header__item__text {
 }
 header .header__item .header__item__text .header__item__text--booking {
   padding: 0px 20px 0px 0px;
+}
+@media (max-width: 850px) {
+  header .header__item {
+    width: 600px;
+  }
 }
 
 section {
@@ -228,9 +223,8 @@ section .section__attraction .section__attraction__profile .section__attraction_
   display: flex;
   flex-direction: column;
   max-width: 1200px;
-  max-height: 362px;
   width: 100%;
-  min-height: 362px;
+  height: 100%;
   padding: 10px;
 }
 .section__attraction__information .section__attraction__profile__bookingform__text__description {
@@ -243,7 +237,6 @@ section .section__attraction .section__attraction__profile .section__attraction_
   margin: 20px 0px;
 }
 .section__attraction__information .section__attraction__profile__bookingform__text__address .section__attraction__profile__bookingform__text__address--BoldBody {
-  display: flex;
   font-family: "Noto Sans TC", sans-serif;
   font-weight: Bold;
   font-size: 16px;
@@ -278,11 +271,13 @@ section .section__attraction .section__attraction__profile .section__attraction_
   align-items: center;
   padding: 5px 0px;
 }
-
-footer {
-  margin-top: auto;
+@media (max-width: 850px) {
+  .section__attraction__information {
+    width: 600px;
+  }
 }
-footer .footer__text {
+
+.footer__text {
   display: flex;
   justify-content: center;
   align-items: center;
