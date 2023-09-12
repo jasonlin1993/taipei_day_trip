@@ -19,6 +19,22 @@ body {
   flex-direction: column;
 }
 
+.cutLine {
+  border: 1px solid #e8e8e8;
+}
+
+.cutLine2 {
+  border: 1px solid #e8e8e8;
+  width: 1200px;
+  align-items: center;
+  justify-content: center;
+  display: block;
+  margin: 0 auto;
+  @include pad_850px {
+    margin: 40px 0px;
+  }
+}
+
 // 第一區
 header {
   display: flex;
@@ -57,6 +73,9 @@ section {
   justify-content: center;
   align-items: center;
   margin: 40px 0px;
+  @include pad_850px {
+    margin: 0;
+  }
   .section__attraction {
     display: flex;
     align-items: center;
@@ -149,10 +168,23 @@ section {
           display: flex;
           align-items: center;
         }
-
         .section__attraction__profile__bookingform__btn {
           align-items: center;
           padding: 0px 4px 0px 0px;
+          cursor: pointer;
+        }
+        .section__attraction__profile__bookingform__text--bookingBTN {
+          display: flex;
+          width: 156px;
+          height: 36px;
+          justify-content: center;
+          align-items: center;
+          margin: 25px 0px 0px 0px;
+          @include Regular_Btn;
+          color: $white;
+          background-color: $Cyan70;
+          border-radius: 5px;
+          cursor: pointer;
         }
       }
       @include pad_850px {
@@ -162,6 +194,50 @@ section {
     @include pad_850px {
       flex-direction: column;
     }
+  }
+}
+
+// 第三區 景點詳細資訊
+.section__attraction__information {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  max-height: 362px;
+  width: 100%;
+  min-height: 362px;
+  padding: 10px;
+  .section__attraction__profile__bookingform__text__description {
+    @include Regular_Content;
+    color: $Gray70;
+  }
+  .section__attraction__profile__bookingform__text__address {
+    margin: 20px 0px;
+    .section__attraction__profile__bookingform__text__address--BoldBody {
+      display: flex;
+      @include Bold_Body;
+      color: $Gray70;
+      align-items: center;
+      padding: 5px 0px;
+    }
+    .section__attraction__profile__bookingform__text__address--RegularContent {
+      display: flex;
+      @include Regular_Content;
+      color: $Gray70;
+      align-items: center;
+      padding: 5px 0px;
+    }
+  }
+  .section__attraction__profile__bookingform__text__transport--BoldBody {
+    @include Bold_Body;
+    color: $Gray70;
+    padding: 5px 0px;
+  }
+  .section__attraction__profile__bookingform__text__transport--RegularContent {
+    display: flex;
+    @include Regular_Content;
+    color: $Gray70;
+    align-items: center;
+    padding: 5px 0px;
   }
 }
 
