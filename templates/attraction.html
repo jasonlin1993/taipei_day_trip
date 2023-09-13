@@ -25,8 +25,8 @@
     <hr class="cutLine" />
     <section>
       <div class="section__attraction">
-        <div class="section__attraction__img">
-          <div class="section__attraction__btn__left">
+        <div class="section__attraction__img" data-carousel>
+          <div class="section__attraction__btn__left" data-carousel-button="prev">
             <img
               src="{{ url_for('static', filename='styles/icon/States=Default-1.svg') }}"
               alt="icon_Default_left"
@@ -38,7 +38,10 @@
               class="section__listBar__btn__left--hovered"
             />
           </div>
-          <img src="{{ url_for('static', filename='picture/travel.jpg') }}" class="section__attraction__img" />
+          <img src="{{ url_for('static', filename='picture/travel.jpg') }}" class="section__attraction__img" data-slide />
+          <img src="{{ url_for('static', filename='picture/11000848.jpg') }}" class="carousel-image active" data-slide />
+          <img src="{{ url_for('static', filename='picture/11002891.jpg') }}" class="carousel-image" data-slide />
+          <img src="{{ url_for('static', filename='picture/77a58890-7711-4ca2-aebe-4aa379726575.jpg') }}" class="carousel-image" data-slide />
           <div class="section__attraction__btn__circle">
             <img
             src="{{ url_for('static', filename='styles/icon/circle current.svg') }}"
@@ -56,7 +59,7 @@
             class="section__attraction__btn__circle--check"
             />
           </div>
-          <div class="section__attraction__btn__right">
+          <div class="section__attraction__btn__right" data-carousel-button="next">
             <img
               src="{{ url_for('static', filename='styles/icon/States=Default.svg') }}"
               alt="icon_Default_right"

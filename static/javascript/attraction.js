@@ -15,6 +15,28 @@ function checkTime(timePeriod) {
         tourCostElement.innerText = '新台幣 2500 元';
     }
   }
+
+
+  const buttons = document.querySelectorAll("[data-carousel-button]");
+
+  buttons.forEach(button => {
+    button.addEventListener("click", () => {
+      const offset = button.dataset.carouselButton === "next" ? 1 : -1;
+  
+      const carousel = button.closest("[data-carousel]");
+      const slides = carousel.querySelectorAll("[data-slide]");
+      
+      let activeIndex = Array.from(slides).findIndex(slide => slide.classList.contains('active'));
+  
+      let newIndex = activeIndex + offset;
+      if (newIndex < 0) newIndex = slides.length - 1;
+      if (newIndex >= slides.length) newIndex = 0;
+  
+      slides[activeIndex].classList.remove('active');
+      slides[newIndex].classList.add('active');
+    });
+  });
+  
   
 //   function getIdFromUrl() {
 //     const path = window.location.pathname;

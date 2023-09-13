@@ -95,6 +95,19 @@ section .section__attraction .section__attraction__img {
   border-radius: 5px;
   margin: 0px 15px 0px 0px;
 }
+section .section__attraction .section__attraction__img .carousel-image {
+  display: none;
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+section .section__attraction .section__attraction__img .carousel-image.active {
+  display: block;
+}
 @media (max-width: 850px) {
   section .section__attraction .section__attraction__img {
     max-width: 600px;
