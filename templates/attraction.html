@@ -46,19 +46,28 @@
               <p class="section__attraction__profile__bookingform__text--bold">選擇時間 :</p>
               <p class="section__attraction__profile__bookingform__text--medium">
                 <img
+                  id="morningBtn"
                   src="{{ url_for('static', filename='styles/icon/radio_btn_click.svg') }}"
-                  class="section__attraction__profile__bookingform__btn btn-click"
+                  class="section__attraction__profile__bookingform__btn"
+                  onclick="checkTime('morning')"
+                  data-active-src="{{ url_for('static', filename='styles/icon/radio_btn_click.svg') }}"
+                  data-inactive-src="{{ url_for('static', filename='styles/icon/radio_btn.svg') }}"
                 />
                 上半天
               </p>
               <p class="section__attraction__profile__bookingform__text--medium">
                 <img
+                  id="afternoonBtn"
                   src="{{ url_for('static', filename='styles/icon/radio_btn.svg') }}"
                   class="section__attraction__profile__bookingform__btn"
+                  onclick="checkTime('afternoon')"
+                  data-active-src="{{ url_for('static', filename='styles/icon/radio_btn_click.svg') }}"
+                  data-inactive-src="{{ url_for('static', filename='styles/icon/radio_btn.svg') }}"
                 />
                 下半天
               </p>
             </div>
+            
             <div class="section__attraction__profile__bookingform__text--count">
               <p class="section__attraction__profile__bookingform__text--bold">
                 導覽費用 :
@@ -104,4 +113,5 @@
       <div class="footer__text">COPYRIGHT © 2021 台北一日遊</div>
     </footer>
   </body>
+  <script src="{{ url_for('static', filename='javascript/attraction.js') }}"></script>
 </html>
