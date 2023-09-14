@@ -99,6 +99,7 @@ section {
       object-position: center center;
       border-radius: 5px;
       margin: 0px 15px 0px 0px;
+
       .carousel-image {
         display: none;
         object-fit: cover;
@@ -125,7 +126,7 @@ section {
       position: absolute;
       top: 50%;
       z-index: 1;
-      padding: 0px 0px 0px 10px;
+      padding: 0px 0px 0px 15px;
       cursor: pointer;
 
       .section__attraction__btn__left--default {
@@ -151,8 +152,8 @@ section {
       position: absolute;
       top: 50%;
       z-index: 1;
-      right: 0;
-      padding: 0px 10px 0px 0px;
+      right: 0px;
+      padding: 0px 20px 0px 0px;
       cursor: pointer;
 
       .section__attraction__btn__right--default {
@@ -180,6 +181,7 @@ section {
       bottom: 0;
       right: 46%;
       margin: 0px 0px 13px 0px;
+      z-index: 1;
 
       .section__attraction__btn__circle--checked {
         padding: 0px 5px;
@@ -187,7 +189,7 @@ section {
 
       .section__attraction__btn__circle--check {
         padding: 0px 5px;
-        opacity: 0.5;
+        // opacity: 0.5;
       }
     }
 

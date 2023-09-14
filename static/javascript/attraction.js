@@ -19,8 +19,15 @@ function checkTime(timePeriod) {
 
   const buttons = document.querySelectorAll("[data-carousel-button]");
 
+  const circles = document.querySelectorAll(".section__attraction__btn__circle img");
+  
+  // 通過ID獲取URL
+  const circleCurrentUrl = document.getElementById('circle-current-url').value;
+  const circleCurrent1Url = document.getElementById('circle-current-1-url').value;
+  
   buttons.forEach(button => {
     button.addEventListener("click", () => {
+      const circles = document.querySelectorAll(".section__attraction__btn__circle img"); // 將這行移到這裡來獲取最新的圓形元素
       const offset = button.dataset.carouselButton === "next" ? 1 : -1;
   
       const carousel = button.closest("[data-carousel]");
@@ -34,35 +41,97 @@ function checkTime(timePeriod) {
   
       slides[activeIndex].classList.remove('active');
       slides[newIndex].classList.add('active');
+  
+      // 更新圓圈指示器的圖片
+      circles[activeIndex].src = circleCurrent1Url;
+      circles[newIndex].src = circleCurrentUrl;
     });
   });
   
-  
-//   function getIdFromUrl() {
-//     const path = window.location.pathname;
-//     const parts = path.split('/');
-//     return parts[parts.length - 1];
-//   }
-  
-//   async function fetchData() {
-//     try {
-//       const id = getIdFromUrl();
-//       const response = await fetch(`/api/attraction/${id}`);
-//       const data = await response.json();
-//       populateData(data.data);
-//     } catch (error) {
-//       console.error('Error fetching data:', error);
-//     }
-//   }
 
-//   function populateData(data) {
-//     document.querySelector('.section__attraction__profile__name').textContent = data.name;
-//     document.querySelector('.section__attraction__profile__infomation__category').textContent = data.category;
-//     document.querySelector('.section__attraction__profile__infomation__mrt').textContent = data.mrt;
-//     document.querySelector('.section__attraction__img img').src = data.images[0];
-//     document.querySelector('.section__attraction__profile__bookingform__text__description').textContent = data.description;
-//     document.querySelector('.section__attraction__profile__bookingform__text__address--RegularContent').textContent = data.address;
-//     document.querySelector('.section__attraction__profile__bookingform__text__transport--RegularContent').textContent = data.transport;
-//   }
+  
+  
+  function getIdFromUrl() {
+    const path = window.location.pathname;
+    const parts = path.split('/');
+    return parts[parts.length - 1];
+  }
+  
+  async function fetchData() {
+    try {
+      const id = getIdFromUrl();
+      const response = await fetch(`/api/attraction/${id}`);
+      const data = await response.json();
+      populateData(data.data);
+      createImageElements(data.data.images);
+      createCircleElements(data.data.images.length); 
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  }
 
-//   window.onload = fetchData;
+  function createCircleElements(imageCount) {
+    console.log("Creating circle elements for count:", imageCount);
+    
+    const circleCurrentUrl = document.getElementById('circle-current-url').value;
+    const circleCurrent1Url = document.getElementById('circle-current-1-url').value;
+  
+    const circleContainer = document.querySelector('.section__attraction__btn__circle');
+    circleContainer.innerHTML = ''; // 清空當前的圓形元素
+  
+    const imgElemO = document.createElement('img');
+    imgElemO.src = circleCurrentUrl; // "O" 代表的圖片
+    imgElemO.alt = 'icon_btn_circle';
+    imgElemO.classList.add('section__attraction__btn__circle--checked');
+    circleContainer.appendChild(imgElemO);
+    
+    for (let i = 1; i < imageCount; i++) {
+      const imgElemX = document.createElement('img');
+      imgElemX.src = circleCurrent1Url; // "X" 代表的圖片
+      imgElemX.alt = 'icon_btn_circle';
+      imgElemX.classList.add('section__attraction__btn__circle--check');
+      circleContainer.appendChild(imgElemX);
+    }
+  }
+  
+  
+
+  function createImageElements(images) {
+    const imageContainer = document.querySelector('[data-carousel]');
+    // 先移除所有現有的 carousel-image 元素
+    imageContainer.querySelectorAll('.carousel-image, .section__attraction__img').forEach(imgElem => imgElem.remove());
+  
+    // 現在根據 API 中的圖片創建新的圖片元素
+    images.forEach((imageSrc, index) => {
+      const imgElem = document.createElement('img');
+      imgElem.src = imageSrc;
+  
+      // 如果是第一張圖片，給它添加特殊的 class 名稱和 data-slide 屬性
+      if (index === 0) {
+        imgElem.classList.add('section__attraction__img');
+      } else {
+        imgElem.classList.add('carousel-image');
+      }
+      imgElem.setAttribute('data-slide', '');
+      
+      // 如果是第一張圖片，讓它成為當前活動的圖片
+      if (index === 0) {
+        imgElem.classList.add('active');
+      }
+  
+      imageContainer.appendChild(imgElem);
+    });
+  }
+  
+  
+
+  function populateData(data) {
+    document.querySelector('.section__attraction__profile__name').textContent = data.name;
+    document.querySelector('.section__attraction__profile__infomation__category').textContent = data.category;
+    document.querySelector('.section__attraction__profile__infomation__mrt').textContent = data.mrt;
+    document.querySelector('.section__attraction__profile__bookingform__text__description').textContent = data.description;
+    document.querySelector('.section__attraction__profile__bookingform__text__address--RegularContent').textContent = data.address;
+    document.querySelector('.section__attraction__profile__bookingform__text__transport--RegularContent').textContent = data.transport;
+  }
+
+  window.onload = fetchData;
