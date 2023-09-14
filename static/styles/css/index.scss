@@ -36,6 +36,7 @@ header {
     .header__item__logo {
       color: $Cyan70;
       @include H2;
+      text-decoration: none;
     }
 
     .header__item__text {
@@ -190,6 +191,7 @@ header {
       height: auto;
       border: 1px #e8e8e8 solid;
       border-radius: 5px;
+      cursor: pointer;
 
       .container__section__title__image {
         height: 197px;
@@ -252,7 +254,9 @@ header {
     }
   }
 }
-
+.attraction-link {
+  text-decoration: none;
+}
 // footer
 footer {
   margin-top: auto;

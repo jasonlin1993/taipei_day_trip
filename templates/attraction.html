@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href={{ url_for("static", filename="styles/css/attraction.css" ) }} />
+    <title>台北一日遊</title>
+  </head>
+  <body>
+    <header>
+      <div class="header__item">
+        <div class="header__item__logo">
+          <div class="header__item__logo">
+            <a class="header__item__logo" href="/">
+              台北一日遊
+            </a>
+          </div>
+        </div>
+        <div class="header__item__text">
+          <div class="header__item__text--booking">預定行程</div>
+          <div class="header__item__text--singin">登入/註冊</div>
+        </div>
+      </div>
+    </header>
+    <hr class="cutLine" />
+    <section>
+      <div class="section__attraction">
+        <div class="section__attraction__img" data-carousel>
+          <div class="section__attraction__btn__left" data-carousel-button="prev">
+            <img
+              src="{{ url_for('static', filename='styles/icon/States=Default-1.svg') }}"
+              alt="icon_Default_left"
+              class="section__attraction__btn__left--default"
+            />
+            <img
+              src="{{ url_for('static', filename='styles/icon/States=Hovered-1.svg') }}"
+              alt="icon_Hovered_left"
+              class="section__listBar__btn__left--hovered"
+            />
+          </div>
+          <div class="section__attraction__btn__circle"></div>
+          <input type="hidden" id="circle-current-url" value="{{ url_for('static', filename='styles/icon/circle current.svg') }}" />
+          <input type="hidden" id="circle-current-1-url" value="{{ url_for('static', filename='styles/icon/circle current-1.svg') }}" />
+          <div class="section__attraction__btn__right" data-carousel-button="next">
+            <img
+              src="{{ url_for('static', filename='styles/icon/States=Default.svg') }}"
+              alt="icon_Default_right"
+              class="section__attraction__btn__right--default"
+            />
+            <img
+              src="{{ url_for('static', filename='styles/icon/States=Hovered.svg') }}"
+              alt="icon_Hovered_right"
+              class="section__listBar__btn__right--hovered"
+            />
+          </div>
+        </div>
+        <div class="section__attraction__profile">
+          <p class="section__attraction__profile__name"></p>
+          <div class="section__attraction__profile__infomation">
+            <p class="section__attraction__profile__infomation__category"></p>
+            <p class="section__attraction__profile__infomation__text">at</p>
+            <p class="section__attraction__profile__infomation__mrt"></p>
+          </div>
+          <div class="section__attraction__profile__bookingform">
+            <p class="section__attraction__profile__bookingform__text--bold">訂購導覽行程</p>
+            <p class="section__attraction__profile__bookingform__text--medium">
+              以此景點為中心的一日行程，帶您探索城市角落故事
+            </p>
+            <form>
+              <p class="section__attraction__profile__bookingform__text--bold">
+                選擇日期 :
+                <input type="date" name="bday"/>
+              </p>
+            </form>
+            <div class="section__attraction__profile__bookingform__text--time">
+              <p class="section__attraction__profile__bookingform__text--bold">選擇時間 :</p>
+              <p class="section__attraction__profile__bookingform__text--medium">
+                <img
+                  id="morningBtn"
+                  src="{{ url_for('static', filename='styles/icon/radio_btn_click.svg') }}"
+                  class="section__attraction__profile__bookingform__btn"
+                  onclick="checkTime('morning')"
+                  data-active-src="{{ url_for('static', filename='styles/icon/radio_btn_click.svg') }}"
+                  data-inactive-src="{{ url_for('static', filename='styles/icon/radio_btn.svg') }}"
+                />
+                上半天
+              </p>
+              <p class="section__attraction__profile__bookingform__text--medium">
+                <img
+                  id="afternoonBtn"
+                  src="{{ url_for('static', filename='styles/icon/radio_btn.svg') }}"
+                  class="section__attraction__profile__bookingform__btn"
+                  onclick="checkTime('afternoon')"
+                  data-active-src="{{ url_for('static', filename='styles/icon/radio_btn_click.svg') }}"
+                  data-inactive-src="{{ url_for('static', filename='styles/icon/radio_btn.svg') }}"
+                />
+                下半天
+              </p>
+            </div>
+            
+            <div class="section__attraction__profile__bookingform__text--count">
+              <p class="section__attraction__profile__bookingform__text--bold">
+                導覽費用 :
+                <p class="section__attraction__profile__bookingform__text--medium" id="tourCost">
+                  新台幣 2000 元
+                </p>
+              </p>
+            </div>
+            <div class="section__attraction__profile__bookingform__text--bookingBTN">
+              <p>開始預約行程</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <hr class="cutLine2" />
+    <section>
+      <div class="section__attraction__information">
+        <p class="section__attraction__profile__bookingform__text__description" ></p>
+        <div class="section__attraction__profile__bookingform__text__address">
+          <p class="section__attraction__profile__bookingform__text__address--BoldBody">景點地址 :</p>
+          <p class="section__attraction__profile__bookingform__text__address--RegularContent"></p>
+        </div>
+        <div class="section__attraction__profile__bookingform__text__transport">
+          <p class="section__attraction__profile__bookingform__text__transport--BoldBody">
+            交通方式 :
+          </p>
+          <p class="section__attraction__profile__bookingform__text__transport--RegularContent"></p>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="footer__text">COPYRIGHT © 2021 台北一日遊</div>
+    </footer>
+  </body>
+  <script src="{{ url_for('static', filename='javascript/attraction.js') }}"></script>
+</html>

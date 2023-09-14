@@ -5,8 +5,14 @@ let isLoading = false;
 let currentKeyword = ''; // 新增一個變量來存儲當前的搜尋關鍵字
 
 function createElement(data) {
+
   let newDiv = document.createElement("div");
   newDiv.className = "container__section__title";
+
+  let id = data.id; 
+  let link = document.createElement('a');
+  link.href = "/attraction/" + id;
+  link.className = "attraction-link";
 
   let img = document.createElement('img');
   img.src = data.images[0];
@@ -16,7 +22,7 @@ function createElement(data) {
   titleName.textContent = data.name;
   titleName.className = "container__section__title__text";
 
-  let mrtDiv = document.createElement("p");
+  let mrtDiv = document.createElement("div");
   mrtDiv.className = "container__section__titles__mrts";
 
   let titleMrt = document.createElement("p");
@@ -29,9 +35,12 @@ function createElement(data) {
 
   mrtDiv.appendChild(titleMrt);
   mrtDiv.appendChild(titleCategory);
-  newDiv.appendChild(img);
-  newDiv.appendChild(titleName);
-  newDiv.appendChild(mrtDiv);
+
+  link.appendChild(img); // 將元素添加到連結內
+  link.appendChild(titleName);
+  link.appendChild(mrtDiv);
+
+  newDiv.appendChild(link); // 將連結元素添加到新的 div 中
   document.querySelector('.container__section').appendChild(newDiv);
 }
 

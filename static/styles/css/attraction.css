@@ -1,0 +1,380 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.cutLine {
+  color: #e8e8e8;
+  height: 1px;
+  opacity: 0.3;
+}
+
+.cutLine2 {
+  color: #e8e8e8;
+  height: 1px;
+  opacity: 0.3;
+  max-width: 1200px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: block;
+  margin: 0 auto;
+}
+@media (max-width: 850px) {
+  .cutLine2 {
+    margin: 40px 0px;
+  }
+}
+
+header {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+header .header__item {
+  display: flex;
+  width: 1200px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0px 10px 10px;
+}
+header .header__item .header__item__logo {
+  color: #448899;
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 34px;
+  cursor: pointer;
+  text-decoration: none;
+}
+header .header__item .header__item__text {
+  display: flex;
+  color: #666666;
+  padding: 0px 10px 0px 5px;
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: medium;
+  font-size: 16px;
+  line-height: 13.3px;
+  cursor: pointer;
+}
+header .header__item .header__item__text .header__item__text--booking {
+  padding: 0px 20px 0px 0px;
+}
+@media (max-width: 850px) {
+  header .header__item {
+    width: 600px;
+  }
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0px;
+}
+@media (max-width: 850px) {
+  section {
+    margin: 0;
+  }
+}
+section .section__attraction {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1200px;
+  width: 100%;
+}
+section .section__attraction .section__attraction__img {
+  display: flex;
+  position: relative;
+  aspect-ratio: 540px/406px;
+  max-width: 540px;
+  max-height: 406px;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center center;
+     object-position: center center;
+  border-radius: 5px;
+}
+section .section__attraction .section__attraction__img .carousel-image {
+  display: none;
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+section .section__attraction .section__attraction__img .carousel-image.active {
+  display: block;
+}
+@media (max-width: 850px) {
+  section .section__attraction .section__attraction__img {
+    max-width: 600px;
+    max-height: 300px;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+}
+section .section__attraction .section__attraction__btn__left {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  padding: 0px 0px 0px 15px;
+  cursor: pointer;
+}
+section .section__attraction .section__attraction__btn__left .section__attraction__btn__left--default {
+  display: block;
+}
+section .section__attraction .section__attraction__btn__left .section__listBar__btn__left--hovered {
+  display: none;
+}
+section .section__attraction .section__attraction__btn__left:hover .section__attraction__btn__left--default {
+  display: none;
+}
+section .section__attraction .section__attraction__btn__left:hover .section__listBar__btn__left--hovered {
+  display: block;
+}
+section .section__attraction .section__attraction__btn__right {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  right: 0px;
+  margin: 0px 15px 0px 0px;
+  cursor: pointer;
+}
+section .section__attraction .section__attraction__btn__right .section__attraction__btn__right--default {
+  display: block;
+}
+section .section__attraction .section__attraction__btn__right .section__listBar__btn__right--hovered {
+  display: none;
+}
+section .section__attraction .section__attraction__btn__right:hover .section__attraction__btn__right--default {
+  display: none;
+}
+section .section__attraction .section__attraction__btn__right:hover .section__listBar__btn__right--hovered {
+  display: block;
+}
+section .section__attraction .section__attraction__btn__circle {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  bottom: 0;
+  margin: 0px 0px 13px 0px;
+  width: 100%;
+  justify-content: center;
+  z-index: 1;
+}
+section .section__attraction .section__attraction__btn__circle .section__attraction__btn__circle--checked {
+  padding: 0px 5px;
+  opacity: 0.5;
+}
+section .section__attraction .section__attraction__btn__circle .section__attraction__btn__circle--check {
+  padding: 0px 5px;
+  opacity: 0.5;
+}
+section .section__attraction .section__attraction__profile {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  max-height: 400px;
+  width: 100%;
+  height: 100%;
+  padding: 0px 15px 0px 15px;
+}
+section .section__attraction .section__attraction__profile .section__attraction__profile__name {
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 24px;
+  color: #666666;
+  margin: 0px 0px 15px 0px;
+}
+@media (max-width: 850px) {
+  section .section__attraction .section__attraction__profile .section__attraction__profile__name {
+    padding: 20px 0px 0px 0px;
+  }
+}
+section .section__attraction .section__attraction__profile .section__attraction__profile__infomation {
+  display: flex;
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: Bold;
+  font-size: 16px;
+  line-height: 13.3px;
+  color: #666666;
+  margin: 0px 0px 20px 0px;
+}
+section .section__attraction .section__attraction__profile .section__attraction__profile__infomation .section__attraction__profile__infomation__text {
+  margin: 0px 5px;
+}
+section .section__attraction .section__attraction__profile .section__attraction__profile__bookingform {
+  max-width: 600px;
+  max-height: 302px;
+  min-height: 302px;
+  width: 100%;
+  height: 100%;
+  background-color: #e8e8e8;
+  border-radius: 5px;
+  margin: 0px 0px 8px 0px;
+  padding: 0px 20px 0px 20px;
+}
+section .section__attraction .section__attraction__profile .section__attraction__profile__bookingform .section__attraction__profile__bookingform__text--bold {
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: Bold;
+  font-size: 16px;
+  line-height: 13.3px;
+  color: #666666;
+  margin: 15px 5px 0px 0px;
+}
+section .section__attraction .section__attraction__profile .section__attraction__profile__bookingform .section__attraction__profile__bookingform__text--bold input[type=date]::-webkit-calendar-picker-indicator {
+  background: url(../icon/icon_calendar.svg) no-repeat;
+  padding: 6px 10px 5px 0px;
+  cursor: pointer;
+}
+section .section__attraction .section__attraction__profile .section__attraction__profile__bookingform .section__attraction__profile__bookingform__text--bold input[type=date] {
+  width: 193px;
+  height: 36px;
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: medium;
+  font-size: 16px;
+  line-height: 13.3px;
+  padding: 5px 10px;
+}
+section .section__attraction .section__attraction__profile .section__attraction__profile__bookingform .section__attraction__profile__bookingform__text--medium {
+  display: flex;
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: medium;
+  font-size: 16px;
+  line-height: 13.3px;
+  color: #666666;
+  margin: 15px 5px 0px 0px;
+  line-height: 1.5;
+  align-items: center;
+}
+section .section__attraction .section__attraction__profile .section__attraction__profile__bookingform .section__attraction__profile__bookingform__text--time {
+  display: flex;
+  line-height: normal;
+  align-items: center;
+  padding: 0px 0px;
+}
+section .section__attraction .section__attraction__profile .section__attraction__profile__bookingform .section__attraction__profile__bookingform__text--count {
+  display: flex;
+  align-items: center;
+}
+section .section__attraction .section__attraction__profile .section__attraction__profile__bookingform .section__attraction__profile__bookingform__btn {
+  align-items: center;
+  padding: 0px 4px 0px 0px;
+  cursor: pointer;
+}
+section .section__attraction .section__attraction__profile .section__attraction__profile__bookingform .section__attraction__profile__bookingform__text--bookingBTN {
+  display: flex;
+  width: 156px;
+  height: 36px;
+  justify-content: center;
+  align-items: center;
+  margin: 25px 0px 0px 0px;
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 19px;
+  line-height: 16px;
+  color: #ffffff;
+  background-color: #448899;
+  border-radius: 5px;
+  cursor: pointer;
+}
+@media (max-width: 850px) {
+  section .section__attraction .section__attraction__profile .section__attraction__profile__bookingform {
+    padding: 0px 10px 0px 10px;
+  }
+}
+@media (max-width: 850px) {
+  section .section__attraction .section__attraction__profile {
+    max-width: 600px;
+    max-height: 400px;
+    width: 100%;
+    height: 100%;
+    padding: 0px 10px 0px 10px;
+  }
+}
+@media (max-width: 850px) {
+  section .section__attraction {
+    flex-direction: column;
+  }
+}
+
+.section__attraction__information {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+}
+.section__attraction__information .section__attraction__profile__bookingform__text__description {
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 16px;
+  line-height: Auto;
+  color: #666666;
+}
+.section__attraction__information .section__attraction__profile__bookingform__text__address {
+  margin: 20px 0px;
+}
+.section__attraction__information .section__attraction__profile__bookingform__text__address .section__attraction__profile__bookingform__text__address--BoldBody {
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: Bold;
+  font-size: 16px;
+  line-height: 13.3px;
+  color: #666666;
+  align-items: center;
+  padding: 5px 0px;
+}
+.section__attraction__information .section__attraction__profile__bookingform__text__address .section__attraction__profile__bookingform__text__address--RegularContent {
+  display: flex;
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 16px;
+  line-height: Auto;
+  color: #666666;
+  align-items: center;
+  padding: 5px 0px;
+}
+.section__attraction__information .section__attraction__profile__bookingform__text__transport--BoldBody {
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: Bold;
+  font-size: 16px;
+  line-height: 13.3px;
+  color: #666666;
+  padding: 5px 0px;
+}
+.section__attraction__information .section__attraction__profile__bookingform__text__transport--RegularContent {
+  display: flex;
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 16px;
+  line-height: Auto;
+  color: #666666;
+  align-items: center;
+  padding: 5px 0px;
+}
+@media (max-width: 850px) {
+  .section__attraction__information {
+    width: 600px;
+  }
+}
+
+.footer__text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: Bold;
+  font-size: 16px;
+  line-height: 13.3px;
+  background-color: #757575;
+  color: #ffffff;
+  height: 104px;
+}/*# sourceMappingURL=attraction.css.map */

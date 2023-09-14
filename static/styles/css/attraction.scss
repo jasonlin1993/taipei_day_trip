@@ -1,0 +1,367 @@
+@import "variable";
+@import "mixin";
+
+* {
+  // border: 1px solid black;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+// html,
+// body {
+//   height: 100%;
+//   margin: 0;
+// }
+
+// body {
+//   display: flex;
+//   flex-direction: column;
+// }
+
+.cutLine {
+  color: #e8e8e8;
+  height: 1px;
+  opacity: 0.3;
+}
+
+.cutLine2 {
+  color: #e8e8e8;
+  height: 1px;
+  opacity: 0.3;
+  max-width: 1200px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: block;
+  margin: 0 auto;
+  @include pad_850px {
+    margin: 40px 0px;
+  }
+}
+
+// 第一區
+header {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+
+  .header__item {
+    display: flex;
+    width: 1200px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0px 10px 10px;
+
+    .header__item__logo {
+      color: $Cyan70;
+      @include H2;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .header__item__text {
+      display: flex;
+      color: $Gray70;
+      padding: 0px 10px 0px 5px;
+      @include Medium_Body;
+      cursor: pointer;
+      .header__item__text--booking {
+        padding: 0px 20px 0px 0px;
+      }
+    }
+
+    @include pad_850px {
+      width: 600px;
+    }
+  }
+}
+
+// 第二區
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0px;
+  @include pad_850px {
+    margin: 0;
+  }
+  .section__attraction {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    width: 100%;
+    .section__attraction__img {
+      display: flex;
+      position: relative;
+      aspect-ratio: 540px/406px;
+      max-width: 540px;
+      max-height: 406px;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      border-radius: 5px;
+      // margin: 0px 15px;
+
+      .carousel-image {
+        display: none;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .carousel-image.active {
+        display: block;
+      }
+
+      @include pad_850px {
+        max-width: 600px;
+        max-height: 300px;
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    }
+    .section__attraction__btn__left {
+      position: absolute;
+      top: 50%;
+      z-index: 1;
+      padding: 0px 0px 0px 15px;
+      cursor: pointer;
+
+      .section__attraction__btn__left--default {
+        display: block;
+      }
+
+      .section__listBar__btn__left--hovered {
+        display: none;
+      }
+
+      &:hover {
+        .section__attraction__btn__left--default {
+          display: none;
+        }
+
+        .section__listBar__btn__left--hovered {
+          display: block;
+        }
+      }
+    }
+
+    .section__attraction__btn__right {
+      position: absolute;
+      top: 50%;
+      z-index: 1;
+      right: 0px;
+      margin: 0px 15px 0px 0px;
+      cursor: pointer;
+
+      .section__attraction__btn__right--default {
+        display: block;
+      }
+
+      .section__listBar__btn__right--hovered {
+        display: none;
+      }
+
+      &:hover {
+        .section__attraction__btn__right--default {
+          display: none;
+        }
+
+        .section__listBar__btn__right--hovered {
+          display: block;
+        }
+      }
+    }
+    .section__attraction__btn__circle {
+      display: flex;
+      position: absolute;
+      align-items: center;
+      bottom: 0;
+      margin: 0px 0px 13px 0px;
+      width: 100%;
+      justify-content: center;
+      z-index: 1;
+
+      .section__attraction__btn__circle--checked {
+        padding: 0px 5px;
+        opacity: 0.5;
+      }
+
+      .section__attraction__btn__circle--check {
+        padding: 0px 5px;
+        opacity: 0.5;
+      }
+    }
+
+    .section__attraction__profile {
+      display: flex;
+      flex-direction: column;
+      max-width: 600px;
+      max-height: 400px;
+      width: 100%;
+      height: 100%;
+      padding: 0px 15px 0px 15px;
+      .section__attraction__profile__name {
+        @include Bold_H3;
+        color: $Gray70;
+        margin: 0px 0px 15px 0px;
+        @include pad_850px {
+          padding: 20px 0px 0px 0px;
+        }
+      }
+      .section__attraction__profile__infomation {
+        display: flex;
+        @include Bold_Body;
+        color: $Gray70;
+        margin: 0px 0px 20px 0px;
+        .section__attraction__profile__infomation__text {
+          margin: 0px 5px;
+        }
+      }
+      .section__attraction__profile__bookingform {
+        max-width: 600px;
+        max-height: 302px;
+        min-height: 302px;
+        width: 100%;
+        height: 100%;
+        background-color: $Gray20;
+        border-radius: 5px;
+        margin: 0px 0px 8px 0px;
+        padding: 0px 20px 0px 20px;
+
+        .section__attraction__profile__bookingform__text--bold {
+          @include Bold_Body;
+          color: $Gray70;
+          margin: 15px 5px 0px 0px;
+          input[type="date"]::-webkit-calendar-picker-indicator {
+            background: url(../icon/icon_calendar.svg) no-repeat;
+            padding: 6px 10px 5px 0px;
+            cursor: pointer;
+          }
+          input[type="date"] {
+            width: 193px;
+            height: 36px;
+            @include Medium_Body;
+            padding: 5px 10px;
+          }
+        }
+        .section__attraction__profile__bookingform__text--medium {
+          display: flex;
+          @include Medium_Body;
+          color: $Gray70;
+          margin: 15px 5px 0px 0px;
+          line-height: 1.5;
+          align-items: center;
+        }
+        .section__attraction__profile__bookingform__text--time {
+          display: flex;
+          line-height: normal;
+          align-items: center;
+          padding: 0px 0px;
+        }
+        .section__attraction__profile__bookingform__text--count {
+          display: flex;
+          align-items: center;
+        }
+        .section__attraction__profile__bookingform__btn {
+          align-items: center;
+          padding: 0px 4px 0px 0px;
+          cursor: pointer;
+        }
+        .section__attraction__profile__bookingform__text--bookingBTN {
+          display: flex;
+          width: 156px;
+          height: 36px;
+          justify-content: center;
+          align-items: center;
+          margin: 25px 0px 0px 0px;
+          @include Regular_Btn;
+          color: $white;
+          background-color: $Cyan70;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+        @include pad_850px {
+          padding: 0px 10px 0px 10px;
+        }
+      }
+      @include pad_850px {
+        max-width: 600px;
+        max-height: 400px;
+        width: 100%;
+        height: 100%;
+        padding: 0px 10px 0px 10px;
+      }
+    }
+    @include pad_850px {
+      flex-direction: column;
+    }
+  }
+}
+
+// 第三區 景點詳細資訊
+.section__attraction__information {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  // max-height: 362px;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  .section__attraction__profile__bookingform__text__description {
+    @include Regular_Content;
+    color: $Gray70;
+  }
+  .section__attraction__profile__bookingform__text__address {
+    margin: 20px 0px;
+
+    .section__attraction__profile__bookingform__text__address--BoldBody {
+      @include Bold_Body;
+      color: $Gray70;
+      align-items: center;
+      padding: 5px 0px;
+    }
+    .section__attraction__profile__bookingform__text__address--RegularContent {
+      display: flex;
+      @include Regular_Content;
+      color: $Gray70;
+      align-items: center;
+      padding: 5px 0px;
+    }
+  }
+  .section__attraction__profile__bookingform__text__transport--BoldBody {
+    @include Bold_Body;
+    color: $Gray70;
+    padding: 5px 0px;
+  }
+  .section__attraction__profile__bookingform__text__transport--RegularContent {
+    display: flex;
+    @include Regular_Content;
+    color: $Gray70;
+    align-items: center;
+    padding: 5px 0px;
+  }
+
+  @include pad_850px {
+    width: 600px;
+  }
+}
+
+// footer
+.footer__text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include Bold_Body;
+  background-color: #757575;
+  color: $white;
+  height: 104px;
+}
