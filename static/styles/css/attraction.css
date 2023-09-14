@@ -168,9 +168,11 @@ section .section__attraction .section__attraction__btn__circle {
 }
 section .section__attraction .section__attraction__btn__circle .section__attraction__btn__circle--checked {
   padding: 0px 5px;
+  opacity: 0.5;
 }
 section .section__attraction .section__attraction__btn__circle .section__attraction__btn__circle--check {
   padding: 0px 5px;
+  opacity: 0.5;
 }
 section .section__attraction .section__attraction__profile {
   display: flex;
@@ -227,6 +229,7 @@ section .section__attraction .section__attraction__profile .section__attraction_
 section .section__attraction .section__attraction__profile .section__attraction__profile__bookingform .section__attraction__profile__bookingform__text--bold input[type=date]::-webkit-calendar-picker-indicator {
   background: url(../icon/icon_calendar.svg) no-repeat;
   padding: 6px 10px 5px 0px;
+  cursor: pointer;
 }
 section .section__attraction .section__attraction__profile .section__attraction__profile__bookingform .section__attraction__profile__bookingform__text--bold input[type=date] {
   width: 193px;
