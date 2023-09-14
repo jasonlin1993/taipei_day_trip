@@ -93,11 +93,14 @@ section {
       display: flex;
       position: relative;
       aspect-ratio: 540px/406px;
+      max-width: 540px;
+      max-height: 406px;
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center center;
       border-radius: 5px;
+      // margin: 0px 15px;
 
       .carousel-image {
         display: none;
@@ -152,7 +155,7 @@ section {
       top: 50%;
       z-index: 1;
       right: 0px;
-      padding: 0px 15px 0px 0px;
+      margin: 0px 15px 0px 0px;
       cursor: pointer;
 
       .section__attraction__btn__right--default {
@@ -201,7 +204,7 @@ section {
       max-height: 400px;
       width: 100%;
       height: 100%;
-      margin: 0px 15px 0px 30px;
+      padding: 0px 15px 0px 15px;
       .section__attraction__profile__name {
         @include Bold_H3;
         color: $Gray70;
@@ -224,6 +227,7 @@ section {
         max-height: 302px;
         min-height: 302px;
         width: 100%;
+        height: 100%;
         background-color: $Gray20;
         border-radius: 5px;
         margin: 0px 0px 8px 0px;
@@ -281,8 +285,15 @@ section {
           border-radius: 5px;
           cursor: pointer;
         }
+        @include pad_850px {
+          padding: 0px 10px 0px 10px;
+        }
       }
       @include pad_850px {
+        max-width: 600px;
+        max-height: 400px;
+        width: 100%;
+        height: 100%;
         padding: 0px 10px 0px 10px;
       }
     }
