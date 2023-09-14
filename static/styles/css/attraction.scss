@@ -98,7 +98,6 @@ section {
       object-fit: cover;
       object-position: center center;
       border-radius: 5px;
-      margin: 0px 15px 0px 0px;
 
       .carousel-image {
         display: none;
@@ -153,7 +152,7 @@ section {
       top: 50%;
       z-index: 1;
       right: 0px;
-      padding: 0px 20px 0px 0px;
+      padding: 0px 15px 0px 0px;
       cursor: pointer;
 
       .section__attraction__btn__right--default {
@@ -177,10 +176,11 @@ section {
     .section__attraction__btn__circle {
       display: flex;
       position: absolute;
-      bottom: 50%;
+      align-items: center;
       bottom: 0;
-      right: 46%;
       margin: 0px 0px 13px 0px;
+      width: 100%;
+      justify-content: center;
       z-index: 1;
 
       .section__attraction__btn__circle--checked {
@@ -189,7 +189,6 @@ section {
 
       .section__attraction__btn__circle--check {
         padding: 0px 5px;
-        // opacity: 0.5;
       }
     }
 
@@ -200,7 +199,7 @@ section {
       max-height: 400px;
       width: 100%;
       height: 100%;
-      margin: 0px 15px;
+      margin: 0px 15px 0px 30px;
       .section__attraction__profile__name {
         @include Bold_H3;
         color: $Gray70;

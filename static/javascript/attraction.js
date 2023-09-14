@@ -27,7 +27,7 @@ function checkTime(timePeriod) {
   
   buttons.forEach(button => {
     button.addEventListener("click", () => {
-      const circles = document.querySelectorAll(".section__attraction__btn__circle img"); // 將這行移到這裡來獲取最新的圓形元素
+      const circles = document.querySelectorAll(".section__attraction__btn__circle img");
       const offset = button.dataset.carouselButton === "next" ? 1 : -1;
   
       const carousel = button.closest("[data-carousel]");
@@ -98,27 +98,19 @@ function checkTime(timePeriod) {
 
   function createImageElements(images) {
     const imageContainer = document.querySelector('[data-carousel]');
-    // 先移除所有現有的 carousel-image 元素
     imageContainer.querySelectorAll('.carousel-image, .section__attraction__img').forEach(imgElem => imgElem.remove());
-  
-    // 現在根據 API 中的圖片創建新的圖片元素
     images.forEach((imageSrc, index) => {
       const imgElem = document.createElement('img');
       imgElem.src = imageSrc;
-  
-      // 如果是第一張圖片，給它添加特殊的 class 名稱和 data-slide 屬性
       if (index === 0) {
         imgElem.classList.add('section__attraction__img');
       } else {
         imgElem.classList.add('carousel-image');
       }
       imgElem.setAttribute('data-slide', '');
-      
-      // 如果是第一張圖片，讓它成為當前活動的圖片
       if (index === 0) {
         imgElem.classList.add('active');
       }
-  
       imageContainer.appendChild(imgElem);
     });
   }
