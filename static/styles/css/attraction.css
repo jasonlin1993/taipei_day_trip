@@ -5,11 +5,15 @@
 }
 
 .cutLine {
-  border: 1px solid #e8e8e8;
+  color: #e8e8e8;
+  height: 1px;
+  opacity: 0.3;
 }
 
 .cutLine2 {
-  border: 1px solid #e8e8e8;
+  color: #e8e8e8;
+  height: 1px;
+  opacity: 0.3;
   max-width: 1200px;
   width: 100%;
   align-items: center;
