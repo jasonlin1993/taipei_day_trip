@@ -54,7 +54,7 @@ header .header__item .header__item__text {
   color: #666666;
   padding: 0px 10px 0px 5px;
   font-family: "Noto Sans TC", sans-serif;
-  font-weight: medium;
+  font-weight: 500;
   font-size: 16px;
   line-height: 13.3px;
   cursor: pointer;
@@ -89,7 +89,6 @@ section .section__attraction {
 section .section__attraction .section__attraction__img {
   display: flex;
   position: relative;
-  aspect-ratio: 540px/406px;
   max-width: 540px;
   max-height: 406px;
   width: 100%;
@@ -242,7 +241,7 @@ section .section__attraction .section__attraction__profile .section__attraction_
   width: 193px;
   height: 36px;
   font-family: "Noto Sans TC", sans-serif;
-  font-weight: medium;
+  font-weight: 500;
   font-size: 16px;
   line-height: 13.3px;
   padding: 5px 10px;
@@ -250,7 +249,7 @@ section .section__attraction .section__attraction__profile .section__attraction_
 section .section__attraction .section__attraction__profile .section__attraction__profile__bookingform .section__attraction__profile__bookingform__text--medium {
   display: flex;
   font-family: "Noto Sans TC", sans-serif;
-  font-weight: medium;
+  font-weight: 500;
   font-size: 16px;
   line-height: 13.3px;
   color: #666666;
