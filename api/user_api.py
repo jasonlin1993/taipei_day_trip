@@ -32,4 +32,4 @@ def postUser():
 
     except Exception as e:
         print(e)
-        # return jsonify(error=True, message="伺服器內部錯誤"), 500
+        return jsonify(error=True, message="伺服器內部錯誤"), 500
