@@ -2,7 +2,7 @@ from flask import *
 from api.attractions_api import attractions_api
 from api.attraction_id_api import attraction_id_api
 from api.mrt_api import mrt_api
-from api.user_api import user_api
+from api.user1_api import user1_api
 from api.user_auth_api import user_auth_api
 
 app = Flask(
@@ -33,6 +33,6 @@ def thankyou():
 app.register_blueprint(attractions_api)
 app.register_blueprint(attraction_id_api)
 app.register_blueprint(mrt_api)
-app.register_blueprint(user_api)
+app.register_blueprint(user1_api)
 app.register_blueprint(user_auth_api)
 app.run(host="0.0.0.0", port=3000, debug=1)

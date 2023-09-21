@@ -3,9 +3,9 @@ from flask import request
 from flask import jsonify
 from data.database import pool
 
-user_api = Blueprint('user_api', __name__)
+user1_api = Blueprint('user1_api', __name__)
 
-@user_api.route("/api/user", methods=["POST","GET"])
+@user1_api.route("/api/user1", methods=["POST","GET"])
 def postUser():
     if request.method == 'GET':
         return jsonify(ok=True), 200

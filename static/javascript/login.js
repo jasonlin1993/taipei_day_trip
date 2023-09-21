@@ -136,7 +136,7 @@ function createAccount() {
       password: password
   };
   console.log(data);
-  fetch("/api/user", {
+  fetch("/api/user1", {
 
       method: "POST",
       headers: {
