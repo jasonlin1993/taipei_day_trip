@@ -32,7 +32,7 @@ def thankyou():
 
 app.register_blueprint(attractions_api)
 app.register_blueprint(attraction_id_api)
-app.register_blueprint(mrt_api)
 app.register_blueprint(user_api)
+app.register_blueprint(mrt_api)
 app.register_blueprint(user_auth_api)
 app.run(host="0.0.0.0", port=3000, debug=1)
