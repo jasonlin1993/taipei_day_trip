@@ -29,7 +29,9 @@ def booking():
 @app.route("/thankyou")
 def thankyou():
 	return render_template("thankyou.html")
-
+# @app.route("/api/user",methods=['POST'])
+# def postUser():
+# 	pass
 
 app.register_blueprint(attractions_api)
 app.register_blueprint(attraction_id_api)

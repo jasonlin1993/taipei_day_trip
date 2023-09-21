@@ -5,7 +5,7 @@ from data.database import pool
 
 user_api = Blueprint('user_api', __name__)
 
-@user_api.route("/api/test", methods=["POST"])
+@user_api.route("/api/user", methods=["POST"])
 def postUser():
     data = request.get_json()
     name = data['name']
@@ -32,4 +32,4 @@ def postUser():
 
     except Exception as e:
         print(e)
-        return jsonify(error=True, message="伺服器內部錯誤"), 500
+        # return jsonify(error=True, message="伺服器內部錯誤"), 500
