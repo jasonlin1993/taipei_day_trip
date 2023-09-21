@@ -135,8 +135,9 @@ function createAccount() {
       email: email,
       password: password
   };
-
+  console.log(data);
   fetch("/api/user", {
+
       method: "POST",
       headers: {
           "Content-Type": "application/json"
