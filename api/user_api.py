@@ -7,7 +7,6 @@ user_api = Blueprint('user_api', __name__)
 
 @user_api.route("/api/user", methods=["GET"])
 def postUser():
-    if request.method == 'GET':
         return jsonify(ok=True), 200
     # elif request.method == 'POST':  # 表單送出後會到這裡
         # data = request.get_json()
