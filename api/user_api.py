@@ -3,19 +3,19 @@ from flask import request
 from flask import jsonify
 from data.database import pool
 
-user1_api = Blueprint('user1_api', __name__)
+user_api = Blueprint('user_api', __name__)
 
-@user1_api.route("/api/user1", methods=["POST","GET"])
+@user_api.route("/api/user", methods=["GET"])
 def postUser():
     if request.method == 'GET':
         return jsonify(ok=True), 200
-    elif request.method == 'POST':  # 表單送出後會到這裡
-        data = request.get_json()
-        name = data['name']
-        email = data['email']
-        password = data['password']  # 在實際情境中，應該加密這個密碼
+    # elif request.method == 'POST':  # 表單送出後會到這裡
+        # data = request.get_json()
+        # name = data['name']
+        # email = data['email']
+        # password = data['password']  # 在實際情境中，應該加密這個密碼
 
-        try:
+        # try:
             # with pool.get_connection() as database:
             #     with database.cursor(dictionary=True) as cursor:
             #         # 檢查 email 是否存在
@@ -31,8 +31,8 @@ def postUser():
             #         cursor.execute(sql_insert, (name, email, password))
             #         database.commit()
 
-                    return jsonify(ok=True), 200
+        #             return jsonify(ok=True), 200
 
-        except Exception as e:
-            print(e)
-            return jsonify(error=True, message="伺服器內部錯誤"), 500
+        # except Exception as e:
+        #     print(e)
+        #     return jsonify(error=True, message="伺服器內部錯誤"), 500
