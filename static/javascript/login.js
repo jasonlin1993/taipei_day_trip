@@ -49,23 +49,6 @@ signInLink.addEventListener("click", function() {
   showLoginModal();
 });
 
-// 登入狀態檢查
-document.addEventListener("DOMContentLoaded", function() {
-  fetch("/api/user/auth", {
-    method: "GET",
-    headers: {
-      "Authorization": "Bearer " + localStorage.getItem('jwt')
-    }
-  })
-  .then(response => response.json())
-  .then(data => {
-    if (data.data === null || data.error === true) {
-      btn.innerText = "登入/註冊";
-    } else {
-      btn.innerText = "登出系統";
-    }
-  });
-});
 
 function loginAccount() {
   const email = document.getElementById('signinEmail').value;
@@ -156,3 +139,21 @@ function createAccount() {
       console.error('Error:', error);
   });
 }
+
+// 登入狀態檢查
+document.addEventListener("DOMContentLoaded", function() {
+  fetch("/api/user/auth", {
+    method: "GET",
+    headers: {
+      "Authorization": "Bearer " + localStorage.getItem('jwt')
+    }
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.data === null || data.error === true) {
+      btn.innerText = "登入/註冊";
+    } else {
+      btn.innerText = "登出系統";
+    }
+  });
+});
