@@ -11,7 +11,7 @@ user_auth_api = Blueprint('user_auth_api', __name__)
 
 SECRET_KEY = 'this_is_my_secret_key'
 
-@user_auth_api.route("http://54.214.247.228:3000/api/user/auth", methods=["GET", "PUT"])
+@user_auth_api.route("/api/user/auth", methods=["GET", "PUT"])
 def user_auth():
     if request.method == 'PUT':
         return put_user_auth()
