@@ -4,7 +4,9 @@ from api.attraction_id_api import attraction_id_api
 from api.mrt_api import mrt_api
 from api.user_api import user_api
 from api.user_auth_api import user_auth_api
+from flask_cors import CORS
 
+CORS(app)
 app = Flask(
     __name__,
     static_folder='static',
