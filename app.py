@@ -3,8 +3,10 @@ from api.attractions_api import attractions_api
 from api.attraction_id_api import attraction_id_api
 from api.mrt_api import mrt_api
 # from api.user_api import user_api
-from api.user_auth_api import user_auth_api
+# from api.user_auth_api import user_auth_api
 from data.database import pool
+import jwt
+import datetime
 
 app = Flask(
     __name__,
@@ -15,7 +17,7 @@ app = Flask(
 
 app.json.ensure_ascii = False
 app.config["TEMPLATES_AUTO_RELOAD"]=True
-
+SECRET_KEY = 'this_is_my_secret_key'
 
 # Pages
 @app.route("/")
@@ -63,11 +65,60 @@ def postUser():
         except Exception as e:
             print(e)
             return jsonify(error=True, message="伺服器內部錯誤"), 500
+        
+
+@app.route("/api/user/auth", methods=["GET", "PUT"])
+def user_auth():
+    if request.method == 'PUT':
+        return put_user_auth()
+    elif request.method == 'GET':
+        return get_user_auth()
+
+def put_user_auth():
+    email = request.json.get('email')
+    password = request.json.get('password')
+    
+    connection = pool.get_connection()
+    cursor = connection.cursor(dictionary=True)
+    
+    cursor.execute("SELECT * FROM member WHERE email = %s", (email,))
+    user = cursor.fetchone()
+    
+    cursor.close()
+    connection.close()
+    
+    if user and user['password'] == password:  # 使用明文密碼進行比較
+        payload = {
+            'id': user['id'],
+            'name': user['name'],
+            'email': user['email'],
+            'exp': datetime.datetime.utcnow() + datetime.timedelta(days=7)
+        }
+        token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
+        return jsonify({'token': token}), 200
+    elif user:
+        return jsonify({'error': True, 'message': 'wrong_password'}), 400
+    else:
+        return jsonify({'error': True, 'message': 'unregistered_email'}), 400
+
+def get_user_auth():
+    auth_header = request.headers.get('Authorization')
+    if auth_header:
+        token = auth_header.split(' ')[1]
+        try:
+            payload = jwt.decode(token, SECRET_KEY, algorithms=['HS256'])
+            return jsonify({'data': payload}), 200
+        except jwt.ExpiredSignatureError:
+            return jsonify({'error': True, 'message': 'Token已過期'}), 401
+        except jwt.InvalidTokenError:
+            return jsonify({'error': True, 'message': '無效的Token'}), 401
+    else:
+        return jsonify({'data': None}), 200
 
 
 app.register_blueprint(attractions_api)
 app.register_blueprint(attraction_id_api)
 app.register_blueprint(mrt_api)
 # app.register_blueprint(user_api)
-app.register_blueprint(user_auth_api)
+# app.register_blueprint(user_auth_api)
 app.run(host="0.0.0.0", port=3000, debug=1)
