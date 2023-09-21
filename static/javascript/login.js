@@ -143,12 +143,7 @@ function createAccount() {
       },
       body: JSON.stringify(data)
   })
-  .then(response => {
-    if (!response.ok) {
-        return Promise.reject(`We had an error: ${response.status}`);
-    }
-    return response.json();
-})
+  .then(response => response.json())
   .then(data => {
       if (data.ok) {
           memberInfoText.innerText = "註冊成功，請登入帳號";
