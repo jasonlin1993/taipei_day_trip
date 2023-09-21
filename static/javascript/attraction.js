@@ -77,8 +77,6 @@ function checkTime(timePeriod) {
   }
 
   function createCircleElements(imageCount) {
-    console.log("Creating circle elements for count:", imageCount);
-    
     const circleCurrentUrl = document.getElementById('circle-current-url').value;
     const circleCurrent1Url = document.getElementById('circle-current-1-url').value;
   
