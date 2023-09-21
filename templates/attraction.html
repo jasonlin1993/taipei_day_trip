@@ -19,43 +19,53 @@
         <div class="header__item__text">
           <div class="header__item__text--booking">預定行程</div>
           <div class="header__item__text--singin">登入/註冊</div>
-          <dialog class="header__item__login">
-            <div class="header__item__login--top"></div>
-            <div class="header__item__login--close">
-              <img src="{{ url_for('static', filename='styles/icon/icon_close.svg') }}" alt="icon_close" />
-            </div>
-            <div class="header__item__login__text--H3">登入會員帳號</div>
-            <div class="header__banner__login__Box">
-              <input type="email" placeholder="輸入電子信箱" id="email" required />
-              <input type="password" placeholder="輸入密碼" id="password" required />
-              <div class="header__item__login__button" type="button" onclick="loginAccount()">
-                <p>登入帳戶</p>
+          <form action="signinForm" method="PUT" action="/api/user/auth">
+            <dialog class="header__item__login">
+              <div class="header__item__login--top"></div>
+              <div class="header__item__login--close">
+                <img src="{{ url_for('static', filename='styles/icon/icon_close.svg') }}" alt="icon_close" />
               </div>
-              <div class="header__item__login__text--body">
-                <p>還沒有帳戶嗎?</p>
-                <p class="header__item__login__text--createCount">點此註冊</p>
+              <div class="header__item__login__text--H3">登入會員帳號</div>
+              <div class="header__banner__login__Box">
+                <input type="email" placeholder="輸入電子信箱" id="signinEmail" required />
+                <input type="password" placeholder="輸入密碼" id="signinPassword" required />
+                <div class="header__item__login__button" type="button" onclick="loginAccount()">
+                  <p>登入帳戶</p>
+                </div>
+                <div class="header__item__login__text--signinInfo">
+                  <p></p>
+                </div>
+                <div class="header__item__login__text--body">
+                  <p>還沒有帳戶嗎?</p>
+                  <p class="header__item__login__text--createCount">點此註冊</p>
+                </div>
               </div>
-            </div>
-          </dialog>
-          <dialog class="header__item__createCount">
-            <div class="header__item__login--top"></div>
-            <div class="header__item__login--close">
-              <img src="{{ url_for('static', filename='styles/icon/icon_close.svg') }}" alt="icon_close" />
-            </div>
-            <div class="header__item__login__text--H3">註冊會員帳號</div>
-            <div class="header__banner__login__Box">
-              <input type="text" placeholder="輸入姓名" id="name" required />
-              <input type="email" placeholder="輸入電子信箱" id="email" required />
-              <input type="password" placeholder="輸入密碼" id="password" required />
-              <div class="header__item__login__button" type="button" onclick="createAccount()">
-                <p>註冊新帳戶</p>
+            </dialog>
+          </form>
+          <form id="signupForm" method="POST" action="/api/user">
+            <dialog class="header__item__createCount">
+              <div class="header__item__login--top"></div>
+              <div class="header__item__login--close">
+                <img src="{{ url_for('static', filename='styles/icon/icon_close.svg') }}" alt="icon_close" />
               </div>
-              <div class="header__item__login__text--body">
-                <p>已經有帳戶了?</p>
-                <p class="header__item__login__text--createCount">點此登入</p>
+              <div class="header__item__login__text--H3">註冊會員帳號</div>
+              <div class="header__banner__login__Box">
+                <input type="text" placeholder="輸入姓名" id="signUpName" />
+                <input type="email" placeholder="輸入電子信箱" id="signUpEmail" />
+                <input type="password" placeholder="輸入密碼" id="signUpPassword" />
+                <div class="header__item__login__button" type="button" onclick="createAccount()">
+                  <p>註冊新帳戶</p>
+                </div>
+                <div class="header__item__login__text--memberinfo">
+                  <p></p>
+                </div>
+                <div class="header__item__login__text--body">
+                  <p>已經有帳戶了?</p>
+                  <p class="header__item__login__text--createCount">點此登入</p>
+                </div>
               </div>
-            </div>
-          </dialog>
+            </dialog>
+          </form>
         </div>
       </div>
     </header>

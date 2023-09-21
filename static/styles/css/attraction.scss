@@ -2,7 +2,7 @@
 @import "mixin";
 
 * {
-  border: 1px solid black;
+  // border: 1px solid black;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -63,13 +63,13 @@ header {
 
     .header__item__login {
       position: absolute;
-      // display: none;
+      // display: block;
       top: 80px;
       left: 50%;
       transform: translate(-50%);
       flex-shrink: 0;
       width: 340px;
-      height: 275px;
+      height: 295px;
       border-radius: 6px;
       border: none;
       cursor: default;
@@ -105,6 +105,12 @@ header {
         &:hover {
           color: rgb(0, 255, 76);
         }
+      }
+
+      .header__item__login__text--signinInfo {
+        padding: 10px 0px 0px 0px;
+        @include Medium_Body;
+        color: red;
       }
 
       .header__banner__login__Box {
@@ -172,7 +178,7 @@ header {
       transform: translate(-50%);
       flex-shrink: 0;
       width: 340px;
-      height: 332px;
+      height: 350px;
       border-radius: 6px;
       border: none;
       cursor: default;
@@ -203,17 +209,17 @@ header {
         margin: 10px 15px 15px 15px;
       }
 
+      .header__item__login__text--memberinfo {
+        margin: 5px 0px 0px 0px;
+        @include Medium_Body;
+        color: red;
+      }
+
       .header__item__login__text--createCount {
         cursor: pointer;
         &:hover {
           color: rgb(0, 255, 76);
         }
-      }
-
-      .header__item__login__text--memberinfo {
-        padding: 10px 0px 0px 0px;
-        @include Medium_Body;
-        color: red;
       }
 
       .header__banner__login__Box {

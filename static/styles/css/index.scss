@@ -41,13 +41,13 @@ header {
 
     .header__item__login {
       position: absolute;
-      // display: none;
+      // display: block;
       top: 80px;
       left: 50%;
       transform: translate(-50%);
       flex-shrink: 0;
       width: 340px;
-      height: 275px;
+      height: 295px;
       border-radius: 6px;
       border: none;
       cursor: default;
@@ -83,6 +83,12 @@ header {
         &:hover {
           color: rgb(0, 255, 76);
         }
+      }
+
+      .header__item__login__text--signinInfo {
+        padding: 10px 0px 0px 0px;
+        @include Medium_Body;
+        color: red;
       }
 
       .header__banner__login__Box {

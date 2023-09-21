@@ -4,15 +4,12 @@ from flask import jsonify
 from data.database import pool  # 請根據你的目錄結構修改這裡的 import
 import jwt
 import datetime
-import bcrypt
-import os
-from dotenv import load_dotenv
 
-load_dotenv()
+
 
 user_auth_api = Blueprint('user_auth_api', __name__)
 
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = 'this_is_my_secret_key'
 
 @user_auth_api.route("/api/user/auth", methods=["GET", "PUT"])
 def user_auth():
@@ -34,7 +31,7 @@ def put_user_auth():
     cursor.close()
     connection.close()
     
-    if user and bcrypt.checkpw(password.encode('utf-8'), user['password'].encode('utf-8')):
+    if user and user['password'] == password:  # 使用明文密碼進行比較
         payload = {
             'id': user['id'],
             'name': user['name'],
@@ -43,8 +40,10 @@ def put_user_auth():
         }
         token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
         return jsonify({'token': token}), 200
+    elif user:
+        return jsonify({'error': True, 'message': 'wrong_password'}), 400
     else:
-        return jsonify({'error': True, 'message': '帳號或密碼錯誤或其他原因'}), 400
+        return jsonify({'error': True, 'message': 'unregistered_email'}), 400
 
 def get_user_auth():
     auth_header = request.headers.get('Authorization')

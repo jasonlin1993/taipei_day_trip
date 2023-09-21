@@ -1,5 +1,4 @@
 * {
-  border: 1px solid black;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -57,7 +56,7 @@ header .header__item .header__item__login {
   transform: translate(-50%);
   flex-shrink: 0;
   width: 340px;
-  height: 275px;
+  height: 295px;
   border-radius: 6px;
   border: none;
   cursor: default;
@@ -96,6 +95,14 @@ header .header__item .header__item__login .header__item__login__text--createCoun
 }
 header .header__item .header__item__login .header__item__login__text--createCount:hover {
   color: rgb(0, 255, 76);
+}
+header .header__item .header__item__login .header__item__login__text--signinInfo {
+  padding: 10px 0px 0px 0px;
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 13.3px;
+  color: red;
 }
 header .header__item .header__item__login .header__banner__login__Box {
   display: flex;
@@ -163,7 +170,7 @@ header .header__item .header__item__createCount {
   transform: translate(-50%);
   flex-shrink: 0;
   width: 340px;
-  height: 332px;
+  height: 350px;
   border-radius: 6px;
   border: none;
   cursor: default;
@@ -197,19 +204,19 @@ header .header__item .header__item__createCount .header__item__login__text--body
   color: #666666;
   margin: 10px 15px 15px 15px;
 }
-header .header__item .header__item__createCount .header__item__login__text--createCount {
-  cursor: pointer;
-}
-header .header__item .header__item__createCount .header__item__login__text--createCount:hover {
-  color: rgb(0, 255, 76);
-}
 header .header__item .header__item__createCount .header__item__login__text--memberinfo {
-  padding: 10px 0px 0px 0px;
+  margin: 5px 0px 0px 0px;
   font-family: "Noto Sans TC", sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: 13.3px;
   color: red;
+}
+header .header__item .header__item__createCount .header__item__login__text--createCount {
+  cursor: pointer;
+}
+header .header__item .header__item__createCount .header__item__login__text--createCount:hover {
+  color: rgb(0, 255, 76);
 }
 header .header__item .header__item__createCount .header__banner__login__Box {
   display: flex;
