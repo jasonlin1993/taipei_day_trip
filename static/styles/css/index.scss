@@ -150,7 +150,7 @@ header {
       transform: translate(-50%);
       flex-shrink: 0;
       width: 340px;
-      height: 332px;
+      height: 350px;
       border-radius: 6px;
       border: none;
       cursor: default;
@@ -179,6 +179,12 @@ header {
         @include Medium_Body;
         color: $Gray70;
         margin: 10px 15px 15px 15px;
+      }
+
+      .header__item__login__text--memberinfo {
+        margin: 5px 0px 0px 0px;
+        @include Medium_Body;
+        color: red;
       }
 
       .header__item__login__text--createCount {

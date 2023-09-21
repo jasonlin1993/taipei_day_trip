@@ -1,4 +1,5 @@
 * {
+  border: 1px solid black;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -201,6 +202,14 @@ header .header__item .header__item__createCount .header__item__login__text--crea
 }
 header .header__item .header__item__createCount .header__item__login__text--createCount:hover {
   color: rgb(0, 255, 76);
+}
+header .header__item .header__item__createCount .header__item__login__text--memberinfo {
+  padding: 10px 0px 0px 0px;
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 13.3px;
+  color: red;
 }
 header .header__item .header__item__createCount .header__banner__login__Box {
   display: flex;
