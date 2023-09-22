@@ -2,6 +2,11 @@ from flask import *
 from api.attractions_api import attractions_api
 from api.attraction_id_api import attraction_id_api
 from api.mrt_api import mrt_api
+from api.user_api import user_api
+from api.user_auth_api import user_auth_api
+from data.database import pool
+import jwt
+import datetime
 
 app = Flask(
     __name__,
@@ -12,7 +17,7 @@ app = Flask(
 
 app.json.ensure_ascii = False
 app.config["TEMPLATES_AUTO_RELOAD"]=True
-
+SECRET_KEY = 'this_is_my_secret_key'
 
 # Pages
 @app.route("/")
@@ -29,7 +34,10 @@ def thankyou():
 	return render_template("thankyou.html")
 
 
+
 app.register_blueprint(attractions_api)
 app.register_blueprint(attraction_id_api)
 app.register_blueprint(mrt_api)
+app.register_blueprint(user_api)
+app.register_blueprint(user_auth_api)
 app.run(host="0.0.0.0", port=3000, debug=1)

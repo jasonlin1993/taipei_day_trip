@@ -36,9 +36,15 @@ function checkTime(timePeriod) {
       let activeIndex = Array.from(slides).findIndex(slide => slide.classList.contains('active'));
   
       let newIndex = activeIndex + offset;
-      if (newIndex < 0) newIndex = slides.length - 1;
-      if (newIndex >= slides.length) newIndex = 0;
-  
+      
+      if (newIndex < 0) {
+        newIndex = slides.length - 1;
+      }
+
+      if (newIndex >= slides.length) {
+        newIndex = 0;
+      }
+
       slides[activeIndex].classList.remove('active');
       slides[newIndex].classList.add('active');
   
@@ -71,8 +77,6 @@ function checkTime(timePeriod) {
   }
 
   function createCircleElements(imageCount) {
-    console.log("Creating circle elements for count:", imageCount);
-    
     const circleCurrentUrl = document.getElementById('circle-current-url').value;
     const circleCurrent1Url = document.getElementById('circle-current-1-url').value;
   

@@ -178,3 +178,4 @@ function scrollToRight() {
   const container = document.getElementById('metroStations');
   container.scrollLeft += 300;
 }
+

@@ -11,12 +11,59 @@
       <div class="header__item">
         <div class="header__item__logo">
           <a class="header__item__logo" href="/">
-            <div class="header__item__logo" >台北一日遊</div>
+            <div class="header__item__logo">台北一日遊</div>
           </a>
         </div>
         <div class="header__item__text">
           <div class="header__item__text--booking">預定行程</div>
           <div class="header__item__text--singin">登入/註冊</div>
+          <form id="signinForm" method="PUT" action="/api/user/auth">
+            <dialog class="header__item__login">
+              <div class="header__item__login--top"></div>
+              <div class="header__item__login--close">
+                <img src="{{ url_for('static', filename='styles/icon/icon_close.svg') }}" alt="icon_close" />
+              </div>
+              <div class="header__item__login__text--H3">登入會員帳號</div>
+              <div class="header__banner__login__Box">
+                <input type="email" placeholder="輸入電子信箱" id="signinEmail" required />
+                <input type="password" placeholder="輸入密碼" id="signinPassword" required />
+                <div class="header__item__login__button" type="button" onclick="loginAccount()">
+                  <p>登入帳戶</p>
+                </div>
+                <div class="header__item__login__text--signinInfo">
+                  <p></p>
+                </div>
+                <div class="header__item__login__text--body">
+                  <p>還沒有帳戶嗎?</p>
+                  <p class="header__item__login__text--createCount">點此註冊</p>
+                </div>
+              </div>
+            </dialog>
+          </form>
+          <form id="signupForm" method="POST" action="/api/user1">
+            <dialog class="header__item__createCount">
+              <div class="header__item__login--top"></div>
+              <div class="header__item__login--close">
+                <img src="{{ url_for('static', filename='styles/icon/icon_close.svg') }}" alt="icon_close" />
+              </div>
+              <div class="header__item__login__text--H3">註冊會員帳號</div>
+              <div class="header__banner__login__Box">
+                <input type="text" placeholder="輸入姓名" id="signUpName" />
+                <input type="email" placeholder="輸入電子信箱" id="signUpEmail" />
+                <input type="password" placeholder="輸入密碼" id="signUpPassword" />
+                <div class="header__item__login__button" type="button" onclick="createAccount()">
+                  <p>註冊新帳戶</p>
+                </div>
+                <div class="header__item__login__text--memberinfo">
+                  <p></p>
+                </div>
+                <div class="header__item__login__text--body">
+                  <p>已經有帳戶了?</p>
+                  <p class="header__item__login__text--createCount">點此登入</p>
+                </div>
+              </div>
+            </dialog>
+          </form>
         </div>
       </div>
     </header>
@@ -27,10 +74,9 @@
           <div class="header__banner__text--Body">探索每個角落，體驗城市的深度旅遊行程</div>
           <form id="searchBox" method="GET" onsubmit="event.preventDefault();">
             <div class="header__banner__searchBox">
-              <input type="search" placeholder="輸入景點名稱查詢" id="search"/>
-              <div class="header__banner__searchBox__searchLogo" type="button" onclick="search()"/>
-                <img src="{{ url_for('static', filename='styles/icon/icon_search.svg') }}" alt="icon_search" />
-              </div>
+              <input type="search" placeholder="輸入景點名稱查詢" id="search" />
+              <div class="header__banner__searchBox__searchLogo" type="button" onclick="search()" />
+              <img src="{{ url_for('static', filename='styles/icon/icon_search.svg') }}" alt="icon_search" />
             </div>
           </form>
         </div>
@@ -69,7 +115,7 @@
     </section>
     <section class="attraction">
       <div class="container">
-        <div class="container__section" >
+        <div class="container__section">
           <!-- <div class="container__section__title">
             <img src="picture/travel.jpg" class="container__section__title__image" />
             <p class="container__section__title__text">平安鐘</p>
@@ -82,9 +128,10 @@
       </div>
     </section>
     <div class="load-more-trigger"></div>
-  <footer>
-    <div class="footer__text">COPYRIGHT © 2021 台北一日遊</div>
-  </footer>
+    <footer>
+      <div class="footer__text">COPYRIGHT © 2021 台北一日遊</div>
+    </footer>
   </body>
+  <script src="{{ url_for('static', filename='javascript/login.js') }}"></script>
   <script src="{{ url_for('static', filename='javascript/index.js') }}"></script>
 </html>
