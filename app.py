@@ -34,7 +34,21 @@ def thankyou():
 	return render_template("thankyou.html")
 
 
-@app.route("/api/mrts", methods=["GET"])
+# @app.route("/api/mrts", methods=["GET"])
+# def getMrt():
+#     try:
+#         with pool.get_connection() as database:
+#             with database.cursor(dictionary=True) as cursor:
+#                 cursor.execute("SELECT mrt, COUNT(mrt) AS count FROM attraction GROUP BY mrt ORDER BY count DESC")
+#                 results = cursor.fetchall()
+#                 mrts = [item['mrt'] for item in results]
+#                 return jsonify({"data": mrts})
+#     except Exception as e:
+#         print(e)
+#         return jsonify({"error": True, "message": "伺服器內部錯誤"}), 500
+
+
+@app.route("/api/user", methods=["GET"])
 def getMrt():
     try:
         with pool.get_connection() as database:
@@ -46,10 +60,6 @@ def getMrt():
     except Exception as e:
         print(e)
         return jsonify({"error": True, "message": "伺服器內部錯誤"}), 500
-
-
-@app.route("/api/user", methods=["GET"])
-def postUser():
     # if request.method == 'GET':
     #     return jsonify(ok=True), 200
     # elif request.method == 'POST':  # 表單送出後會到這裡
@@ -78,7 +88,7 @@ def postUser():
 
         # except Exception as e:
         #     print(e)
-            return jsonify(error=True, message="伺服器內部錯誤"), 500
+            # return jsonify(error=True, message="伺服器內部錯誤"), 500
         
 
 @app.route("/api/user/auth", methods=["GET", "PUT"])
