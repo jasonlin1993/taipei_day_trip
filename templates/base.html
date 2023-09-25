@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href={{ url_for("static", filename="styles/css/base.css" ) }}> </link>
+
+    {% block extra_css%}
+
+    <!-- insert css file -->
+    
+    {%endblock %}
+
+    <title>台北一日遊</title>
+  </head>
+  <body>
+    <header>
+      <div class="header__item">
+        <div class="header__item__logo">
+          <a class="header__item__logo" href="/">
+            <div class="header__item__logo">台北一日遊</div>
+          </a>
+        </div>
+        <div class="header__item__text">
+          <div class="header__item__text--booking">預定行程</div>
+          <div class="header__item__text--singin">登入/註冊</div>
+          <form id="signinForm" method="PUT" action="/api/user/auth">
+            <dialog class="header__item__login">
+              <div class="header__item__login--top"></div>
+              <div class="header__item__login--close">
+                <img src="{{ url_for('static', filename='styles/icon/icon_close.svg') }}" alt="icon_close" />
+              </div>
+              <div class="header__item__login__text--H3">登入會員帳號</div>
+              <div class="header__banner__login__Box">
+                <input type="email" placeholder="輸入電子信箱" id="signinEmail" required />
+                <input type="password" placeholder="輸入密碼" id="signinPassword" required />
+                <div class="header__item__login__button" type="button" onclick="loginAccount()">
+                  <p>登入帳戶</p>
+                </div>
+                <div class="header__item__login__text--signinInfo">
+                  <p></p>
+                </div>
+                <div class="header__item__login__text--body">
+                  <p>還沒有帳戶嗎?</p>
+                  <p class="header__item__login__text--createCount">點此註冊</p>
+                </div>
+              </div>
+            </dialog>
+          </form>
+          <form id="signupForm" method="POST" action="/api/user1">
+            <dialog class="header__item__createCount">
+              <div class="header__item__login--top"></div>
+              <div class="header__item__login--close">
+                <img src="{{ url_for('static', filename='styles/icon/icon_close.svg') }}" alt="icon_close" />
+              </div>
+              <div class="header__item__login__text--H3">註冊會員帳號</div>
+              <div class="header__banner__login__Box">
+                <input type="text" placeholder="輸入姓名" id="signUpName" />
+                <input type="email" placeholder="輸入電子信箱" id="signUpEmail" />
+                <input type="password" placeholder="輸入密碼" id="signUpPassword" />
+                <div class="header__item__login__button" type="button" onclick="createAccount()">
+                  <p>註冊新帳戶</p>
+                </div>
+                <div class="header__item__login__text--memberinfo">
+                  <p></p>
+                </div>
+                <div class="header__item__login__text--body">
+                  <p>已經有帳戶了?</p>
+                  <p class="header__item__login__text--createCount">點此登入</p>
+                </div>
+              </div>
+            </dialog>
+          </form>
+        </div>
+      </div>
+    </header>
+
+    {% block content %}
+
+    <!-- Content will be inserted here -->
+
+    {% endblock %}
+
+    <footer>
+      <div class="footer__text">COPYRIGHT © 2021 台北一日遊</div>
+    </footer>
+  </body>
+  <script src="{{ url_for('static', filename='javascript/login.js') }}"></script>
+  <script src="{{ url_for('static', filename='javascript/index.js') }}"></script>
+
+  {% block extra_js %}
+  
+  <!-- insert js file -->
+
+  {% endblock %} 
+</html>

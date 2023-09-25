@@ -5,8 +5,7 @@ from api.mrt_api import mrt_api
 from api.user_api import user_api
 from api.user_auth_api import user_auth_api
 from data.database import pool
-import jwt
-import datetime
+
 
 app = Flask(
     __name__,
@@ -17,7 +16,7 @@ app = Flask(
 
 app.json.ensure_ascii = False
 app.config["TEMPLATES_AUTO_RELOAD"]=True
-SECRET_KEY = 'this_is_my_secret_key'
+
 
 # Pages
 @app.route("/")
