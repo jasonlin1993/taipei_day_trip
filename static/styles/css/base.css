@@ -372,4 +372,27 @@ footer .footer__text {
   background-color: #757575;
   color: #ffffff;
   height: 104px;
+}
+
+.cutLine {
+  color: #e8e8e8;
+  height: 1px;
+  opacity: 0.3;
+}
+
+.cutLine2 {
+  color: #e8e8e8;
+  height: 1px;
+  opacity: 0.3;
+  max-width: 1200px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: block;
+  margin: 0 auto;
+}
+@media (max-width: 850px) {
+  .cutLine2 {
+    margin: 40px 0px;
+  }
 }/*# sourceMappingURL=base.css.map */

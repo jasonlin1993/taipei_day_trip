@@ -1,0 +1,265 @@
+@media (max-width: 600px) {
+  .cutLine2 {
+    display: none;
+  }
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 10px;
+}
+
+.headline__text {
+  display: flex;
+  width: 1000px;
+  height: 27px;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 6px 0px 5px 0px;
+  margin: 40px 0px 30px 0px;
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: bold;
+  font-size: 19px;
+  line-height: 16px;
+  color: #666666;
+}
+
+.attraction {
+  display: flex;
+  justify-content: start;
+  max-width: 980px;
+  width: 100%;
+  height: 200px;
+  margin: 0px 0px 40px 0px;
+}
+@media (max-width: 850px) {
+  .attraction {
+    margin: 0;
+  }
+}
+@media (max-width: 600px) {
+  .attraction {
+    flex-direction: column;
+    height: 100%;
+    margin: 0px;
+  }
+}
+.attraction .attraction__img {
+  display: flex;
+  width: 250px;
+  height: 200px;
+  flex-shrink: 1;
+}
+@media (max-width: 600px) {
+  .attraction .attraction__img {
+    flex-shrink: 1;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  }
+}
+.attraction .attraction__info {
+  position: relative;
+  width: 700px;
+  height: 170px;
+  margin: 0px 0px 30px 22px;
+}
+@media (max-width: 600px) {
+  .attraction .attraction__info {
+    position: relative;
+    width: 100%;
+    margin: 28px 0px 0px 0px;
+    border-bottom: 1px solid #e8e8e8;
+  }
+}
+.attraction .attraction__info p {
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 13.3px;
+  color: #666666;
+  padding: 5px 0px;
+  margin: 0px 0px 20px 0px;
+  font-weight: bold;
+}
+.attraction .attraction__info .attraction__info__name {
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: Bold;
+  font-size: 16px;
+  line-height: 13.3px;
+  color: #448899;
+  font-weight: bold;
+}
+.attraction .attraction__info .attraction__info__deleteBtn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+@media (max-width: 600px) {
+  .attraction .attraction__info .attraction__info__deleteBtn {
+    position: absolute;
+    top: 75%;
+    right: 0;
+  }
+}
+
+.contact__form {
+  padding: 40px 0px;
+  max-width: 980px;
+  width: 100%;
+  height: 100%;
+}
+.contact__form .contact__form__title {
+  display: flex;
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: bold;
+  font-size: 19px;
+  line-height: 16px;
+  color: #666666;
+  padding: 4px 0px;
+  align-items: center;
+  margin: 0px 0px 15px 0px;
+}
+.contact__form .contact__form__text {
+  display: flex;
+  align-items: center;
+  margin: 0px 0px 15px 0px;
+  flex-direction: row;
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 13.3px;
+  color: #666666;
+}
+.contact__form .contact__form__text p {
+  margin: 0px 10px 0px 0px;
+}
+.contact__form .contact__form__text .contact__form__text__field {
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: Bold;
+  font-size: 16px;
+  line-height: 13.3px;
+  color: #666666;
+  padding: 5px 0px;
+  line-height: 1.5;
+}
+.contact__form .contact__form__text input {
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 13.3px;
+  width: 200px;
+  height: 38px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #e8e8e8;
+}
+@media (max-width: 850px) {
+  .contact__form {
+    margin: 0;
+    padding: 0;
+  }
+}
+@media (max-width: 600px) {
+  .contact__form {
+    border-bottom: 1px solid #e8e8e8;
+    padding: 20px 0px 10px 0px;
+  }
+}
+
+.contact__payment {
+  padding: 40px 0px;
+  max-width: 980px;
+  width: 100%;
+  height: 100%;
+}
+.contact__payment .contact__payment__title {
+  display: flex;
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: bold;
+  font-size: 19px;
+  line-height: 16px;
+  color: #666666;
+  padding: 4px 0px;
+  align-items: center;
+  margin: 0px 0px 15px 0px;
+}
+.contact__payment .contact__form__payment {
+  display: flex;
+  align-items: center;
+  margin: 0px 0px 15px 0px;
+  flex-direction: row;
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 13.3px;
+  color: #666666;
+}
+.contact__payment .contact__form__payment p {
+  margin: 0px 10px 0px 0px;
+}
+.contact__payment .contact__form__payment .contact__form__payment__password {
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: Bold;
+  font-size: 16px;
+  line-height: 13.3px;
+  color: #666666;
+  padding: 5px 0px;
+  line-height: 1.5;
+}
+.contact__payment .contact__form__payment input {
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 13.3px;
+  width: 200px;
+  height: 38px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #e8e8e8;
+}
+@media (max-width: 850px) {
+  .contact__payment {
+    margin: 0;
+    padding: 0;
+  }
+}
+@media (max-width: 600px) {
+  .contact__payment {
+    border-bottom: 1px solid #e8e8e8;
+    padding: 20px 0px 10px 0px;
+  }
+}
+
+.confirm {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  margin: 40px 0px;
+  max-width: 980px;
+  width: 100%;
+  height: 100px;
+}
+.confirm .confirm__text {
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: Bold;
+  font-size: 16px;
+  line-height: 13.3px;
+  color: #666666;
+  margin: 0px 0px 22px 0px;
+}
+.confirm .confirm__button {
+  width: 173px;
+  height: 36px;
+  padding: 10px 18px;
+  border-radius: 5px;
+  font-family: "Noto Sans TC", sans-serif;
+  font-size: 19px;
+  line-height: 16px;
+  background-color: #448899;
+  color: #ffffff;
+  cursor: pointer;
+}/*# sourceMappingURL=booking.css.map */

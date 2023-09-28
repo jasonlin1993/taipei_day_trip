@@ -1,23 +1,5 @@
-.cutLine {
-  color: #e8e8e8;
-  height: 1px;
-  opacity: 0.3;
-}
-
-.cutLine2 {
-  color: #e8e8e8;
-  height: 1px;
-  opacity: 0.3;
-  max-width: 1200px;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  display: block;
-  margin: 0 auto;
-  @include pad_850px {
-    margin: 40px 0px;
-  }
-}
+@import "variable";
+@import "mixin";
 
 // 第二區
 section {
