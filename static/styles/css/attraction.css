@@ -293,4 +293,9 @@ section .section__attraction .section__attraction__profile .section__attraction_
   .section__attraction__information {
     width: 600px;
   }
+}
+
+.dateError {
+  color: red;
+  display: none;
 }/*# sourceMappingURL=attraction.css.map */

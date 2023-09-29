@@ -155,7 +155,7 @@ function checkLoginStatus() {
     });
 }
 
-document.addEventListener("DOMContentLoaded", function () {
+function initialize() {
   const booking1 = document.querySelector(".header__item__text--booking");
   const booking2 = document.querySelector(".section__attraction__profile__bookingform__text--bookingBTN");
   const dialog = document.querySelector(".header__item__login");
@@ -189,6 +189,24 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function handleClick() {
+    const dateInput = document.getElementById("bday");
+    const dateErrorElement = document.querySelector(".dateError");
+
+    // 如果沒有輸入日期
+    if (!dateInput.value) {
+      dateErrorElement.style.display = "block"; // 顯示錯誤訊息
+      return; // 退出函數
+    } else {
+      dateErrorElement.style.display = "none"; // 隱藏錯誤訊息
+    }
+
+    checkLoginStatus((isLoggedIn) => {
+      if (isLoggedIn) {
+        window.location.href = "/booking";
+      } else {
+        dialog.showModal();
+      }
+    });
     checkLoginStatus((isLoggedIn) => {
       if (isLoggedIn) {
         window.location.href = "/booking";
@@ -205,7 +223,14 @@ document.addEventListener("DOMContentLoaded", function () {
   closeDialogButton.addEventListener("click", function () {
     dialog.close();
   });
-});
+}
+
+// 當 DOM 全部載入完畢，就執行 initialize 函數
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initialize);
+} else {
+  initialize();
+}
 
 // 當文件載入完成後，我們會呼叫上述的檢查狀態函數
 document.addEventListener("DOMContentLoaded", checkLoginStatus);

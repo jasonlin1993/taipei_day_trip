@@ -130,4 +130,58 @@ function populateData(data) {
     data.transport;
 }
 
+async function bookAttraction() {
+  const attractionId = getIdFromUrl();
+  const date = document.getElementById("bday").value;
+  const morningBtn = document.getElementById("morningBtn");
+  const afternoonBtn = document.getElementById("afternoonBtn");
+
+  let time;
+  if (morningBtn.src.includes("radio_btn_click.svg")) {
+    time = "morning";
+  } else if (afternoonBtn.src.includes("radio_btn_click.svg")) {
+    time = "afternoon";
+  }
+
+  const tourCostElem = document.getElementById("tourCost");
+  let price;
+  if (tourCostElem.textContent.includes("2000")) {
+    price = 2000;
+  } else if (tourCostElem.textContent.includes("2500")) {
+    price = 2500;
+  }
+
+  const bookingData = {
+    attraction_id: attractionId,
+    date: date,
+    time: time,
+    price: price,
+  };
+  console.log(bookingData);
+
+  try {
+    const response = await fetch("/api/booking", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("jwt"),
+      },
+      body: JSON.stringify(bookingData),
+    });
+
+    const data = await response.json();
+
+    if (data.ok) {
+      alert("預約成功！");
+    } else {
+      alert(data.message);
+    }
+  } catch (error) {
+    console.error("Error booking:", error);
+  }
+}
+document
+  .querySelector(".section__attraction__profile__bookingform__text--bookingBTN")
+  .addEventListener("click", bookAttraction);
+
 window.onload = fetchData;
