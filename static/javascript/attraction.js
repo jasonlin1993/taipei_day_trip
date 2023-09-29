@@ -1,3 +1,7 @@
+// 限制日期選擇
+let today = new Date().toISOString().substr(0, 10);
+document.getElementById("bday").min = today;
+
 function checkTime(timePeriod) {
   const morningBtn = document.getElementById("morningBtn");
   const afternoonBtn = document.getElementById("afternoonBtn");

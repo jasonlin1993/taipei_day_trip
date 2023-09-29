@@ -6,7 +6,7 @@ from data.database import pool
 user_api = Blueprint('user_api', __name__)
 
 @user_api.route("/api/user", methods=["POST"])
-def postUser():
+def post_user():
     data = request.get_json()
     name = data['name']
     email = data['email']
