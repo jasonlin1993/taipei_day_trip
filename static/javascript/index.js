@@ -1,20 +1,19 @@
-let url = '/api/attractions?page=0';
+let url = "/api/attractions?page=0";
 let results = [];
 let nextPage = null;
 let isLoading = false;
-let currentKeyword = ''; // 新增一個變量來存儲當前的搜尋關鍵字
+let currentKeyword = ""; // 新增一個變量來存儲當前的搜尋關鍵字
 
 function createElement(data) {
-
   let newDiv = document.createElement("div");
   newDiv.className = "container__section__title";
 
-  let id = data.id; 
-  let link = document.createElement('a');
+  let id = data.id;
+  let link = document.createElement("a");
   link.href = "/attraction/" + id;
   link.className = "attraction-link";
 
-  let img = document.createElement('img');
+  let img = document.createElement("img");
   img.src = data.images[0];
   img.className = "container__section__title__image";
 
@@ -41,7 +40,7 @@ function createElement(data) {
   link.appendChild(mrtDiv);
 
   newDiv.appendChild(link); // 將連結元素添加到新的 div 中
-  document.querySelector('.container__section').appendChild(newDiv);
+  document.querySelector(".container__section").appendChild(newDiv);
 }
 
 async function loadNextPage() {
@@ -52,23 +51,23 @@ async function loadNextPage() {
   try {
     const response = await fetch(`/api/attractions?page=${nextPage}&keyword=${currentKeyword}`); // 修改這裡來包含當前的搜尋關鍵字
     const data = await response.json();
-    
+
     results = results.concat(data.data);
     nextPage = data.nextPage;
 
-    data.data.forEach(item => {
+    data.data.forEach((item) => {
       createElement(item);
     });
 
     isLoading = false;
   } catch (error) {
-    console.error('Error:', error);
+    console.error("Error:", error);
     isLoading = false;
   }
 }
 
 let observer = new IntersectionObserver((entries, observer) => {
-  entries.forEach(entry => {
+  entries.forEach((entry) => {
     if (entry.isIntersecting) {
       loadNextPage();
     }
@@ -80,9 +79,9 @@ async function initializeData() {
     const response = await fetch(url);
     const data = await response.json();
     if (!data.data || data.data.length === 0) {
-      const noDataDiv = document.createElement('div');
+      const noDataDiv = document.createElement("div");
       noDataDiv.textContent = "抱歉，查無資料";
-      document.querySelector('.container__section').appendChild(noDataDiv);
+      document.querySelector(".container__section").appendChild(noDataDiv);
       return;
     }
 
@@ -92,11 +91,11 @@ async function initializeData() {
     data.data.forEach((item, index) => {
       createElement(item);
       if (index === data.data.length - 1) {
-        observer.observe(document.querySelector('.load-more-trigger'));
+        observer.observe(document.querySelector(".load-more-trigger"));
       }
     });
   } catch (error) {
-    console.error('Error:', error);
+    console.error("Error:", error);
   }
 }
 
@@ -104,37 +103,36 @@ initializeData();
 
 async function getMrtData() {
   try {
-    const response = await fetch('/api/mrts');
+    const response = await fetch("/api/mrts");
     const data = await response.json();
     return data.data;
   } catch (error) {
-    console.error('Error fetching MRT data:', error);
+    console.error("Error fetching MRT data:", error);
   }
 }
 
 function searchMRT(stationName) {
-  const searchInput = document.getElementById('search');
+  const searchInput = document.getElementById("search");
   searchInput.value = stationName; // 設置搜索框的值為站名
   search(); // 調用現有的搜索功能進行搜索
 }
 
-
 async function populateMrtList() {
-  const metroStationsContainer = document.querySelector('.section__listBar__container');
-  
+  const metroStationsContainer = document.querySelector(".section__listBar__container");
+
   // 清除現有的資料
-  metroStationsContainer.innerHTML = '';
+  metroStationsContainer.innerHTML = "";
 
   try {
     const mrtData = await getMrtData();
 
     if (mrtData) {
-      mrtData.forEach(station => {
+      mrtData.forEach((station) => {
         if (station) {
-          const stationDiv = document.createElement('div');
-          stationDiv.className = 'section__listBar__container__text';
+          const stationDiv = document.createElement("div");
+          stationDiv.className = "section__listBar__container__text";
           stationDiv.textContent = station;
-          stationDiv.onclick = function() {
+          stationDiv.onclick = function () {
             searchMRT(station);
           }; // 為每個站添加一個點擊事件來調用新的 searchMRT 函數
           metroStationsContainer.appendChild(stationDiv);
@@ -142,25 +140,22 @@ async function populateMrtList() {
       });
     }
   } catch (error) {
-    console.error('Error populating MRT list:', error);
+    console.error("Error populating MRT list:", error);
   }
 }
 
-
-document.addEventListener('DOMContentLoaded', populateMrtList);
-
 async function search() {
-  const searchValue = document.getElementById('search').value;
+  const searchValue = document.getElementById("search").value;
   if (searchValue) {
     url = `/api/attractions?page=0&keyword=${encodeURIComponent(searchValue)}`;
-    currentKeyword = encodeURIComponent(searchValue);  // 修改這裡來儲存當前的搜尋關鍵字
+    currentKeyword = encodeURIComponent(searchValue); // 修改這裡來儲存當前的搜尋關鍵字
   } else {
-    url = '/api/attractions?page=0';
-    currentKeyword = '';  // 如果沒有搜尋條件，則清空currentKeyword
+    url = "/api/attractions?page=0";
+    currentKeyword = ""; // 如果沒有搜尋條件，則清空currentKeyword
   }
-  
+
   // 清空之前的結果
-  document.querySelector('.container__section').innerHTML = '';
+  document.querySelector(".container__section").innerHTML = "";
   results = [];
   nextPage = null;
   isLoading = false;
@@ -170,12 +165,13 @@ async function search() {
 }
 
 function scrollToLeft() {
-  const container = document.getElementById('metroStations');
-  container.scrollLeft -= 300; 
+  const container = document.getElementById("metroStations");
+  container.scrollLeft -= 300;
 }
 
 function scrollToRight() {
-  const container = document.getElementById('metroStations');
+  const container = document.getElementById("metroStations");
   container.scrollLeft += 300;
 }
 
+document.addEventListener("DOMContentLoaded", populateMrtList);

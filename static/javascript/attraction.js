@@ -66,6 +66,7 @@ function getIdFromUrl() {
 async function fetchData() {
   try {
     const id = getIdFromUrl();
+    console.log(id);
     const response = await fetch(`/api/attraction/${id}`);
     const data = await response.json();
     populateData(data.data);

@@ -7,38 +7,6 @@ let createCountClose = document.querySelector(".header__item__createCount .heade
 let createCountLink = document.querySelector(".header__item__login__text--createCount");
 let signInLink = document.querySelector(".header__item__createCount .header__item__login__text--createCount");
 
-// 為 "預定行程" 添加點擊事件
-let bookingButton = document.querySelector(".header__item__text--booking");
-bookingButton.addEventListener("click", function () {
-  handleBookingClick();
-});
-
-// 處理 "預定行程" 的點擊事件
-function handleBookingClick() {
-  let isLoggedin = localStorage.getItem("jwt");
-  if (isLoggedin) {
-    // 使用者已登入，導向預定行程頁面
-    window.location.href = "/booking";
-  } else {
-    // 使用者未登入，顯示登入 dialog
-    loginModal.showModal();
-  }
-}
-
-// 為 "開始預約行程" 添加點擊事件
-let startBookingButton = document.querySelector(".section__attraction__profile__bookingform__text--bookingBTN");
-startBookingButton.addEventListener("click", function () {
-  handleStartBookingClick();
-});
-
-function handleStartBookingClick() {
-  let isLoggedin = localStorage.getItem("jwt");
-  if (!isLoggedin) {
-    // 只在使用者未登入時顯示 dialog
-    loginModal.showModal();
-  }
-}
-
 // 事件處理器函數
 function showLoginModal() {
   createCountModal.close();
@@ -178,6 +146,7 @@ function checkLoginStatus() {
   })
     .then((response) => response.json())
     .then((data) => {
+      console.log(data.data.id);
       if (data.data === null || data.error === true) {
         btn.innerText = "登入/註冊";
       } else {
@@ -185,6 +154,58 @@ function checkLoginStatus() {
       }
     });
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  const booking1 = document.querySelector(".header__item__text--booking");
+  const booking2 = document.querySelector(".section__attraction__profile__bookingform__text--bookingBTN");
+  const dialog = document.querySelector(".header__item__login");
+
+  function checkLoginStatus(callback) {
+    const jwtToken = localStorage.getItem("jwt");
+
+    if (!jwtToken) {
+      callback(false);
+      return;
+    }
+
+    fetch("/api/user/auth", {
+      method: "GET",
+      headers: {
+        Authorization: "Bearer " + jwtToken,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.data === null || data.error === true) {
+          callback(false);
+        } else {
+          callback(true);
+        }
+      })
+      .catch((error) => {
+        console.error("Error during authentication:", error);
+        callback(false);
+      });
+  }
+
+  function handleClick() {
+    checkLoginStatus((isLoggedIn) => {
+      if (isLoggedIn) {
+        window.location.href = "/booking";
+      } else {
+        dialog.showModal();
+      }
+    });
+  }
+
+  booking1.addEventListener("click", handleClick);
+  booking2.addEventListener("click", handleClick);
+
+  const closeDialogButton = document.querySelector(".header__item__login--close");
+  closeDialogButton.addEventListener("click", function () {
+    dialog.close();
+  });
+});
 
 // 當文件載入完成後，我們會呼叫上述的檢查狀態函數
 document.addEventListener("DOMContentLoaded", checkLoginStatus);
