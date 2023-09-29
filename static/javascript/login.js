@@ -25,6 +25,20 @@ function handleBookingClick() {
   }
 }
 
+// 為 "開始預約行程" 添加點擊事件
+let startBookingButton = document.querySelector(".section__attraction__profile__bookingform__text--bookingBTN");
+startBookingButton.addEventListener("click", function () {
+  handleStartBookingClick();
+});
+
+function handleStartBookingClick() {
+  let isLoggedin = localStorage.getItem("jwt");
+  if (!isLoggedin) {
+    // 只在使用者未登入時顯示 dialog
+    loginModal.showModal();
+  }
+}
+
 // 事件處理器函數
 function showLoginModal() {
   createCountModal.close();

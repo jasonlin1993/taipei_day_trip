@@ -286,6 +286,10 @@ header .header__item .header__item__text {
   line-height: 13.3px;
   cursor: pointer;
 }
+header .header__item .header__item__text .header__item__text--booking:hover,
+header .header__item .header__item__text .header__item__text--singin:hover {
+  color: rgb(0, 255, 55);
+}
 header .header__item .header__item__text .header__item__text--booking {
   padding: 0px 20px 0px 0px;
 }

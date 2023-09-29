@@ -273,6 +273,14 @@ header {
       padding: 0px 10px 0px 5px;
       @include Medium_Body;
       cursor: pointer;
+
+      .header__item__text--booking,
+      .header__item__text--singin {
+        &:hover {
+          color: rgb(0, 255, 55);
+        }
+      }
+
       .header__item__text--booking {
         padding: 0px 20px 0px 0px;
       }
