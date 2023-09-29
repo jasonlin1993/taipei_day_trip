@@ -7,6 +7,24 @@ let createCountClose = document.querySelector(".header__item__createCount .heade
 let createCountLink = document.querySelector(".header__item__login__text--createCount");
 let signInLink = document.querySelector(".header__item__createCount .header__item__login__text--createCount");
 
+// 為 "預定行程" 添加點擊事件
+let bookingButton = document.querySelector(".header__item__text--booking");
+bookingButton.addEventListener("click", function () {
+  handleBookingClick();
+});
+
+// 處理 "預定行程" 的點擊事件
+function handleBookingClick() {
+  let isLoggedin = localStorage.getItem("jwt");
+  if (isLoggedin) {
+    // 使用者已登入，導向預定行程頁面
+    window.location.href = "/booking";
+  } else {
+    // 使用者未登入，顯示登入 dialog
+    loginModal.showModal();
+  }
+}
+
 // 事件處理器函數
 function showLoginModal() {
   createCountModal.close();
