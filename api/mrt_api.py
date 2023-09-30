@@ -6,7 +6,7 @@ from data.database import pool
 mrt_api = Blueprint('mrt_api', __name__)
 
 @mrt_api.route("/api/mrts", methods=["GET"])
-def getMrt():
+def get_mrt():
     try:
         with pool.get_connection() as database:
             with database.cursor(dictionary=True) as cursor:

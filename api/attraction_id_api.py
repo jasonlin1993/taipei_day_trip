@@ -5,7 +5,7 @@ from data.database import pool
 
 attraction_id_api = Blueprint('attractions_id_api', __name__)
 @attraction_id_api.route("/api/attraction/<int:id>", methods=["GET"])
-def getAttraction(id:int):
+def get_attraction(id:int):
     try:
         with pool.get_connection() as database:
             with database.cursor(dictionary=True) as cursor:

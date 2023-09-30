@@ -47,6 +47,38 @@ INSERT INTO `attraction` VALUES (1,'新北投溫泉區','養生溫泉','北投�
 UNLOCK TABLES;
 
 --
+-- Table structure for table `booking`
+--
+
+DROP TABLE IF EXISTS `booking`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `booking` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `member_id` bigint NOT NULL,
+  `attraction_id` bigint NOT NULL,
+  `date` date NOT NULL,
+  `time` varchar(255) NOT NULL,
+  `price` text NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `member_id` (`member_id`),
+  KEY `attraction_id` (`attraction_id`),
+  CONSTRAINT `booking_ibfk_1` FOREIGN KEY (`member_id`) REFERENCES `member` (`id`),
+  CONSTRAINT `booking_ibfk_2` FOREIGN KEY (`attraction_id`) REFERENCES `attraction` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `booking`
+--
+
+LOCK TABLES `booking` WRITE;
+/*!40000 ALTER TABLE `booking` DISABLE KEYS */;
+INSERT INTO `booking` VALUES (70,5,12,'2023-10-06','morning','2000');
+/*!40000 ALTER TABLE `booking` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `images`
 --
 
@@ -86,7 +118,7 @@ CREATE TABLE `member` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,7 +127,7 @@ CREATE TABLE `member` (
 
 LOCK TABLES `member` WRITE;
 /*!40000 ALTER TABLE `member` DISABLE KEYS */;
-INSERT INTO `member` VALUES (2,'123','',''),(3,'1111','123@13.com','sdsd'),(4,'6666','666@123.com','456');
+INSERT INTO `member` VALUES (2,'123','',''),(3,'1111','123@13.com','sdsd'),(4,'6666','666@123.com','456'),(5,'test','test@test.com','test'),(6,'777','777@777.com','777'),(7,'666','666@666.com','666'),(8,'999','999@999.com','999'),(9,'000','000@000.com','000'),(10,'789','789@789.com','789'),(11,'555','555@555.com','555'),(12,'456','456@456.com','456'),(13,'369','369@369.com','369'),(14,'8888','8888@888.com','888'),(15,'5555','5555@5555.com','5555'),(16,'9999','9999@9999.com','9999'),(17,'5678','5678@5678.com','5678'),(18,'7890','7890@7890.com','7890'),(19,'5656','5656@5656.com','5656'),(20,'9898','9898@9898.com','9898'),(21,'357','357@357.com','357'),(22,'159','159@159.com','159'),(23,'ppp','ppp@ppp.com','ppp');
 /*!40000 ALTER TABLE `member` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -108,4 +140,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-09-21 14:02:09
+-- Dump completed on 2023-09-30 10:18:05

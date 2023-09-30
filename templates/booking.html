@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+<!-- 插入 css 檔案 -->
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='styles/css/booking.css') }}" />
+{% endblock %}
+
+<!-- 寫入 booking.html 檔案 -->
+{% block content %}
+<hr class="cutLine" />
+
+<section class="headline">
+  <div class="headline__text">
+    <p>您好，</p>
+    <p class="headline__text__name" />
+    <p>，待預定的行程如下 :</p>
+  </div>
+</section>
+<section>
+  <p class="noneBooking">目前沒有任何待預定行程</p>
+</section>
+
+<section class="attractionInformation"><div class="attractionContainer"/ ></section>
+
+<hr class="cutLine2" />
+
+<section class="attractionInformation">
+  <div class="contact__form">
+    <p class="contact__form__title">您的聯絡資訊</p>
+    <div class="contact__form__text">
+      <p class="contact_form__text__name">聯絡姓名 :</p>
+      <input class="inputName" action="text" />
+    </div>
+    <div class="contact__form__text">
+      <p class="contact__form__text__email">連絡信箱 :</p>
+      <input class="inputEmail" action="email" />
+    </div>
+    <div class="contact__form__text">
+      <p class="contact__form__text__phone">手機號碼 :</p>
+      <input action="text" />
+    </div>
+    <div class="contact__form__text">
+      <p class="contact__form__text__field">
+        請保持手機暢通，準時到達，導覽人員將用手機與您聯繫，務必留下正確的聯絡方式。
+      </p>
+    </div>
+  </div>
+</section>
+
+<hr class="cutLine2" />
+
+<section class="attractionInformation">
+  <div class="contact__payment">
+    <p class="contact__payment__title">信用卡付款資訊</p>
+    <div class="contact__form__payment">
+      <p class="contact__form__payment__name">卡片號碼 :</p>
+      <input action="text" />
+    </div>
+    <div class="contact__form__payment">
+      <p class="contact__form__payment__date">過期時間 :</p>
+      <input action="email" />
+    </div>
+    <div class="contact__form__payment">
+      <p class="contact__form__payment__pasword">驗證密碼 :</p>
+      <input action="text" />
+    </div>
+  </div>
+</section>
+
+<hr class="cutLine2" />
+<section class="attractionInformation">
+  <div class="confirm">
+    <p class="confirm__text">
+      總價 : 新台幣
+      <span class="confirm__text__total">2000</span>
+      元
+    </p>
+    <div class="confirm__button">確認訂購並付款</div>
+  </div>
+</section>
+
+{% endblock %}
+<script src="{{ url_for('static', filename='javascript/booking.js') }}"></script>
