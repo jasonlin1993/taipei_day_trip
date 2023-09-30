@@ -24,19 +24,31 @@ document.addEventListener("DOMContentLoaded", function () {
     .catch((error) => console.error("Error fetching booking:", error));
 });
 // 如果有刪除按鈕，添加事件監聽
-const deleteButton = document.querySelector(".delete-button");
-if (deleteButton) {
-  deleteButton.addEventListener("click", function () {
+function addDeleteButtonEventListener(button) {
+  const attractionInformationSections = document.querySelectorAll(".attractionInformation");
+  const cutLines = document.querySelectorAll(".cutLine2");
+  const noneBookingSection = document.querySelector(".noneBooking");
+
+  button.addEventListener("click", function () {
     fetch("/api/booking", {
       method: "DELETE",
       headers: {
-        Authorization: "Bearer " + jwtToken,
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("jwt"),
       },
     })
       .then((response) => response.json())
       .then((data) => {
         if (data.ok) {
-          window.location.reload(); // 刷新頁面
+          attractionInformationSections.forEach((section) => {
+            section.style.display = "none";
+          });
+
+          cutLines.forEach((line) => {
+            line.style.display = "none";
+          });
+
+          noneBookingSection.style.display = "block";
         } else {
           console.log(data.message);
         }
@@ -91,6 +103,9 @@ function createNewBookingElement(data) {
   deleteBtn.src = "styles/icon/icon_delete.svg";
   deleteBtn.className = "attraction__info__deleteBtn";
   deleteBtn.alt = "deleteBtn";
+
+  // 為新生成的刪除按鈕添加事件監聽
+  addDeleteButtonEventListener(deleteBtn);
 
   newBooking.appendChild(attractionName);
   newBooking.appendChild(attractionAddress);

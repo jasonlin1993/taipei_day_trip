@@ -156,8 +156,7 @@ function checkLoginStatus() {
 }
 
 function initialize() {
-  const booking1 = document.querySelector(".header__item__text--booking");
-  const booking2 = document.querySelector(".section__attraction__profile__bookingform__text--bookingBTN");
+  const bookingBtn = document.querySelector(".section__attraction__profile__bookingform__text--bookingBTN");
   const dialog = document.querySelector(".header__item__login");
 
   function checkLoginStatus(callback) {
@@ -206,9 +205,7 @@ function initialize() {
       }
     });
   }
-
-  booking1.addEventListener("click", handleClick);
-  booking2.addEventListener("click", handleClick);
+  bookingBtn.addEventListener("click", handleClick);
 
   const closeDialogButton = document.querySelector(".header__item__login--close");
   closeDialogButton.addEventListener("click", function () {
