@@ -1,14 +1,26 @@
 from flask import Blueprint
 from flask import request
 from flask import jsonify
+from flask import redirect
+from flask import url_for
+from flask import render_template
 import jwt
 from data.database import pool
 SECRET_KEY = 'this_is_my_secret_key'
 
 booking_api = Blueprint('booking_api', __name__)
 
-@booking_api.route("/api/booking", methods=["GET", "POST", "DELETE"])
+@booking_api.before_app_request
+def check_token():
+    # 檢查當前 URL 是否為 /booking
+    if request.endpoint == 'booking_api.booking':
+        payload, error_response, status_code = verify_jwt_token()
+        
+        # 如果驗證失敗，重定向到首頁
+        if error_response:
+            return redirect(url_for('index'))
 
+@booking_api.route("/api/booking", methods=["GET", "POST", "DELETE"])        
 def api_booking():
     if request.method == "GET":
         return get_booking()
@@ -16,7 +28,8 @@ def api_booking():
         return post_booking()
     elif request.method == "DELETE":
         return delete_booking()
-    
+
+
 def verify_jwt_token():
     auth_header = request.headers.get('Authorization')
     if not auth_header:
@@ -30,6 +43,8 @@ def verify_jwt_token():
         return None, jsonify({'error': True, 'message': 'Token已過期'}), 401
     except jwt.InvalidTokenError:
         return None, jsonify({'error': True, 'message': '無效的Toke'}), 401
+
+
 
 def get_booking():
     # 1. 檢查使用者是否已登入（是否有有效的 JWT Token）
