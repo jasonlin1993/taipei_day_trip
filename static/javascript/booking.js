@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .then((data) => {
       console.log(data);
       const newBookingContainer = document.createElement("div");
-      newBookingContainer.className = "attraction";
+      newBookingContainer.className = "attractionContainer";
 
       const imgDiv = document.createElement("div");
       const img = document.createElement("img");
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
       newBookingContainer.appendChild(imgDiv);
       newBookingContainer.appendChild(newBooking);
 
-      document.querySelector(".attraction").appendChild(newBookingContainer);
+      document.querySelector(".attractionContainer").appendChild(newBookingContainer);
     })
     .catch((error) => console.error("Error fetching booking:", error));
 });
