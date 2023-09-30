@@ -8,8 +8,15 @@ document.addEventListener("DOMContentLoaded", function () {
   })
     .then((response) => response.json())
     .then((data) => {
-      createNewBookingElement(data);
-    });
+      if (data.data) {
+        // 有 booking 資料，生成相應的 HTML
+        createNewBookingElement(data);
+      } else {
+        // 沒有 booking 資料，直接顯示沒有預定行程的提示
+        displayNoBookingMessage();
+      }
+    })
+    .catch((error) => console.error("Error fetching booking:", error));
 
   fetch("/api/user/auth", {
     method: "GET",
@@ -21,8 +28,26 @@ document.addEventListener("DOMContentLoaded", function () {
     .then((data) => {
       createMemberElement(data);
     })
-    .catch((error) => console.error("Error fetching booking:", error));
+    .catch((error) => console.error("Error fetching user auth:", error));
 });
+
+// 如果資料庫沒有資料，則顯示為沒有預定行程
+function displayNoBookingMessage() {
+  const attractionInformationSections = document.querySelectorAll(".attractionInformation");
+  const cutLines = document.querySelectorAll(".cutLine2");
+  const noneBookingSection = document.querySelector(".noneBooking");
+
+  attractionInformationSections.forEach((section) => {
+    section.style.display = "none";
+  });
+
+  cutLines.forEach((line) => {
+    line.style.display = "none";
+  });
+
+  noneBookingSection.style.display = "block";
+}
+
 // 如果有刪除按鈕，添加事件監聽
 function addDeleteButtonEventListener(button) {
   const attractionInformationSections = document.querySelectorAll(".attractionInformation");
@@ -59,7 +84,6 @@ function addDeleteButtonEventListener(button) {
 
 // 更新會員資訊
 function createMemberElement(data) {
-  console.log(data);
   document.querySelector(".headline__text__name").textContent = data.data.name;
   document.querySelector(".inputName").value = data.data.name;
   document.querySelector(".inputEmail").value = data.data.email;

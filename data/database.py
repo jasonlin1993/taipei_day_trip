@@ -9,7 +9,7 @@ DB_PASSWORD = os.getenv('DB_PASSWORD')
 # 連線到資料庫
 pool = pooling.MySQLConnectionPool(
     pool_name='mypool',
-    pool_size=10,
+    pool_size=20,
     user=DB_USER,
     password=DB_PASSWORD,
     host='localhost',
