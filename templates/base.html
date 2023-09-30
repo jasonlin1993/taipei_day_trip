@@ -3,12 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href={{ url_for("static", filename="styles/css/base.css" ) }}> </link>
-
-    {% block extra_css%}
+    <link rel="stylesheet" href={{ url_for("static", filename="styles/css/base.css" ) }}> {% block extra_css%}
 
     <!-- insert css file -->
-    
+
     {%endblock %}
 
     <title>台北一日遊</title>
@@ -61,9 +59,7 @@
                 <div class="header__item__login__button" type="button" onclick="createAccount()">
                   <p>註冊新帳戶</p>
                 </div>
-                <div class="header__item__login__text--memberinfo">
-                  <p></p>
-                </div>
+                <div class="header__item__login__text--memberinfo"></div>
                 <div class="header__item__login__text--body">
                   <p>已經有帳戶了?</p>
                   <p class="header__item__login__text--createCount">點此登入</p>
@@ -85,14 +81,14 @@
       <div class="footer__text">COPYRIGHT © 2021 台北一日遊</div>
     </footer>
   </body>
+  <script src="{{ url_for('static', filename='javascript/booking.js') }}"></script>
   <script src="{{ url_for('static', filename='javascript/login.js') }}"></script>
   <script src="{{ url_for('static', filename='javascript/index.js') }}"></script>
-  <script src="{{ url_for('static', filename='javascript/booking.js') }}"></script>
   <script src="{{ url_for('static', filename='javascript/attraction.js') }}"></script>
 
   {% block extra_js %}
-  
+
   <!-- insert js file -->
 
-  {% endblock %} 
+  {% endblock %}
 </html>

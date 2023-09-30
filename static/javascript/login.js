@@ -192,26 +192,17 @@ function initialize() {
     const dateInput = document.getElementById("bday");
     const dateErrorElement = document.querySelector(".dateError");
 
-    // 如果沒有輸入日期
-    if (!dateInput.value) {
-      dateErrorElement.style.display = "block"; // 顯示錯誤訊息
-      return; // 退出函數
-    } else {
-      dateErrorElement.style.display = "none"; // 隱藏錯誤訊息
-    }
-
     checkLoginStatus((isLoggedIn) => {
       if (isLoggedIn) {
-        window.location.href = "/booking";
+        if (dateInput.value) {
+        } else {
+          // 使用者已經登入但日期未輸入
+          dateErrorElement.style.display = "block"; // 顯示錯誤訊息
+        }
       } else {
-        dialog.showModal();
-      }
-    });
-    checkLoginStatus((isLoggedIn) => {
-      if (isLoggedIn) {
-        window.location.href = "/booking";
-      } else {
-        dialog.showModal();
+        // 使用者未登入
+        dialog.showModal(); // 彈出對話框
+        dateErrorElement.style.display = "none"; // 不顯示錯誤訊息
       }
     });
   }

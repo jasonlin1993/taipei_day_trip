@@ -29,7 +29,7 @@ def verify_jwt_token():
     except jwt.ExpiredSignatureError:
         return None, jsonify({'error': True, 'message': 'Token已過期'}), 401
     except jwt.InvalidTokenError:
-        return None, jsonify({'error': True, 'message': '無效的Token'}), 401
+        return None, jsonify({'error': True, 'message': '無效的Toke'}), 401
 
 def get_booking():
     # 1. 檢查使用者是否已登入（是否有有效的 JWT Token）
@@ -49,11 +49,11 @@ def get_booking():
         return jsonify({'data': None}), 200
 
     # 3. 獲取景點資料
-    cursor.execute("SELECT * FROM attraction WHERE id = %s", (booking_data['attraction_id'],))
+    cursor.execute("SELECT id, name, address FROM attraction WHERE id = %s", (booking_data['attraction_id'],))
     attraction_data = cursor.fetchone()
 
-    # 4. 獲取景點的圖片
-    cursor.execute("SELECT * FROM images WHERE attraction_id = %s LIMIT 1", (attraction_data['id'],))
+    # 4. 獲取景點的第一張圖片
+    cursor.execute("SELECT images_link FROM images WHERE attraction_id = %s LIMIT 1", (attraction_data['id'],))
     image_data = cursor.fetchone()
 
     cursor.close()
@@ -69,10 +69,12 @@ def get_booking():
             },
             "date": booking_data['date'].strftime('%Y-%m-%d'),  # 將日期格式化
             "time": booking_data['time'],
-            "price": booking_data['price']
+            "price": int(booking_data['price'])  # 確保price是整數
         }
     }
     return jsonify(response_data), 200
+
+
 
 def post_booking():
     # 1. 檢查使用者是否已登入（是否有有效的 JWT Token）
@@ -87,7 +89,7 @@ def post_booking():
     if not all(field in data for field in required_fields):
         return jsonify({'error': True, 'message': '建立失敗，輸入不正確或其他原因'}), 400
 
-    # 3. 將新的預定行程存到 `booking` 資料表中
+    # 從 payload 取得 user_id 和其他需要的資料
     user_id = payload['id']
     attraction_id = data['attraction_id']
     date = data['date']
@@ -97,11 +99,26 @@ def post_booking():
     connection = pool.get_connection()
     cursor = connection.cursor()
 
+    # 3. 檢查是否已經有預定存在
+    cursor.execute(
+        "SELECT COUNT(*) FROM booking WHERE member_id=%s",
+        (user_id,)
+    )
+    existing_booking_count = cursor.fetchone()[0]
+
     try:
-        cursor.execute(
-            "INSERT INTO booking (member_id, attraction_id, date, time, price) VALUES (%s, %s, %s, %s, %s)",
-            (user_id, attraction_id, date, time, price)
-        )
+        if existing_booking_count > 0:
+            # 若已存在預定，更新該預定
+            cursor.execute(
+                "UPDATE booking SET attraction_id=%s, date=%s, time=%s, price=%s WHERE member_id=%s",
+                (attraction_id, date, time, price, user_id)
+            )
+        else:
+            # 若沒有預定，插入新的預定
+            cursor.execute(
+                "INSERT INTO booking (member_id, attraction_id, date, time, price) VALUES (%s, %s, %s, %s, %s)",
+                (user_id, attraction_id, date, time, price)
+            )
         connection.commit()
 
     except Exception as e:

@@ -172,9 +172,9 @@ async function bookAttraction() {
     const data = await response.json();
 
     if (data.ok) {
-      alert("預約成功！");
+      window.location.href = "/booking";
     } else {
-      alert(data.message);
+      console.log(data.message);
     }
   } catch (error) {
     console.error("Error booking:", error);
