@@ -1,24 +1,12 @@
 from flask import Blueprint
 from flask import request
 from flask import jsonify
-from flask import redirect
-from flask import url_for
-from flask import render_template
 import jwt
 from data.database import pool
 SECRET_KEY = 'this_is_my_secret_key'
 
 booking_api = Blueprint('booking_api', __name__)
 
-@booking_api.before_app_request
-def check_token():
-    # 檢查當前 URL 是否為 /booking
-    if request.endpoint == 'booking_api.booking':
-        payload, error_response, status_code = verify_jwt_token()
-        
-        # 如果驗證失敗，重定向到首頁
-        if error_response:
-            return redirect(url_for('index'))
 
 @booking_api.route("/api/booking", methods=["GET", "POST", "DELETE"])        
 def api_booking():

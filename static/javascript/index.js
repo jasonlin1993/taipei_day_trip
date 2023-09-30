@@ -174,4 +174,17 @@ function scrollToRight() {
   container.scrollLeft += 300;
 }
 
+window.onload = function () {
+  // 只在 /booking (或其他你想要保護的路徑) 進行檢查
+  if (window.location.pathname === "/booking") {
+    const token = localStorage.getItem("jwt");
+
+    // 如果在 /booking 而且沒有 token，重定向到首頁
+    if (!token) {
+      window.location.href = "/";
+      return; // 加入 return 確保後面的邏輯不會執行
+    }
+  }
+};
+
 document.addEventListener("DOMContentLoaded", populateMrtList);

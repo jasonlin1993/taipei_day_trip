@@ -6,7 +6,17 @@ let loginClose = document.querySelector(".header__item__login--close");
 let createCountClose = document.querySelector(".header__item__createCount .header__item__login--close");
 let createCountLink = document.querySelector(".header__item__login__text--createCount");
 let signInLink = document.querySelector(".header__item__createCount .header__item__login__text--createCount");
-
+let bookingBtn = document.querySelector(".header__item__text--booking");
+bookingBtn.addEventListener("click", function () {
+  let isLoggedin = localStorage.getItem("jwt");
+  if (isLoggedin) {
+    // 如果已經登入，則導向/booking頁面
+    window.location.href = "/booking";
+  } else {
+    // 如果還沒有登入，則顯示登入對話框
+    loginModal.showModal();
+  }
+});
 // 事件處理器函數
 function showLoginModal() {
   createCountModal.close();
