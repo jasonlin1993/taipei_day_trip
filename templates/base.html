@@ -35,9 +35,7 @@
                 <div class="header__item__login__button" type="button" onclick="loginAccount()">
                   <p>登入帳戶</p>
                 </div>
-                <div class="header__item__login__text--signinInfo">
-                  <p></p>
-                </div>
+                <div class="header__item__login__text--signinInfo"></div>
                 <div class="header__item__login__text--body">
                   <p>還沒有帳戶嗎?</p>
                   <p class="header__item__login__text--createCount">點此註冊</p>
@@ -81,9 +79,9 @@
       <div class="footer__text">COPYRIGHT © 2021 台北一日遊</div>
     </footer>
   </body>
-  <script src="{{ url_for('static', filename='javascript/booking.js') }}"></script>
   <script src="{{ url_for('static', filename='javascript/login.js') }}"></script>
   <script src="{{ url_for('static', filename='javascript/index.js') }}"></script>
+  <script src="{{ url_for('static', filename='javascript/booking.js') }}"></script>
   <script src="{{ url_for('static', filename='javascript/attraction.js') }}"></script>
 
   {% block extra_js %}

@@ -1,68 +1,63 @@
-// 登入/註冊/登出按鈕和模態框的DOM選擇器
-let btn = document.querySelector(".header__item__text--singin");
-let loginModal = document.querySelector(".header__item__login");
-let createCountModal = document.querySelector(".header__item__createCount");
-let loginClose = document.querySelector(".header__item__login--close");
-let createCountClose = document.querySelector(".header__item__createCount .header__item__login--close");
-let createCountLink = document.querySelector(".header__item__login__text--createCount");
-let signInLink = document.querySelector(".header__item__createCount .header__item__login__text--createCount");
-let bookingBtn = document.querySelector(".header__item__text--booking");
-bookingBtn.addEventListener("click", function () {
-  let isLoggedin = localStorage.getItem("jwt");
-  if (isLoggedin) {
-    // 如果已經登入，則導向/booking頁面
-    window.location.href = "/booking";
-  } else {
-    // 如果還沒有登入，則顯示登入對話框
-    loginModal.showModal();
-  }
-});
-// 事件處理器函數
+// 常用的 DOM 選擇器
+const selectors = {
+  btn: ".header__item__text--singin",
+  loginModal: ".header__item__login",
+  createCountModal: ".header__item__createCount",
+  loginClose: ".header__item__login--close",
+  createCountClose: ".header__item__createCount .header__item__login--close",
+  createCountLink: ".header__item__login__text--createCount",
+  signInLink: ".header__item__createCount .header__item__login__text--createCount",
+  bookingBtn: ".header__item__text--booking",
+  signinEmail: "#signinEmail",
+  signinPassword: "#signinPassword",
+  signUpName: "#signUpName",
+  signUpEmail: "#signUpEmail",
+  signUpPassword: "#signUpPassword",
+  signinInfoText: ".header__item__login__text--signinInfo",
+  memberInfoText: ".header__item__login__text--memberinfo",
+  dateErrorElement: ".dateError",
+  dateInput: "#bday",
+  startBookingTrip: ".section__attraction__profile__bookingform__text--bookingBTN",
+};
+
+// 重新載入頁面
+function reloadPage() {
+  location.reload();
+}
+
+// 顯示登入對話框
 function showLoginModal() {
-  createCountModal.close();
-  loginModal.showModal();
+  closeModal(selectors.createCountModal);
+  openModal(selectors.loginModal);
 }
 
+// 顯示註冊對話框
 function showCreateCountModal() {
-  loginModal.close();
-  createCountModal.showModal();
+  closeModal(selectors.loginModal);
+  openModal(selectors.createCountModal);
 }
 
-function logout() {
-  localStorage.removeItem("jwt");
-  location.reload(); // 重新載入頁面
-}
-
-// 添加事件監聽器
-btn.addEventListener("click", function () {
-  let isLoggedin = localStorage.getItem("jwt");
-  if (isLoggedin) {
-    logout();
-  } else {
-    loginModal.showModal();
+// 關閉對話框
+function closeModal(modalSelector) {
+  const modal = document.querySelector(modalSelector);
+  if (modal) {
+    modal.close();
   }
-});
+}
 
-loginClose.addEventListener("click", function () {
-  loginModal.close();
-});
+// 開啟對話框
+function openModal(modalSelector) {
+  const modal = document.querySelector(modalSelector);
+  if (modal) {
+    modal.showModal();
+  }
+}
 
-createCountClose.addEventListener("click", function () {
-  createCountModal.close();
-});
-
-createCountLink.addEventListener("click", function () {
-  showCreateCountModal();
-});
-
-signInLink.addEventListener("click", function () {
-  showLoginModal();
-});
-
+// 登入函數
 function loginAccount() {
-  const email = document.getElementById("signinEmail").value;
-  const password = document.getElementById("signinPassword").value;
-  const signinInfoText = document.querySelector(".header__item__login__text--signinInfo");
+  const email = document.querySelector(selectors.signinEmail).value;
+  const password = document.querySelector(selectors.signinPassword).value;
+  const signinInfoText = document.querySelector(selectors.signinInfoText);
 
   if (!email || !password) {
     signinInfoText.innerText = "電子郵件或密碼請勿空白";
@@ -85,23 +80,10 @@ function loginAccount() {
     .then((data) => {
       if (data.token) {
         localStorage.setItem("jwt", data.token);
-        loginModal.close();
+        closeModal(selectors.loginModal);
         checkLoginStatus();
       } else {
-        switch (data.message) {
-          case "wrong_password":
-            signinInfoText.innerText = "密碼輸入錯誤，請重新輸入";
-            break;
-          case "unregistered_email":
-            signinInfoText.innerText = "查無此信箱，請重新輸入";
-            break;
-          case "empty_fields":
-            signinInfoText.innerText = "電子郵件或密碼請勿空白";
-            break;
-          default:
-            signinInfoText.innerText = "發生未知錯誤";
-            break;
-        }
+        handleLoginError(data.message);
       }
     })
     .catch((error) => {
@@ -109,16 +91,35 @@ function loginAccount() {
     });
 }
 
-function createAccount() {
-  const name = document.getElementById("signUpName").value.trim();
-  const email = document.getElementById("signUpEmail").value.trim();
-  const password = document.getElementById("signUpPassword").value.trim();
-  const memberInfoText = document.querySelector(".header__item__login__text--memberinfo");
+// 處理登入錯誤
+function handleLoginError(message) {
+  const signinInfoText = document.querySelector(selectors.signinInfoText);
+  switch (message) {
+    case "wrong_password":
+      signinInfoText.innerText = "密碼輸入錯誤，請重新輸入";
+      break;
+    case "unregistered_email":
+      signinInfoText.innerText = "查無此信箱，請重新輸入";
+      break;
+    case "empty_fields":
+      signinInfoText.innerText = "電子郵件或密碼請勿空白";
+      break;
+    default:
+      signinInfoText.innerText = "發生未知錯誤";
+      break;
+  }
+}
 
-  // 檢查輸入是否有空白
+// 註冊函數
+function createAccount() {
+  const name = document.querySelector(selectors.signUpName).value.trim();
+  const email = document.querySelector(selectors.signUpEmail).value.trim();
+  const password = document.querySelector(selectors.signUpPassword).value.trim();
+  const memberInfoText = document.querySelector(selectors.memberInfoText);
+
   if (!name || !email || !password) {
     memberInfoText.innerText = "輸入值不可為空白";
-    return; // 終止函數執行
+    return;
   }
 
   const data = {
@@ -126,6 +127,7 @@ function createAccount() {
     email: email,
     password: password,
   };
+
   fetch("/api/user", {
     method: "POST",
     headers: {
@@ -146,7 +148,13 @@ function createAccount() {
     });
 }
 
-// 登入狀態檢查函數
+// 登出函數
+function logout() {
+  localStorage.removeItem("jwt");
+  reloadPage();
+}
+
+// 檢查登入/登出狀態
 function checkLoginStatus() {
   fetch("/api/user/auth", {
     method: "GET",
@@ -157,6 +165,7 @@ function checkLoginStatus() {
     .then((response) => response.json())
     .then((data) => {
       console.log(data.data.id);
+      const btn = document.querySelector(selectors.btn);
       if (data.data === null || data.error === true) {
         btn.innerText = "登入/註冊";
       } else {
@@ -165,63 +174,65 @@ function checkLoginStatus() {
     });
 }
 
+// 點擊事件處理函數
+function handleClick() {
+  const isLoggedin = localStorage.getItem("jwt");
+  if (isLoggedin) {
+    logout();
+  } else {
+    showLoginModal();
+  }
+}
+
+// 初始化函數
 function initialize() {
-  const bookingBtn = document.querySelector(".section__attraction__profile__bookingform__text--bookingBTN");
-  const dialog = document.querySelector(".header__item__login");
+  // 添加事件監聽器
+  document.querySelector(selectors.bookingBtn).addEventListener("click", function () {
+    const isLoggedin = localStorage.getItem("jwt");
+    if (isLoggedin) {
+      // 如果已經登入，則導向/booking頁面
+      window.location.href = "/booking";
+    } else {
+      // 如果還沒有登入，則顯示登入對話框
+      showLoginModal();
+    }
+  });
 
-  function checkLoginStatus(callback) {
-    const jwtToken = localStorage.getItem("jwt");
-
-    if (!jwtToken) {
-      callback(false);
+  document.querySelector(selectors.startBookingTrip).addEventListener("click", function () {
+    const dateInput = document.querySelector(selectors.dateInput);
+    const dateErrorElement = document.querySelector(selectors.dateErrorElement);
+    const isLoggedin = localStorage.getItem("jwt");
+    if (!isLoggedin) {
+      showCreateCountModal();
       return;
     }
 
-    fetch("/api/user/auth", {
-      method: "GET",
-      headers: {
-        Authorization: "Bearer " + jwtToken,
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.data === null || data.error === true) {
-          callback(false);
-        } else {
-          callback(true);
-        }
-      })
-      .catch((error) => {
-        console.error("Error during authentication:", error);
-        callback(false);
-      });
-  }
+    if (!dateInput.value) {
+      dateErrorElement.style.display = "block";
+      return;
+    }
 
-  function handleClick() {
-    const dateInput = document.getElementById("bday");
-    const dateErrorElement = document.querySelector(".dateError");
-
-    checkLoginStatus((isLoggedIn) => {
-      if (isLoggedIn) {
-        if (dateInput.value) {
-        } else {
-          // 使用者已經登入但日期未輸入
-          dateErrorElement.style.display = "block"; // 顯示錯誤訊息
-        }
-      } else {
-        // 使用者未登入
-        dialog.showModal(); // 彈出對話框
-        dateErrorElement.style.display = "none"; // 不顯示錯誤訊息
-      }
-    });
-  }
-  bookingBtn.addEventListener("click", handleClick);
-
-  const closeDialogButton = document.querySelector(".header__item__login--close");
-  closeDialogButton.addEventListener("click", function () {
-    dialog.close();
+    dateErrorElement.style.display = "none;";
   });
 }
+
+document.querySelector(selectors.loginClose).addEventListener("click", function () {
+  closeModal(selectors.loginModal);
+});
+
+document.querySelector(selectors.createCountClose).addEventListener("click", function () {
+  closeModal(selectors.createCountModal);
+});
+
+document.querySelector(selectors.createCountLink).addEventListener("click", function () {
+  showCreateCountModal();
+});
+
+document.querySelector(selectors.signInLink).addEventListener("click", function () {
+  showLoginModal();
+});
+
+document.querySelector(selectors.btn).addEventListener("click", handleClick);
 
 // 當 DOM 全部載入完畢，就執行 initialize 函數
 if (document.readyState === "loading") {
@@ -229,6 +240,3 @@ if (document.readyState === "loading") {
 } else {
   initialize();
 }
-
-// 當文件載入完成後，我們會呼叫上述的檢查狀態函數
-document.addEventListener("DOMContentLoaded", checkLoginStatus);
