@@ -203,7 +203,7 @@ function initialize() {
     const dateErrorElement = document.querySelector(selectors.dateErrorElement);
     const isLoggedin = localStorage.getItem("jwt");
     if (!isLoggedin) {
-      showCreateCountModal();
+      showLoginModal();
       return;
     }
 
