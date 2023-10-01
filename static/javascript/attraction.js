@@ -107,6 +107,15 @@ function populateData(data) {
     data.transport;
 }
 
+// 檢查資料完整性
+function isDataComplete(data) {
+  // 檢查 attraction_id、date、time 和 price 是否存在且不為空
+  if (data.attraction_id && data.date && data.time && data.price) {
+    return true;
+  }
+  return false;
+}
+
 // 預定景點選擇
 async function bookAttraction() {
   const attractionId = getIdFromUrl();
@@ -122,6 +131,11 @@ async function bookAttraction() {
     time: time,
     price: price,
   };
+
+  // 在送出資料前先確認其完整性
+  if (!isDataComplete(bookingData)) {
+    return; // 阻止後續的資料送出
+  }
 
   try {
     const response = await fetch("/api/booking", {
