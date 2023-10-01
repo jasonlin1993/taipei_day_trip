@@ -1,20 +1,19 @@
 // 限制只有選取今天跟以後的時間
 const today = new Date().toISOString().substr(0, 10);
 const birthdayInput = document.getElementById("bday");
-birthdayInput.min = today;
+if (birthdayInput) {
+  birthdayInput.min = today;
+}
 
 //選擇上下半天時更新選擇時間
 function updateUI(timePeriod) {
   const morningBtn = document.getElementById("morningBtn");
   const afternoonBtn = document.getElementById("afternoonBtn");
   const tourCostElement = document.getElementById("tourCost");
-
   const clickedImg = timePeriod === "morning" ? morningBtn : afternoonBtn;
   const notClickedImg = timePeriod === "morning" ? afternoonBtn : morningBtn;
-
   clickedImg.src = clickedImg.getAttribute("data-active-src");
   notClickedImg.src = notClickedImg.getAttribute("data-inactive-src");
-
   tourCostElement.innerText = `新台幣 ${timePeriod === "morning" ? 2000 : 2500} 元`;
 }
 
@@ -23,13 +22,10 @@ function updateCarousel(offset) {
   const carousel = document.querySelector("[data-carousel]");
   const slides = carousel.querySelectorAll("[data-slide]");
   const circles = document.querySelectorAll(".section__attraction__btn__circle img");
-
   let activeIndex = Array.from(slides).findIndex((slide) => slide.classList.contains("active"));
   let newIndex = (activeIndex + offset + slides.length) % slides.length;
-
   slides[activeIndex].classList.remove("active");
   slides[newIndex].classList.add("active");
-
   circles[activeIndex].src = document.getElementById("circle-current-1-url").value;
   circles[newIndex].src = document.getElementById("circle-current-url").value;
 }
@@ -58,10 +54,8 @@ async function fetchData() {
 function createCircleElements(imageCount) {
   const circleContainer = document.querySelector(".section__attraction__btn__circle");
   circleContainer.innerHTML = "";
-
   const circleCurrentUrl = document.getElementById("circle-current-url").value;
   const circleCurrent1Url = document.getElementById("circle-current-1-url").value;
-
   const createCircle = (src, isCurrent) => {
     const imgElem = document.createElement("img");
     imgElem.src = src;
@@ -109,11 +103,15 @@ function populateData(data) {
 
 // 檢查資料完整性
 function isDataComplete(data) {
-  // 檢查 attraction_id、date、time 和 price 是否存在且不為空
   if (data.attraction_id && data.date && data.time && data.price) {
     return true;
   }
   return false;
+}
+
+// 檢查是否有 token
+function hasToken() {
+  return !!localStorage.getItem("jwt");
 }
 
 // 預定景點選擇
@@ -135,6 +133,11 @@ async function bookAttraction() {
   // 在送出資料前先確認其完整性
   if (!isDataComplete(bookingData)) {
     return; // 阻止後續的資料送出
+  }
+
+  // 檢查 token 是否存在
+  if (!hasToken()) {
+    return;
   }
 
   try {

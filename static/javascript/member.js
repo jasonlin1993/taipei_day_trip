@@ -154,24 +154,26 @@ function logout() {
   reloadPage();
 }
 
-// 檢查登入/登出狀態
 function checkLoginStatus() {
-  fetch("/api/user/auth", {
-    method: "GET",
-    headers: {
-      Authorization: "Bearer " + localStorage.getItem("jwt"),
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data.data.id);
-      const btn = document.querySelector(selectors.btn);
-      if (data.data === null || data.error === true) {
-        btn.innerText = "登入/註冊";
-      } else {
-        btn.innerText = "登出系統";
-      }
-    });
+  const token = localStorage.getItem("jwt");
+
+  if (token) {
+    fetch("/api/user/auth", {
+      method: "GET",
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        const btn = document.querySelector(selectors.btn);
+        if (data.data === null || data.error === true) {
+          btn.innerText = "登入/註冊";
+        } else {
+          btn.innerText = "登出系統";
+        }
+      });
+  }
 }
 
 // 點擊事件處理函數
