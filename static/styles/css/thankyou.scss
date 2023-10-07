@@ -1,0 +1,20 @@
+@import "variable";
+@import "mixin";
+
+.section__text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $Gray70;
+  @include Regular_H3;
+  margin: 15px;
+}
+
+.order_number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $Gray70;
+  @include Regular_H3;
+  margin: 15px;
+}

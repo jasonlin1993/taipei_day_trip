@@ -187,24 +187,11 @@ section {
     @include Medium_Body;
     color: $Gray70;
 
-    p {
-      margin: 0px 10px 0px 0px;
-    }
-
     .contact__form__payment__password {
       @include Bold_Body;
       color: $Gray70;
       padding: 5px 0px;
       line-height: 1.5;
-    }
-
-    input {
-      @include Medium_Body;
-      width: 200px;
-      height: 38px;
-      padding: 10px;
-      border-radius: 5px;
-      border: 1px solid #e8e8e8;
     }
   }
   @include pad_850px {
@@ -215,6 +202,16 @@ section {
     border-bottom: 1px solid #e8e8e8;
     padding: 20px 0px 10px 0px;
   }
+}
+
+.tpfield {
+  @include Medium_Body;
+  width: 200px;
+  height: 38px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #e8e8e8;
+  margin: 0px 5px;
 }
 
 // 第四區
