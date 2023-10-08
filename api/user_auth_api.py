@@ -4,12 +4,13 @@ from flask import jsonify
 from data.database import pool  # 請根據你的目錄結構修改這裡的 import
 import jwt
 import datetime
+import os
+from dotenv import load_dotenv
 
-
+load_dotenv()
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 user_auth_api = Blueprint('user_auth_api', __name__)
-
-SECRET_KEY = 'this_is_my_secret_key'
 
 @user_auth_api.route("/api/user/auth", methods=["GET", "PUT"])
 def user_auth():

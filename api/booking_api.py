@@ -3,7 +3,12 @@ from flask import request
 from flask import jsonify
 import jwt
 from data.database import pool
-SECRET_KEY = 'this_is_my_secret_key'
+import os
+from dotenv import load_dotenv
+load_dotenv()
+SECRET_KEY = os.getenv('SECRET_KEY')
+
+
 
 booking_api = Blueprint('booking_api', __name__)
 

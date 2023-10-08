@@ -1,68 +1,42 @@
-// 限制日期選擇
-let today = new Date().toISOString().substr(0, 10);
-document.getElementById("bday").min = today;
+// 限制只有選取今天跟以後的時間
+const today = new Date().toISOString().substr(0, 10);
+const birthdayInput = document.getElementById("bday");
+if (birthdayInput) {
+  birthdayInput.min = today;
+}
 
-function checkTime(timePeriod) {
+//選擇上下半天時更新選擇時間
+function updateUI(timePeriod) {
   const morningBtn = document.getElementById("morningBtn");
   const afternoonBtn = document.getElementById("afternoonBtn");
   const tourCostElement = document.getElementById("tourCost");
-
   const clickedImg = timePeriod === "morning" ? morningBtn : afternoonBtn;
   const notClickedImg = timePeriod === "morning" ? afternoonBtn : morningBtn;
-
   clickedImg.src = clickedImg.getAttribute("data-active-src");
   notClickedImg.src = notClickedImg.getAttribute("data-inactive-src");
-
-  if (timePeriod === "morning") {
-    tourCostElement.innerText = "新台幣 2000 元";
-  } else {
-    tourCostElement.innerText = "新台幣 2500 元";
-  }
+  tourCostElement.innerText = `新台幣 ${timePeriod === "morning" ? 2000 : 2500} 元`;
 }
 
-const buttons = document.querySelectorAll("[data-carousel-button]");
+// 圖片輪播圖
+function updateCarousel(offset) {
+  const carousel = document.querySelector("[data-carousel]");
+  const slides = carousel.querySelectorAll("[data-slide]");
+  const circles = document.querySelectorAll(".section__attraction__btn__circle img");
+  let activeIndex = Array.from(slides).findIndex((slide) => slide.classList.contains("active"));
+  let newIndex = (activeIndex + offset + slides.length) % slides.length;
+  slides[activeIndex].classList.remove("active");
+  slides[newIndex].classList.add("active");
+  circles[activeIndex].src = document.getElementById("circle-current-1-url").value;
+  circles[newIndex].src = document.getElementById("circle-current-url").value;
+}
 
-const circles = document.querySelectorAll(".section__attraction__btn__circle img");
-
-// 通過ID獲取URL
-const circleCurrentUrl = document.getElementById("circle-current-url").value;
-const circleCurrent1Url = document.getElementById("circle-current-1-url").value;
-
-buttons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const circles = document.querySelectorAll(".section__attraction__btn__circle img");
-    const offset = button.dataset.carouselButton === "next" ? 1 : -1;
-
-    const carousel = button.closest("[data-carousel]");
-    const slides = carousel.querySelectorAll("[data-slide]");
-
-    let activeIndex = Array.from(slides).findIndex((slide) => slide.classList.contains("active"));
-
-    let newIndex = activeIndex + offset;
-
-    if (newIndex < 0) {
-      newIndex = slides.length - 1;
-    }
-
-    if (newIndex >= slides.length) {
-      newIndex = 0;
-    }
-
-    slides[activeIndex].classList.remove("active");
-    slides[newIndex].classList.add("active");
-
-    // 更新圓圈指示器的圖片
-    circles[activeIndex].src = circleCurrent1Url;
-    circles[newIndex].src = circleCurrentUrl;
-  });
-});
-
+// 獲取 URL 的ID
 function getIdFromUrl() {
-  const path = window.location.pathname;
-  const parts = path.split("/");
+  const parts = window.location.pathname.split("/");
   return parts[parts.length - 1];
 }
 
+// 獲取景點數量
 async function fetchData() {
   try {
     const id = getIdFromUrl();
@@ -76,39 +50,36 @@ async function fetchData() {
   }
 }
 
+// 動態新增圓點數量
 function createCircleElements(imageCount) {
+  const circleContainer = document.querySelector(".section__attraction__btn__circle");
+  circleContainer.innerHTML = "";
   const circleCurrentUrl = document.getElementById("circle-current-url").value;
   const circleCurrent1Url = document.getElementById("circle-current-1-url").value;
+  const createCircle = (src, isCurrent) => {
+    const imgElem = document.createElement("img");
+    imgElem.src = src;
+    imgElem.alt = "icon_btn_circle";
+    imgElem.classList.add(
+      isCurrent ? "section__attraction__btn__circle--checked" : "section__attraction__btn__circle--check"
+    );
+    circleContainer.appendChild(imgElem);
+  };
 
-  const circleContainer = document.querySelector(".section__attraction__btn__circle");
-  circleContainer.innerHTML = ""; // 清空當前的圓形元素
-
-  const imgElemO = document.createElement("img");
-  imgElemO.src = circleCurrentUrl; // "O" 代表的圖片
-  imgElemO.alt = "icon_btn_circle";
-  imgElemO.classList.add("section__attraction__btn__circle--checked");
-  circleContainer.appendChild(imgElemO);
-
+  createCircle(circleCurrentUrl, true);
   for (let i = 1; i < imageCount; i++) {
-    const imgElemX = document.createElement("img");
-    imgElemX.src = circleCurrent1Url; // "X" 代表的圖片
-    imgElemX.alt = "icon_btn_circle";
-    imgElemX.classList.add("section__attraction__btn__circle--check");
-    circleContainer.appendChild(imgElemX);
+    createCircle(circleCurrent1Url, false);
   }
 }
 
+// 顯示當前圖片並新增 active
 function createImageElements(images) {
   const imageContainer = document.querySelector("[data-carousel]");
   imageContainer.querySelectorAll(".carousel-image, .section__attraction__img").forEach((imgElem) => imgElem.remove());
   images.forEach((imageSrc, index) => {
     const imgElem = document.createElement("img");
     imgElem.src = imageSrc;
-    if (index === 0) {
-      imgElem.classList.add("section__attraction__img");
-    } else {
-      imgElem.classList.add("carousel-image");
-    }
+    imgElem.classList.add(index === 0 ? "section__attraction__img" : "carousel-image");
     imgElem.setAttribute("data-slide", "");
     if (index === 0) {
       imgElem.classList.add("active");
@@ -117,6 +88,7 @@ function createImageElements(images) {
   });
 }
 
+// 根據景點 api 資料
 function populateData(data) {
   document.querySelector(".section__attraction__profile__name").textContent = data.name;
   document.querySelector(".section__attraction__profile__infomation__category").textContent = data.category;
@@ -129,26 +101,27 @@ function populateData(data) {
     data.transport;
 }
 
+// 檢查資料完整性
+function isDataComplete(data) {
+  if (data.attraction_id && data.date && data.time && data.price) {
+    return true;
+  }
+  return false;
+}
+
+// 檢查是否有 token
+function hasToken() {
+  return !!localStorage.getItem("jwt");
+}
+
+// 預定景點選擇
 async function bookAttraction() {
   const attractionId = getIdFromUrl();
   const date = document.getElementById("bday").value;
   const morningBtn = document.getElementById("morningBtn");
-  const afternoonBtn = document.getElementById("afternoonBtn");
-
-  let time;
-  if (morningBtn.src.includes("radio_btn_click.svg")) {
-    time = "morning";
-  } else if (afternoonBtn.src.includes("radio_btn_click.svg")) {
-    time = "afternoon";
-  }
-
+  const time = morningBtn.src.includes("radio_btn_click.svg") ? "morning" : "afternoon";
   const tourCostElem = document.getElementById("tourCost");
-  let price;
-  if (tourCostElem.textContent.includes("2000")) {
-    price = 2000;
-  } else if (tourCostElem.textContent.includes("2500")) {
-    price = 2500;
-  }
+  const price = tourCostElem.textContent.includes("2000") ? 2000 : 2500;
 
   const bookingData = {
     attraction_id: attractionId,
@@ -156,7 +129,16 @@ async function bookAttraction() {
     time: time,
     price: price,
   };
-  console.log(bookingData);
+
+  // 在送出資料前先確認其完整性
+  if (!isDataComplete(bookingData)) {
+    return; // 阻止後續的資料送出
+  }
+
+  // 檢查 token 是否存在
+  if (!hasToken()) {
+    return;
+  }
 
   try {
     const response = await fetch("/api/booking", {
@@ -179,8 +161,16 @@ async function bookAttraction() {
     console.error("Error booking:", error);
   }
 }
+
+// 點擊事件監聽器
+document.getElementById("morningBtn").addEventListener("click", () => updateUI("morning"));
+document.getElementById("afternoonBtn").addEventListener("click", () => updateUI("afternoon"));
+document.querySelector("[data-carousel-button='next']").addEventListener("click", () => updateCarousel(1));
+document.querySelector("[data-carousel-button='prev']").addEventListener("click", () => updateCarousel(-1));
+
 document
   .querySelector(".section__attraction__profile__bookingform__text--bookingBTN")
   .addEventListener("click", bookAttraction);
 
+// 頁面加載
 window.onload = fetchData;

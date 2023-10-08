@@ -188,3 +188,4 @@ window.onload = function () {
 };
 
 document.addEventListener("DOMContentLoaded", populateMrtList);
+checkLoginStatus();

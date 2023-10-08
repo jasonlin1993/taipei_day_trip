@@ -1,34 +1,43 @@
 document.addEventListener("DOMContentLoaded", function () {
-  fetch("/api/booking", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "Bearer " + localStorage.getItem("jwt"),
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.data) {
-        // 有 booking 資料，生成相應的 HTML
-        createNewBookingElement(data);
-      } else {
-        // 沒有 booking 資料，直接顯示沒有預定行程的提示
-        displayNoBookingMessage();
-      }
-    })
-    .catch((error) => console.error("Error fetching booking:", error));
+  // 檢查當前 URL 是否是 /booking
+  if (window.location.pathname === "/booking") {
+    // 檢查 localStorage 中是否有 jwt token
+    const token = localStorage.getItem("jwt");
 
-  fetch("/api/user/auth", {
-    method: "GET",
-    headers: {
-      Authorization: "Bearer " + localStorage.getItem("jwt"),
-    },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      createMemberElement(data);
-    })
-    .catch((error) => console.error("Error fetching user auth:", error));
+    // 如果 token 存在，代表用戶已登入
+    if (token) {
+      fetch("/api/booking", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.data) {
+            // 有 booking 資料，生成相應的 HTML
+            createNewBookingElement(data);
+          } else {
+            // 沒有 booking 資料，直接顯示沒有預定行程的提示
+            displayNoBookingMessage();
+          }
+        })
+        .catch((error) => console.error("Error fetching booking:", error));
+
+      fetch("/api/user/auth", {
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          createMemberElement(data);
+        })
+        .catch((error) => console.error("Error fetching user auth:", error));
+    }
+  }
 });
 
 // 如果資料庫沒有資料，則顯示為沒有預定行程

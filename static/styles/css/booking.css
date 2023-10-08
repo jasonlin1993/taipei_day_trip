@@ -216,9 +216,6 @@ section {
   line-height: 13.3px;
   color: #666666;
 }
-.contact__payment .contact__form__payment p {
-  margin: 0px 10px 0px 0px;
-}
 .contact__payment .contact__form__payment .contact__form__payment__password {
   font-family: "Noto Sans TC", sans-serif;
   font-weight: Bold;
@@ -227,17 +224,6 @@ section {
   color: #666666;
   padding: 5px 0px;
   line-height: 1.5;
-}
-.contact__payment .contact__form__payment input {
-  font-family: "Noto Sans TC", sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 13.3px;
-  width: 200px;
-  height: 38px;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #e8e8e8;
 }
 @media (max-width: 850px) {
   .contact__payment {
@@ -250,6 +236,19 @@ section {
     border-bottom: 1px solid #e8e8e8;
     padding: 20px 0px 10px 0px;
   }
+}
+
+.tpfield {
+  font-family: "Noto Sans TC", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 13.3px;
+  width: 200px;
+  height: 38px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #e8e8e8;
+  margin: 0px 5px;
 }
 
 .confirm {
