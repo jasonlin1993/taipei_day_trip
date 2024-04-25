@@ -235,6 +235,7 @@ section {
     border-radius: 5px;
     @include Regular_Btn;
     background-color: $Cyan70;
+    border: none;
     color: $white;
     cursor: pointer;
   }

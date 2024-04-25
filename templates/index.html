@@ -51,4 +51,10 @@
   </div>
 </section>
 <div class="load-more-trigger"></div>
+{% endblock %} {% block extra_js %}
+<!-- insert js file -->
+<script src="{{ url_for('static', filename='javascript/scrollList.js') }}"></script>
+<script src="{{ url_for('static', filename='javascript/searchMrt.js') }}"></script>
+<script src="{{ url_for('static', filename='javascript/loadNextPage.js') }}"></script>
+<script src="{{ url_for('static', filename='javascript/createMrtElement.js') }}"></script>
 {% endblock %}

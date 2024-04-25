@@ -1,7 +1,7 @@
 from flask import Blueprint
 from flask import request
 from flask import jsonify
-from data.database import pool  # 請根據你的目錄結構修改這裡的 import
+from data.database import pool  
 import jwt
 import datetime
 import os
@@ -32,7 +32,7 @@ def put_user_auth():
     cursor.close()
     connection.close()
     
-    if user and user['password'] == password:  # 使用明文密碼進行比較
+    if user and user['password'] == password:
         payload = {
             'id': user['id'],
             'name': user['name'],

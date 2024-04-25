@@ -287,7 +287,7 @@ header .header__item .header__item__text {
   cursor: pointer;
 }
 header .header__item .header__item__text .header__item__text--booking:hover,
-header .header__item .header__item__text .header__item__text--singin:hover {
+header .header__item .header__item__text .header__item__text--signin:hover {
   color: rgb(0, 255, 55);
 }
 header .header__item .header__item__text .header__item__text--booking {
