@@ -1,7 +1,5 @@
-from flask import Blueprint
-from flask import request
-from flask import jsonify
-from data.database import pool
+from flask import Blueprint, request, jsonify
+from model.user_model import register_user
 
 user_api = Blueprint('user_api', __name__)
 
@@ -10,24 +8,13 @@ def post_user():
     data = request.get_json()
     name = data['name']
     email = data['email']
-    password = data['password'] 
+    password = data['password']
 
     try:
-        with pool.get_connection() as database:
-            with database.cursor(dictionary=True) as cursor:
-                sql_check = "SELECT COUNT(*) AS count FROM member WHERE email = %s"
-                cursor.execute(sql_check, (email,))
-                result = cursor.fetchone()
-
-                if result['count'] > 0:
-                    return jsonify(error=True, message="註冊失敗，email 已經重複註冊"), 400
-                
-                sql_insert = "INSERT INTO member (name, email, password) VALUES (%s, %s, %s)"
-                cursor.execute(sql_insert, (name, email, password))
-                database.commit()
-
-            return jsonify(ok=True), 200
-
+        success, message = register_user(name, email, password)
+        if not success:
+            return jsonify(error=True, message=message), 400
+        return jsonify(ok=True), 200
     except Exception as e:
         print(e)
         return jsonify(error=True, message="伺服器內部錯誤"), 500
