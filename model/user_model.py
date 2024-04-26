@@ -1,3 +1,4 @@
+# model/user_model.py
 from data.database import pool
 
 def register_user(name, email, password):
@@ -5,7 +6,8 @@ def register_user(name, email, password):
         with database.cursor() as cursor:
             sql_check = "SELECT COUNT(*) AS count FROM member WHERE email = %s"
             cursor.execute(sql_check, (email,))
-            if cursor.fetchone()['count'] > 0:
+            result = cursor.fetchone()
+            if result and result['count'] > 0:
                 return False, "註冊失敗，email 已經重複註冊"
 
             sql_insert = "INSERT INTO member (name, email, password) VALUES (%s, %s, %s)"
