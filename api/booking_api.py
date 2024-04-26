@@ -1,18 +1,13 @@
 import os
-from flask import Blueprint
-from flask import request
-from flask import jsonify
-from data.database import pool
+from flask import Blueprint, request, jsonify
 from dotenv import load_dotenv
 from .jwt_token import verify_jwt_token
+from model.booking_model import fetch_booking, insert_or_update_booking, delete_booking
 
 load_dotenv()
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-
-
 booking_api = Blueprint('booking_api', __name__)
-
 
 @booking_api.route("/api/booking", methods=["GET", "POST", "DELETE"])        
 def api_booking():
@@ -23,33 +18,16 @@ def api_booking():
     elif request.method == "DELETE":
         return delete_booking()
 
-
 def get_booking():
-
     payload, error_response, status_code = verify_jwt_token()
     if error_response:
         return error_response, status_code
 
     user_id = payload['id']
-    connection = pool.get_connection()
-    cursor = connection.cursor(dictionary=True)
-
-    cursor.execute("SELECT * FROM booking WHERE member_id = %s LIMIT 1", (user_id,))
-    booking_data = cursor.fetchone()
+    booking_data, attraction_data, image_data = fetch_booking(user_id)
 
     if not booking_data:
         return jsonify({'data': None}), 200
-
-
-    cursor.execute("SELECT id, name, address FROM attraction WHERE id = %s", (booking_data['attraction_id'],))
-    attraction_data = cursor.fetchone()
-
-
-    cursor.execute("SELECT images_link FROM images WHERE attraction_id = %s LIMIT 1", (attraction_data['id'],))
-    image_data = cursor.fetchone()
-
-    cursor.close()
-    connection.close()
 
     response_data = {
         "data": {
@@ -65,8 +43,6 @@ def get_booking():
         }
     }
     return jsonify(response_data), 200
-
-
 
 def post_booking():
     payload, error_response, status_code = verify_jwt_token()
@@ -85,54 +61,15 @@ def post_booking():
     time = data['time']
     price = data['price']
 
-    connection = pool.get_connection()
-    cursor = connection.cursor()
+    insert_or_update_booking(user_id, attraction_id, date, time, price)
 
-    cursor.execute(
-        "SELECT COUNT(*) FROM booking WHERE member_id=%s",
-        (user_id,)
-    )
-    existing_booking_count = cursor.fetchone()[0]
-
-    try:
-        if existing_booking_count > 0:
-            cursor.execute(
-                "UPDATE booking SET attraction_id=%s, date=%s, time=%s, price=%s WHERE member_id=%s",
-                (attraction_id, date, time, price, user_id)
-            )
-        else:
-            cursor.execute(
-                "INSERT INTO booking (member_id, attraction_id, date, time, price) VALUES (%s, %s, %s, %s, %s)",
-                (user_id, attraction_id, date, time, price)
-            )
-        connection.commit()
-
-    except Exception as e:
-        cursor.close()
-        connection.close()
-        return jsonify({'error': True, 'message': '伺服器內部錯誤: {}'.format(str(e))}), 500
-
-    cursor.close()
-    connection.close()
     return jsonify({'ok': True}), 200
 
 def delete_booking():
     payload, error_response, status_code = verify_jwt_token()
     if error_response:
         return error_response, status_code
+    
     user_id = payload['id']
-    connection = pool.get_connection()
-    cursor = connection.cursor()
-
-    try:
-        cursor.execute("DELETE FROM booking WHERE member_id = %s", (user_id,))
-        connection.commit()
-
-    except Exception as e:
-        cursor.close()
-        connection.close()
-        return jsonify({'error': True, 'message': '伺服器內部錯誤: {}'.format(str(e))}), 500
-
-    cursor.close()
-    connection.close()
+    delete_booking(user_id)
     return jsonify({'ok': True}), 200

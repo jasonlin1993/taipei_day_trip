@@ -1,14 +1,6 @@
-from flask import Blueprint
-from flask import request
-from flask import jsonify
-from data.database import pool  
-import jwt
-import datetime
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
-SECRET_KEY = os.getenv('SECRET_KEY')
+# api/user_auth_api.py
+from flask import Blueprint, request, jsonify
+from model.user_auth_model import authenticate_user, validate_token
 
 user_auth_api = Blueprint('user_auth_api', __name__)
 
@@ -22,40 +14,20 @@ def user_auth():
 def put_user_auth():
     email = request.json.get('email')
     password = request.json.get('password')
-    
-    connection = pool.get_connection()
-    cursor = connection.cursor(dictionary=True)
-    
-    cursor.execute("SELECT * FROM member WHERE email = %s", (email,))
-    user = cursor.fetchone()
-    
-    cursor.close()
-    connection.close()
-    
-    if user and user['password'] == password:
-        payload = {
-            'id': user['id'],
-            'name': user['name'],
-            'email': user['email'],
-            'exp': datetime.datetime.utcnow() + datetime.timedelta(days=7)
-        }
-        token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
-        return jsonify({'token': token}), 200
-    elif user:
-        return jsonify({'error': True, 'message': 'wrong_password'}), 400
+    success, result = authenticate_user(email, password)
+    if success:
+        return jsonify({'token': result}), 200
     else:
-        return jsonify({'error': True, 'message': 'unregistered_email'}), 400
+        return jsonify({'error': True, 'message': result}), 400
 
 def get_user_auth():
     auth_header = request.headers.get('Authorization')
     if auth_header:
         token = auth_header.split(' ')[1]
-        try:
-            payload = jwt.decode(token, SECRET_KEY, algorithms=['HS256'])
-            return jsonify({'data': payload}), 200
-        except jwt.ExpiredSignatureError:
-            return jsonify({'error': True, 'message': 'Token已過期'}), 401
-        except jwt.InvalidTokenError:
-            return jsonify({'error': True, 'message': '無效的Token'}), 401
+        success, result = validate_token(token)
+        if success:
+            return jsonify({'data': result}), 200
+        else:
+            return jsonify({'error': True, 'message': result}), 401
     else:
         return jsonify({'data': None}), 200
