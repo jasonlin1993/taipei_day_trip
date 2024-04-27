@@ -85,14 +85,22 @@
      
 3. #### 串接第三方金流
    - Client 會去跟 TapPay Server 取得一組專屬 Prime
-   - 將 Prime 傳到後端 Server作處理
+   - 將 Prime 傳到後端 Server 作處理
    - 後端 Server 會用這組 Prime，去跟 TapPay Server 要求付款 ( TapPay 會去跟 Bank Server 去請求付款 )
    - 後端 Server 會接收 TapPay 付款結果，並回傳付款狀態回 Client
 
 ## 附錄
 
 ### 技術介紹
-#### 技術介紹
+#### 前端
 - ##### HTML
 - ##### Sass / SCSS
   使用 Sass / SCSS 預處理、靜態切版    
+- ##### JavaScript
+  使用 JavaScript 操作 DOM 建立前端動態
+- ##### 專案細節
+  - 實踐 RWD
+  - 實踐 infinite scroll、carousel
+  - 使用 FetchA API 實踐 AJAX
+    
+#### 後端
