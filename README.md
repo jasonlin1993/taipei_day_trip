@@ -38,11 +38,11 @@
 ## 專案摘要
 「臺北一日遊」為旅遊電商網站，提供使用者搜尋臺北景點，進一步預約導覽行程時間，並提供信用卡付款。
 
-- ![](https://raw.githubusercontent.com/jasonlin1993/taipei_day_trip/main/static/picture/mainpage.png)
+ ![](https://raw.githubusercontent.com/jasonlin1993/taipei_day_trip/main/static/picture/mainpage.png)
 
 ## 開發介紹
 ### 網站架構及摘要
-- ![](https://raw.githubusercontent.com/jasonlin1993/taipei_day_trip/main/static/picture/Architecture.png)
+![](https://raw.githubusercontent.com/jasonlin1993/taipei_day_trip/main/static/picture/Architecture.png)
 
 
 - **前端開發**
@@ -63,7 +63,7 @@
      - picture: 儲存首頁以及 README 圖片     
 
 ### 開發、部署流程
-- ![](https://raw.githubusercontent.com/jasonlin1993/taipei_day_trip/main/static/picture/development.png)
+![](https://raw.githubusercontent.com/jasonlin1993/taipei_day_trip/main/static/picture/development.png)
 
 #### 開發
    - 以 GitHub Flow 為基礎進行開發，包含要求 reviewer 同意 pull request 實踐 GitHub Flow
@@ -118,7 +118,7 @@
 - ### mysql-connector-python 套件
   - 使用 Connection Pool 穩定資料庫連線，避免閒置太久會中斷的問題產生。
 - #### 資料庫結構
-- ![](https://raw.githubusercontent.com/jasonlin1993/taipei_day_trip/main/static/picture/database.png)      
+  ![](https://raw.githubusercontent.com/jasonlin1993/taipei_day_trip/main/static/picture/database.png)      
   
  
 ### 開發工具
@@ -127,7 +127,7 @@
 
 ## 專案介紹
 「台北一日遊」為一旅遊電商網站，其提供使用者搜尋台北著名景點，進一步預約導覽行程時間，並提供信用卡付款。
- - ![](https://raw.githubusercontent.com/jasonlin1993/taipei_day_trip/main/static/picture/mainpage.png)
+ ![](https://raw.githubusercontent.com/jasonlin1993/taipei_day_trip/main/static/picture/mainpage.png)
 
 ### 首頁
 在首頁中，使用者可以瀏覽臺北著名景點，並輸入關鍵字搜尋，實踐 inifin
