@@ -91,39 +91,39 @@
 
 ## 附錄
 
-### 技術介紹
-#### 前端
-- ##### HTML
-- ##### Sass / SCSS
+## 技術介紹
+### 前端
+- #### HTML
+- #### Sass / SCSS
   使用 Sass / SCSS 預處理、靜態切版    
-- ##### JavaScript
+- #### JavaScript
   使用 JavaScript 操作 DOM 建立前端動態
-- ##### 專案細節
+- #### 專案細節
   - 實踐 RWD
   - 實踐 infinite scroll、carousel
   - 使用 Fetch API 實踐 AJAX
     
-#### 後端
-- ##### Python、Flask.py
+### 後端
+- #### Python、Flask.py
   使用 Python、Flask.py 建立 Application server
-- ##### AWS EC2
+- #### AWS EC2
   使用 AWS EC2 的服務建立一台 Linux 機器，作業系統選擇 Ubuntu Server，並執行 Application server
-- ##### RESTful API
+- #### RESTful API
   實踐 RESTful API 並更新資料庫
-- ##### JWT + Bear Token
+- #### JWT + Bear Token
   - 使用 PyJWT 套件，使用者登入時，資料庫檢查 Email 和密碼配對成功，將會員的編號、姓名、Email 等關鍵資訊利用 JWT 機制編碼簽名，取得簽名後的 Token ，回傳給前端
   - 前端程式登入成功後，接收後端回應的 Token，儲存在瀏覽器的 Local Storage
   - 當前端程式呼叫需要驗證會員身分的後端 API 時，透過 Authorization Header 傳送 Bearer Token 到後端
   - 驗證會員身分的後端程式，接收到前端請求後，可以從 Authorization Header 取得 Token，表示使用者已登入，同時可以取得登入時紀錄的關鍵資訊
-- ##### mysql-connector-python 套件
+- #### mysql-connector-python 套件
   - 使用 Connection Pool 穩定資料庫連線，避免閒置太久會中斷的問題產生。
 - ##### 資料庫結構
 ![](https://raw.githubusercontent.com/jasonlin1993/taipei_day_trip/main/static/picture/database.png)      
   
  
-#### 開發工具
+### 開發工具
 - ##### Git / GitHub
   使用 Git / GitHub 做版本控管，配合 pull request 實踐 GitHub Flow
 
-### 專案介紹
+## 專案介紹
 「台北一日遊」為一旅遊電商網站，其提供使用者搜尋台北著名景點，進一步預約導覽行程時間，並提供信用卡付款。
