@@ -46,14 +46,14 @@
 
 
 - **前端開發**
-  - 使用 Html、SCSS/SASS、JavaScript 開發，並實踐 RWD、AJAX，沒有使用任何前端 UI 套件
+  - 使用 Html、SCSS / SASS、JavaScript 開發，並實踐 RWD、AJAX，沒有使用任何前端 UI 套件
 - **後端開發**
   - 專案使用 AWS EC2 雲端部屬
   - 使用 Python flask 建立 Application server
   - MySQL 關聯式資料庫儲存景點、會員資料及訂單
   - 開發購物車系統，結合 TapPay 第三方金流服務 
 - **開發工具**
-  - 使用 Git/GitHub 做版本管控
+  - 使用 Git / GitHub 做版本管控
 
 ### 目錄架構
    - 專案目錄下有 static 目錄供 Python server 套件 Flask.py 取得靜態檔案; templates 目錄下的 HTML 檔案使用 Jinja2 樣板引擎渲染
@@ -63,6 +63,9 @@
      - picture: 儲存首頁以及 README 圖片     
 
 ### 開發、部署流程
+![](https://raw.githubusercontent.com/jasonlin1993/taipei_day_trip/main/static/picture/development.png)
+
+
 #### 開發
 // 這裡描述開發過程
 #### 部署
