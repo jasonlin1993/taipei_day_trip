@@ -1,4 +1,4 @@
-# 臺北一日遊專案
+![welcome](https://github.com/jasonlin1993/taipei_day_trip/assets/105538761/1b067097-e8f9-4f91-96a8-345b963915f7)# 臺北一日遊專案
 
 ## 目錄
 1. [專案展示](#專案展示)
@@ -33,7 +33,8 @@
 ## 專案摘要
 「臺北一日遊」為旅遊電商網站，提供使用者搜尋臺北景點，進一步預約導覽行程時間，並提供信用卡付款。
 
-![](https://github.com/jasonlin1993/taipei_day_trip/static/picture/mainpage.png)
+ ![mainpage](https://github.com/jasonlin1993/taipei_day_trip/assets/105538761/01e500d8-6a41-4c00-b708-daa0f548dc5f)
+
 
 ## 開發介紹
 ### 技術架構及摘要
