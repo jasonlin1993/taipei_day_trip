@@ -129,15 +129,15 @@
 「台北一日遊」為一旅遊電商網站，其提供使用者搜尋台北著名景點，進一步預約導覽行程時間，並提供信用卡付款。
  ![](https://raw.githubusercontent.com/jasonlin1993/taipei_day_trip/main/static/picture/mainpage.png)
 
-### 首頁
-在首頁中，使用者可以瀏覽臺北著名景點，並輸入關鍵字搜尋，實踐 inifinite scroll，向下滑動可自動載入下一頁資料，直到沒有相符的搜尋結果
+- ### 首頁
+  - 在首頁中，使用者可以瀏覽臺北著名景點，並輸入關鍵字搜尋，實踐 inifinite scroll，向下滑動可自動載入下一頁資料，直到沒有相符的搜尋結果
 
-- 關鍵字搜尋
+  - 關鍵字搜尋
     ![](https://raw.githubusercontent.com/jasonlin1993/taipei_day_trip/main/static/picture/search.gif)
   
-- inifinite scroll
+  - inifinite scroll
     ![](https://raw.githubusercontent.com/jasonlin1993/taipei_day_trip/main/static/picture/inifiniteScroll.gif)
   
-### 登入 / 註冊 modal
-在各個頁面的導航列中，都可以透過「登入/註冊」按鈕顯示彈跳視窗，進一步登入、註冊帳戶。登入者，可使用導航列「登出」按鈕登出帳戶。
-    ![](https://raw.githubusercontent.com/jasonlin1993/taipei_day_trip/main/static/picture/memberSignIn.gif)
+- ### 登入 / 註冊 modal
+  在各個頁面的導航列中，都可以透過「登入/註冊」按鈕顯示彈跳視窗，進一步登入、註冊帳戶。登入者，可使用導航列「登出」按鈕登出帳戶。
+  ![](https://raw.githubusercontent.com/jasonlin1993/taipei_day_trip/main/static/picture/memberSignIn.gif)
