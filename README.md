@@ -146,6 +146,7 @@
   在行程簡介頁中呈現景點相關資訊，包含 carousel 功能實踐，並可讓使用者預約導覽行程時間，跳轉預定行程頁進一步付款。
 
   - 圖片輪播功能
-      ![](https://raw.githubusercontent.com/jasonlin1993/taipei_day_trip/main/static/picture/carousel.gif)
+    ![](https://raw.githubusercontent.com/jasonlin1993/taipei_day_trip/main/static/picture/carousel.gif)
     
   - 預約導覽行程時間
+     
