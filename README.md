@@ -115,9 +115,9 @@
   - 前端程式登入成功後，接收後端回應的 Token，儲存在瀏覽器的 Local Storage
   - 當前端程式呼叫需要驗證會員身分的後端 API 時，透過 Authorization Header 傳送 Bearer Token 到後端
   - 驗證會員身分的後端程式，接收到前端請求後，可以從 Authorization Header 取得 Token，表示使用者已登入，同時可以取得登入時紀錄的關鍵資訊
-- #### mysql-connector-python 套件
+- ### mysql-connector-python 套件
   - 使用 Connection Pool 穩定資料庫連線，避免閒置太久會中斷的問題產生。
-- ##### 資料庫結構
+- #### 資料庫結構
 - ![](https://raw.githubusercontent.com/jasonlin1993/taipei_day_trip/main/static/picture/database.png)      
   
  
