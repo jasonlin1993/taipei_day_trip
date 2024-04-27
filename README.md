@@ -112,4 +112,6 @@
   實踐 RESTful API 並更新資料庫
 - ##### JWT + Bear Token
   - 使用 PyJWT 套件，使用者登入時，資料庫檢查 Email 和密碼配對成功，將會員的編號、姓名、Email 等關鍵資訊利用 JWT 機制編碼簽名，取得簽名後的 Token ，回傳給前端
-  - 
+  - 前端程式登入成功後，接收後端回應的 Token，儲存在瀏覽器的 Local Storage
+  - 當前端程式呼叫需要驗證會員身分的後端 API 時，透過 Authorization Header 傳送 Bearer Token 到後端
+  - 驗證會員身分的後端程式，接收到前端請求後，可以從 Authorization Header 取得 Token，表示使用者已登入，同時可以取得登入時紀錄的關鍵資訊
