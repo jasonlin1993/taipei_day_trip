@@ -75,10 +75,10 @@
    - 使用 nohup 指令讓 Application server 在 AWS EC2 背景運作
 
 ### 程式設計摘要
-1.  #### 會員系統建立、登入狀態管理
+1. #### 會員系統建立、登入狀態管理
    - 使用 MySQL 資料庫 users 資料表建立會員系統
    - 使用 Flask.py、PyJWT、Bearer Token 判斷使用者登入狀態，實踐登入、登出功能
      
-2.  #### Application server 程式架構
-3.  #### 串接第三方金流
+2. #### Application server 程式架構
+3. #### 串接第三方金流
   
