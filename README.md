@@ -42,6 +42,9 @@
 
 ## 開發介紹
 ### 技術架構及摘要
+![](https://raw.githubusercontent.com/jasonlin1993/taipei_day_trip/main/static/picture/Architecture.png)
+
+
 - **前端開發**
   - 這裡描述前端使用的技術和工具
 - **後端開發**
