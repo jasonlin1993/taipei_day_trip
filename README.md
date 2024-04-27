@@ -111,5 +111,5 @@
 - ##### RESTful API
   實踐 RESTful API 並更新資料庫
 - ##### JWT + Bear Token
-  使用 PyJWT 套件，使用者登入時，資料庫檢查 Email 和密碼配對成功，將會員的編號、姓名、Email 等關鍵資訊利用 JWT 機制編碼簽名，取得簽名後的 Token ，回傳給前端
-- 
+  - 使用 PyJWT 套件，使用者登入時，資料庫檢查 Email 和密碼配對成功，將會員的編號、姓名、Email 等關鍵資訊利用 JWT 機制編碼簽名，取得簽名後的 Token ，回傳給前端
+  - 
