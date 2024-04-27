@@ -56,7 +56,11 @@
   - 使用 Git/GitHub 做版本管控
 
 ### 目錄架構
-   - 專案目錄下有 static 目錄供 Python server 套件 app.py
+   - 專案目錄下有 static 目錄供 Python server 套件 Flask.py 取得靜態檔案; templates 目錄下的 HTML 檔案使用 Jinja2 樣板引擎渲染
+   - static 目錄下分成 JavaScript、styles、picture 子目錄
+     - Javascript: 依照功能拆分檔案
+     - styles: 依照頁面拆分檔案; 全域顏色儲存在 _variable.scss、全域 styles 儲存在 _mixin.scss
+     - picture: 儲存首頁以及 README 圖片     
 
 ### 開發、部署流程
 #### 開發
