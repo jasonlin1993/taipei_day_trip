@@ -65,11 +65,14 @@
 ### 開發、部署流程
 ![](https://raw.githubusercontent.com/jasonlin1993/taipei_day_trip/main/static/picture/development.png)
 
-
 #### 開發
-// 這裡描述開發過程
+   - 以 GitHub Flow 為基礎進行開發，包含要求 reviewer 同意 pull request 實踐 GitHub Flow
+   - 根據後端規格文件建立 MySQL 資料庫、開發 RESTful API
+   - 篩選臺北旅遊網 Open API 的原始資料，並建立 MySQL 資料庫中的 attractions 資料表
 #### 部署
-// 這裡描述部署過程
+   - 使用 AWS EC2 的服務建立一台 Linux 機器，作業系統選擇 Ubuntu Server，並執行由 Python、Flask.py 編寫之 Application server
+   - 在 AWS EC2 建立 MySQL 資料庫
+   - 使用 nohup 指令讓 Application server 在 AWS EC2 背景運作
 
 ### 程式設計摘要
 - **會員系統建立、登入狀態管理**
