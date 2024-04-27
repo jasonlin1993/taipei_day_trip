@@ -140,4 +140,4 @@
   
 ### 登入 / 註冊 modal
 在各個頁面的導航列中，都可以透過「登入/註冊」按鈕顯示彈跳視窗，進一步登入、註冊帳戶。登入者，可使用導航列「登出」按鈕登出帳戶。
-    ![](https://raw.githubusercontent.com/jasonlin1993/taipei_day_trip/main/static/picture/memberSignin.gif)
+    ![](https://raw.githubusercontent.com/jasonlin1993/taipei_day_trip/main/static/picture/memberSignIn.gif)
