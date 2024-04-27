@@ -117,6 +117,9 @@
   - 驗證會員身分的後端程式，接收到前端請求後，可以從 Authorization Header 取得 Token，表示使用者已登入，同時可以取得登入時紀錄的關鍵資訊
 - ##### mysql-connector-python 套件
   - 使用 Connection Pool 穩定資料庫連線，避免閒置太久會中斷的問題產生。
+- ##### 資料庫結構
+![](https://raw.githubusercontent.com/jasonlin1993/taipei_day_trip/main/static/picture/database.png)      
+  
  
 #### 開發工具
 - ##### Git / GitHub
