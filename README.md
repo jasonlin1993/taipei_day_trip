@@ -141,3 +141,11 @@
 - ### 登入 / 註冊 modal
   在各個頁面的導航列中，都可以透過「登入/註冊」按鈕顯示彈跳視窗，進一步登入、註冊帳戶。登入者，可使用導航列「登出」按鈕登出帳戶。
   ![](https://raw.githubusercontent.com/jasonlin1993/taipei_day_trip/main/static/picture/memberSignIn.gif)
+
+- ### 行程簡介面
+  在行程簡介頁中呈現景點相關資訊，包含 carousel 功能實踐，並可讓使用者預約導覽行程時間，跳轉預定行程頁進一步付款。
+
+  - 圖片輪播功能
+      ![](https://raw.githubusercontent.com/jasonlin1993/taipei_day_trip/main/static/picture/carousel.gif)
+    
+  - 預約導覽行程時間
