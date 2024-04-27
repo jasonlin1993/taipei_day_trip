@@ -133,6 +133,11 @@
 在首頁中，使用者可以瀏覽臺北著名景點，並輸入關鍵字搜尋，實踐 inifinite scroll，向下滑動可自動載入下一頁資料，直到沒有相符的搜尋結果
 
 - 關鍵字搜尋
-    ![](https://raw.githubusercontent.com/jasonlin1993/taipei_day_trip/main/static/picture/search.gif)      
+    ![](https://raw.githubusercontent.com/jasonlin1993/taipei_day_trip/main/static/picture/search.gif)
+  
 - inifinite scroll
-    ![](https://raw.githubusercontent.com/jasonlin1993/taipei_day_trip/main/static/picture/inifiniteScroll.gif)  
+    ![](https://raw.githubusercontent.com/jasonlin1993/taipei_day_trip/main/static/picture/inifiniteScroll.gif)
+  
+### 登入 / 註冊 modal
+在各個頁面的導航列中，都可以透過「登入/註冊」按鈕顯示彈跳視窗，進一步登入、註冊帳戶。登入者，可使用導航列「登出」按鈕登出帳戶。
+
