@@ -32,8 +32,7 @@
 
 ## 專案摘要
 「臺北一日遊」為旅遊電商網站，提供使用者搜尋臺北景點，進一步預約導覽行程時間，並提供信用卡付款。
-
- ![mainpage](https://github.com/jasonlin1993/taipei_day_trip/assets/105538761/01e500d8-6a41-4c00-b708-daa0f548dc5f)
+ ![](https://github.com/jasonlin1993/taipei_day_trip/develop/static/pictures/mainpage.png)
 
 
 ## 開發介紹
