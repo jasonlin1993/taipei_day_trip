@@ -130,4 +130,8 @@
  ![](https://raw.githubusercontent.com/jasonlin1993/taipei_day_trip/main/static/picture/mainpage.png)
 
 ### 首頁
-在首頁中，使用者可以瀏覽臺北著名景點，並輸入關鍵字搜尋，實踐 inifin
+在首頁中，使用者可以瀏覽臺北著名景點，並輸入關鍵字搜尋，實踐 inifinite scroll，向下滑動可自動載入下一頁資料，直到沒有相符的搜尋結果
+
+- 關鍵字搜尋
+    ![](https://raw.githubusercontent.com/jasonlin1993/taipei_day_trip/main/static/picture/search.gif)      
+- inifinite scroll
