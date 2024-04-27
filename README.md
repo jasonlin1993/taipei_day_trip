@@ -101,6 +101,15 @@
 - ##### 專案細節
   - 實踐 RWD
   - 實踐 infinite scroll、carousel
-  - 使用 FetchA API 實踐 AJAX
+  - 使用 Fetch API 實踐 AJAX
     
 #### 後端
+- ##### Python、Flask.py
+  使用 Python、Flask.py 建立 Application server
+- ##### AWS EC2
+  使用 AWS EC2 的服務建立一台 Linux 機器，作業系統選擇 Ubuntu Server，並執行 Application server
+- ##### RESTful API
+  實踐 RESTful API 並更新資料庫
+- ##### JWT + Bear Token
+  使用 PyJWT 套件，使用者登入時，資料庫檢查 Email 和密碼配對成功，將會員的編號、姓名、Email 等關鍵資訊利用 JWT 機制編碼簽名，取得簽名後的 Token ，回傳給前端
+- 
