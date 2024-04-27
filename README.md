@@ -135,3 +135,4 @@
 - 關鍵字搜尋
     ![](https://raw.githubusercontent.com/jasonlin1993/taipei_day_trip/main/static/picture/search.gif)      
 - inifinite scroll
+    ![](https://raw.githubusercontent.com/jasonlin1993/taipei_day_trip/main/static/picture/inifiniteScroll.gif)  
