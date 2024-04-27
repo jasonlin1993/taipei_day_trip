@@ -77,8 +77,15 @@
 ### 程式設計摘要
 1. #### 會員系統建立、登入狀態管理
    - 使用 MySQL 資料庫 users 資料表建立會員系統
-   - 使用 Flask.py、PyJWT、Bearer Token 判斷使用者登入狀態，實踐登入、登出功能
+   - 使用 Flask.py、PyJWT、Bearer Token 判斷使用者登入狀態，實踐會員登入、登出功能
      
 2. #### Application server 程式架構
-3. #### 串接第三方金流
+   - 使用 Flask.py 建立 Routing system
+   - 配合規格文件實踐 RESTful API，依照不同 HTTP 方法的請求，執行對應的程式碼
+     
+4. #### 串接第三方金流
+   - Client 會去跟TapPay Server 取得一組專屬Prime
+   - 將Prime 傳到後端Server作處理
+   - 後端Server 會用這組Prime，去跟TapPay Server 要求付款(TapPay 會去跟Bank Server去請求付款)
+   - 後端Server會接收TapPay付款結果，並回傳付款狀態回Client
   
