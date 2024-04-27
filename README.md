@@ -84,8 +84,8 @@
    - 配合規格文件實踐 RESTful API，依照不同 HTTP 方法的請求，執行對應的程式碼
      
 4. #### 串接第三方金流
-   - Client 會去跟TapPay Server 取得一組專屬Prime
-   - 將Prime 傳到後端Server作處理
-   - 後端Server 會用這組Prime，去跟TapPay Server 要求付款(TapPay 會去跟Bank Server去請求付款)
-   - 後端Server會接收TapPay付款結果，並回傳付款狀態回Client
+   - Client 會去跟 TapPay Server 取得一組專屬 Prime
+   - 將 Prime 傳到後端 Server作處理
+   - 後端 Server 會用這組 Prime，去跟 TapPay Server 要求付款 ( TapPay 會去跟 Bank Server 去請求付款 )
+   - 後端 Server 會接收 TapPay 付款結果，並回傳付款狀態回 Client
   
