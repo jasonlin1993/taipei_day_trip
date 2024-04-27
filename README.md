@@ -1,4 +1,4 @@
-![welcome](https://github.com/jasonlin1993/taipei_day_trip/assets/105538761/1b067097-e8f9-4f91-96a8-345b963915f7)# 臺北一日遊專案
+# 臺北一日遊專案
 
 ## 目錄
 1. [專案展示](#專案展示)
