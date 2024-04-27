@@ -46,9 +46,12 @@
 
 
 - **前端開發**
-  - 使用 Html、SCSS/SASS、JavaScript 開發，並實踐 RWD、AJAX，沒有使用其他前端 UI 套件
+  - 使用 Html、SCSS/SASS、JavaScript 開發，並實踐 RWD、AJAX，沒有使用任何前端 UI 套件
 - **後端開發**
-  - 這裡描述後端使用的技術和工具
+  - 專案使用 AWS EC2 雲端部屬
+  - 使用 Python flask 建立 Application server
+  - MySQL 關聯式資料庫儲存景點、會員資料及訂單
+  - 開發購物車系統，結合 TapPay 第三方金流服務 
 - **開發工具**
   - 這裡列出開發中使用的主要工具
 
