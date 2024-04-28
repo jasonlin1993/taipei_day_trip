@@ -150,3 +150,6 @@
     
   - 預約導覽行程時間
     ![](https://raw.githubusercontent.com/jasonlin1993/taipei_day_trip/main/static/picture/booking.gif)
+- ### 預定行程頁面
+  在預定行程頁面中，使用者瀏覽尚未付款的預定行程，並進一步使用信用卡付款，系統會自動帶入使用者聯絡資訊。
+      ![](https://raw.githubusercontent.com/jasonlin1993/taipei_day_trip/main/static/picture/tappay.gif)
