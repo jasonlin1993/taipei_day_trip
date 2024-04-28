@@ -149,4 +149,4 @@
     ![](https://raw.githubusercontent.com/jasonlin1993/taipei_day_trip/main/static/picture/carousel.gif)
     
   - 預約導覽行程時間
-     
+    ![](https://raw.githubusercontent.com/jasonlin1993/taipei_day_trip/main/static/picture/booking.gif)
