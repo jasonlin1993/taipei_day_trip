@@ -42,7 +42,9 @@ document.addEventListener("DOMContentLoaded", async function () {
 });
 
 function displayNoBookingMessage() {
-  const attractionInformationSections = document.querySelectorAll(".attractionInformation");
+  const attractionInformationSections = document.querySelectorAll(
+    ".attractionInformation"
+  );
   const cutLines = document.querySelectorAll(".cutLine2");
   const noneBookingSection = document.querySelector(".noneBooking");
 
@@ -57,7 +59,9 @@ function displayNoBookingMessage() {
 }
 
 function addDeleteButtonEventListener(button) {
-  const attractionInformationSections = document.querySelectorAll(".attractionInformation");
+  const attractionInformationSections = document.querySelectorAll(
+    ".attractionInformation"
+  );
   const cutLines = document.querySelectorAll(".cutLine2");
   const noneBookingSection = document.querySelector(".noneBooking");
   button.addEventListener("click", function () {
@@ -133,5 +137,7 @@ function createNewBookingElement(data) {
   newBookingContainer.appendChild(imgDiv);
   newBookingContainer.appendChild(newBooking);
   document.querySelector(".confirm__text__total").textContent = data.data.price;
-  document.querySelector(".attractionContainer").appendChild(newBookingContainer);
+  document
+    .querySelector(".attractionContainer")
+    .appendChild(newBookingContainer);
 }

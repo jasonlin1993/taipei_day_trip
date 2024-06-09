@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href={{ url_for("static", filename="styles/css/base.css" ) }}> {% block extra_css%}
+    <link rel="stylesheet" href={{ url_for("static",
+    filename="styles/css/base.css" ) }}> {% block extra_css%}
 
     <!-- insert css file -->
 
@@ -26,13 +27,30 @@
             <dialog class="header__item__login">
               <div class="header__item__login--top"></div>
               <div class="header__item__login--close">
-                <img src="{{ url_for('static', filename='styles/icon/icon_close.svg') }}" alt="icon_close" />
+                <img
+                  src="{{ url_for('static', filename='styles/icon/icon_close.svg') }}"
+                  alt="icon_close"
+                />
               </div>
               <div class="header__item__login__text--H3">登入會員帳號</div>
               <div class="header__banner__login__Box">
-                <input type="email" placeholder="輸入電子信箱" class="signinEmail" required />
-                <input type="password" placeholder="輸入密碼" class="signinPassword" required />
-                <div class="header__item__login__button" type="button" onclick="loginAccount()">
+                <input
+                  type="email"
+                  placeholder="輸入電子信箱"
+                  class="signinEmail"
+                  required
+                />
+                <input
+                  type="password"
+                  placeholder="輸入密碼"
+                  class="signinPassword"
+                  required
+                />
+                <div
+                  class="header__item__login__button"
+                  type="button"
+                  onclick="loginAccount()"
+                >
                   <p>登入帳戶</p>
                 </div>
                 <div class="header__item__login__text--signinInfo"></div>
@@ -47,14 +65,29 @@
             <dialog class="header__item__createCount">
               <div class="header__item__login--top"></div>
               <div class="header__item__login--close">
-                <img src="{{ url_for('static', filename='styles/icon/icon_close.svg') }}" alt="icon_close" />
+                <img
+                  src="{{ url_for('static', filename='styles/icon/icon_close.svg') }}"
+                  alt="icon_close"
+                />
               </div>
               <div class="header__item__login__text--H3">註冊會員帳號</div>
               <div class="header__banner__login__Box">
                 <input type="text" placeholder="輸入姓名" class="signUpName" />
-                <input type="email" placeholder="輸入電子信箱" class="signUpEmail" />
-                <input type="password" placeholder="輸入密碼" class="signUpPassword" />
-                <div class="header__item__login__button" type="button" onclick="createAccount()">
+                <input
+                  type="email"
+                  placeholder="輸入電子信箱"
+                  class="signUpEmail"
+                />
+                <input
+                  type="password"
+                  placeholder="輸入密碼"
+                  class="signUpPassword"
+                />
+                <div
+                  class="header__item__login__button"
+                  type="button"
+                  onclick="createAccount()"
+                >
                   <p>註冊新帳戶</p>
                 </div>
                 <div class="header__item__login__text--memberinfo"></div>
