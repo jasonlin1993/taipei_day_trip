@@ -1,13 +1,19 @@
 {% extends "base.html" %} {% block extra_css %}
 <!-- 使用 base.html 中定義的 extra_css 區塊 -->
-<link rel="stylesheet" href="{{ url_for('static', filename='styles/css/thankyou.css') }}" />
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='styles/css/thankyou.css') }}"
+/>
 {% endblock %} {% block content %}
 <hr class="cutLine" />
 <section>
-  <p class="section__text">行程預定成功</p>
-  <p class="section__text">您的訂單編號如下</p>
-  <p class="order_number" id="orderNumberDisplay">正在獲取訂單編號...</p>
+  <div class="section__text">您好，已預定的行程如下:</div>
+  <div class="section_order_number">
+    <p class="order_number_text">訂單編號:</p>
+    <p class="order_number" id="orderNumberDisplay">正在獲取訂單編號...</p>
+  </div>
 </section>
 {% endblock %} {% block extra_js %}
 <script src="{{ url_for('static', filename='javascript/thank.js') }}"></script>
+
 {% endblock %}

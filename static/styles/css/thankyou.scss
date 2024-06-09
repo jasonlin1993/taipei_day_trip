@@ -1,6 +1,14 @@
 @import "variable";
 @import "mixin";
 
+section {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 0px 10px;
+}
+
 .section__text {
   display: flex;
   justify-content: center;
@@ -8,13 +16,130 @@
   color: $Gray70;
   @include Regular_H3;
   margin: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  max-width: 980px;
+  width: 100%;
+  margin: 30px 10px 0px 10px;
+  @include mobile {
+    flex-direction: column;
+    height: 100%;
+    margin: 20px 0 0 0;
+  }
+}
+
+.section_order_number {
+  display: flex;
+  justify-content: center;
+  max-width: 980px;
+  width: 100%;
+  @include mobile {
+    display: flex;
+    height: 100%;
+    margin: 0px;
+    justify-content: center;
+  }
 }
 
 .order_number {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: $Gray70;
+  color: $Cyan50;
   @include Regular_H3;
-  margin: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 15px 10px 10px 0px;
+  @include pad_850px {
+    margin: 0;
+  }
+  @include mobile {
+    flex-direction: column;
+    height: 100%;
+    margin: 0px;
+  }
+}
+
+.order_number_text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $Cyan50;
+  @include Regular_H3;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 15px 10px 10px 30px;
+
+  @include mobile {
+    flex-direction: column;
+    height: 100%;
+    margin: 0px;
+  }
+}
+
+.attractionContainer {
+  display: flex;
+  justify-content: start;
+  max-width: 980px;
+  width: 100%;
+  height: 200px;
+  @include mobile {
+    flex-direction: column;
+    height: 100%;
+    margin: 0px;
+  }
+  .attraction__img {
+    display: flex;
+    width: 250px;
+    height: 200px;
+    flex-shrink: 1;
+
+    @include mobile {
+      flex-shrink: 1;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+    }
+  }
+  .attraction__info {
+    position: relative;
+    flex-direction: row;
+    max-width: 980px;
+    width: 100%;
+    height: 170px;
+    margin: 0px 0px 30px 22px;
+    @include mobile {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      margin: 28px 0px 0px 0px;
+      border-bottom: 1px solid #e8e8e8;
+    }
+
+    p {
+      @include Medium_Body;
+      color: $Gray70;
+      padding: 5px 0px;
+      margin: 0px 0px 20px 0px;
+      font-weight: bold;
+    }
+
+    .attraction__info__name {
+      @include Bold_Body;
+      color: $Cyan70;
+      font-weight: bold;
+    }
+
+    .attraction__info__deleteBtn {
+      position: absolute;
+      top: 0;
+      right: 0;
+      cursor: pointer;
+      @include mobile {
+        position: absolute;
+        top: 75%;
+        right: 0;
+      }
+    }
+  }
 }
