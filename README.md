@@ -63,7 +63,6 @@
      - picture: 儲存首頁以及 README 圖片     
 
 ### 開發、部署流程
-![](https://raw.githubusercontent.com/jasonlin1993/taipei_day_trip/main/static/picture/development.png)
 
 #### 開發
    - 以 GitHub Flow 為基礎進行開發，包含要求 reviewer 同意 pull request 實踐 GitHub Flow
